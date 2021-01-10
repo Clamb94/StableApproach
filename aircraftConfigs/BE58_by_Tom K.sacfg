@@ -1,0 +1,47 @@
+{
+    "enabled": "true",
+    "acf": {
+        "icao": "BE58",
+        "author": "Tom Kyler\/Jim Gregory"
+    },
+    "speed": {
+        "taxi": "30"
+    },
+    "height": {
+        "check": {
+            "vis": "300",
+            "ils": "1000"
+        }
+    },
+    "requirements": {
+        "requirement": {
+            "name": "Gear down",
+            "primaryCondition": "$sim\/cockpit2\/controls\/gear_handle_down == 1\nand\n$sim\/cockpit2\/annunciators\/gear_unsafe == 0\n",
+            "secondaryCondition": "1",
+            "primaryMarker": "126",
+            "secondaryMarker": "2"
+        },
+        "requirement": {
+            "name": "Flaps down",
+            "primaryCondition": "$sim\/cockpit2\/controls\/flap_handle_deploy_ratio == 1",
+            "secondaryCondition": "1",
+            "primaryMarker": "126",
+            "secondaryMarker": "2"
+        },
+        "requirement": {
+            "name": "Mixture rich",
+            "primaryCondition": "$sim\/cockpit2\/engine\/actuators\/mixture_ratio[0] > 0.95\nand\n$sim\/cockpit2\/engine\/actuators\/mixture_ratio[1] > 0.95",
+            "secondaryCondition": "$clamb\/stableapproach\/position\/altitude_msl_ft < 2000",
+            "primaryMarker": "28",
+            "secondaryMarker": "16"
+        },
+        "requirement": {
+            "name": "Prop rpm full forward",
+            "primaryCondition": "$sim\/flightmodel\/engine\/ENGN_prop[0] > 270 and\n$sim\/flightmodel\/engine\/ENGN_prop[1] > 270",
+            "secondaryCondition": "1",
+            "primaryMarker": "126",
+            "secondaryMarker": "2"
+        }
+    },
+    "hash": ""
+}

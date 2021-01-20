@@ -1,11 +1,14 @@
 {
 "requirements": {
-               "requirement": {
+            "requirement": {
             "name": "Gear down",
             "primaryCondition": "$sim\/cockpit2\/controls\/gear_handle_down == 1\nand\n$sim\/cockpit2\/annunciators\/gear_unsafe == 0\n",
             "secondaryCondition": "1",
             "primaryMarker": "126",
-            "secondaryMarker": "2"
+            "secondaryMarker": "2",
+            "templateTitle" : "Gear down and locked",
+            "description": "Gear must be down and locked from check height till end of landing roll"
+              
         },
         "requirement": {
             "name": "Flaps down",

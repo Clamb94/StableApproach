@@ -22,7 +22,7 @@
             "secondaryCondition": "1",
             "primaryMarker": "16",
             "secondaryMarker": "2",
-            "description": "Only one touchdown" 
+            "description": "Checks if you got airborne again after touchdown" 
         },
         "requirement": {
             "name": "Touchdown on main gear",
@@ -64,7 +64,7 @@
             "secondaryCondition": "$analysis.app.nav.type == 4 or\n$analysis.app.nav.type == 5",
             "primaryMarker": "1",
             "secondaryMarker": "2",
-            "description": "Checks max localizer deviation during approach\n1 dot is the limit for most airlines (CAT 1)" 
+            "description": "Checks max localizer deviation during approach.\n1 dot is the limit for most airlines (CAT 1)" 
         },
         "requirement": {
             "name": "Constant speed",
@@ -72,7 +72,6 @@
             "secondaryCondition": "1",
             "primaryMarker": "1",
             "secondaryMarker": "2",
-            "templateTitle" : "Touchdown on main gear (*)",
             "description": "Checks speed varianz during approach.\nThere should be no large variation in speed" 
         },
         "requirement": {

@@ -119,11 +119,13 @@
             "description": "When landing at airports with an elevation below 2500ft, mixture must be RICH.\nOnly for MULTI engine piston aircrafts"
         },
         "requirement": {
-            "name": "Prop rpm full forward (*)",
+            "name": "Prop rpm full forward",
             "primaryCondition": "$sim\/flightmodel\/engine\/ENGN_prop[0] > 270 and\n$sim\/flightmodel\/engine\/ENGN_prop[1] > 270",
             "secondaryCondition": "1",
             "primaryMarker": "126",
-            "secondaryMarker": "2"
+            "secondaryMarker": "2",
+            "templateTitle" : "Prop rpm full forward",
+            "description": "Check if prop lever (blue) are full forward/high.\n TODO: Explain setup"
         },
         "requirement": {
             "name": "Speedbrake armed",

@@ -5,22 +5,15 @@
         "author": "Laminar Research - dmax3d.com"
     },
     "speed": {
-        "taxi": "30"
+        "taxi": "20"
     },
     "height": {
         "check": {
             "vis": "300",
-            "ils": "300"
+            "ils": "1000"
         }
     },
     "requirements": {
-        "requirement": {
-            "name": "Mixture rich",
-            "primaryCondition": "$sim\/cockpit2\/engine\/actuators\/mixture_ratio[0] > 0.95",
-            "secondaryCondition": "$clamb\/stableapproach\/position\/altitude_msl_ft < 2000",
-            "primaryMarker": "28",
-            "secondaryMarker": "16"
-        },
         "requirement": {
             "name": "Flaps constant",
             "primaryCondition": "$sim\/cockpit2\/controls\/flap_handle_deploy_ratio == 1 or\n$sim\/cockpit2\/controls\/flap_handle_deploy_ratio == 0.333 or\n$sim\/cockpit2\/controls\/flap_handle_deploy_ratio == 0.666 or\n$sim\/cockpit2\/controls\/flap_handle_deploy_ratio == 0",
@@ -36,19 +29,75 @@
             "secondaryMarker": "2"
         },
         "requirement": {
-            "name": "Touchdown zone",
-            "primaryCondition": "$analysis.touchdown_combined.threshold_dist.max < $analysis.rwy.length.tdz and\n$analysis.touchdown_combined.threshold_dist.min > 0",
-            "secondaryCondition": "1",
-            "primaryMarker": "1",
-            "secondaryMarker": "2"
-        },
-        "requirement": {
             "name": "On Runway",
             "primaryCondition": "$analysis.touchdown_combined.threshold_dist.min > 0 and\n$analysis.rollout.centerline_dist.max < (($analysis.rwy.width \/ 2) - 1) and\n$analysis.rollout.rwy_remaining > 0\n",
             "secondaryCondition": "1",
             "primaryMarker": "1",
             "secondaryMarker": "2"
+        },
+        "requirement": {
+            "name": "Bounced landing",
+            "primaryCondition": "$analysis.touchdown_combined.touchdown_count == 1",
+            "secondaryCondition": "1",
+            "primaryMarker": "16",
+            "secondaryMarker": "2"
+        },
+        "requirement": {
+            "name": "Hard landing (fpm)",
+            "primaryCondition": "$analysis.touchdown_combined.fpm_agl.max > -600",
+            "secondaryCondition": "1",
+            "primaryMarker": "1",
+            "secondaryMarker": "2"
+        },
+        "requirement": {
+            "name": "Hard landing (g)",
+            "primaryCondition": "$analysis.touchdown_combined.g_vertical.max < 2.1",
+            "secondaryCondition": "1",
+            "primaryMarker": "1",
+            "secondaryMarker": "2"
+        },
+        "requirement": {
+            "name": "Constant sinkrate",
+            "primaryCondition": "$analysis.app.sinkrate.min - $analysis.app.sinkrate.max < 500",
+            "secondaryCondition": "1",
+            "primaryMarker": "8",
+            "secondaryMarker": "2"
+        },
+        "requirement": {
+            "name": "Glideslope deviation",
+            "primaryCondition": "$analysis.app.gs_dev.max < 1",
+            "secondaryCondition": "$analysis.app.nav.type == 4",
+            "primaryMarker": "1",
+            "secondaryMarker": "4"
+        },
+        "requirement": {
+            "name": "Localizer deviation",
+            "primaryCondition": "$analysis.app.loc_dev.max < 1",
+            "secondaryCondition": "$analysis.app.nav.type == 4 or\n$analysis.app.nav.type == 5",
+            "primaryMarker": "1",
+            "secondaryMarker": "2"
+        },
+        "requirement": {
+            "name": "Constant speed",
+            "primaryCondition": "$analysis.app.kias.min - $analysis.app.kias.max < 20",
+            "secondaryCondition": "1",
+            "primaryMarker": "1",
+            "secondaryMarker": "2"
+        },
+        "requirement": {
+            "name": "Tailstrike",
+            "primaryCondition": "$analysis.touchdown_combined.pitch.max < 14\nand\n$analysis.rollout.pitch.max < 9",
+            "secondaryCondition": "1",
+            "primaryMarker": "1",
+            "secondaryMarker": "2"
+        },
+        "requirement": {
+            "name": "Mixture rich",
+            "primaryCondition": "$sim\/cockpit2\/engine\/actuators\/mixture_ratio_all > 0.95",
+            "secondaryCondition": "$clamb\/stableapproach\/position\/altitude_msl_ft < 2500",
+            "primaryMarker": "28",
+            "secondaryMarker": "16"
         }
     },
-    "hash": "90e197cf31ba65dc7f1c45a3ef2ba3a2"
+    "hash": ""
 }

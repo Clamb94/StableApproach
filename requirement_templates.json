@@ -34,6 +34,24 @@
             "description": "Checks pitch attitude on touchdown.\nIf the aircraft is not level when stationary on ground, you might need to modify this value" 
         },
         "requirement": {
+            "name": "Hard landing (fpm)",
+            "primaryCondition": "$analysis.touchdown_combined.fpm_agl.max > -600",
+            "secondaryCondition": "1",
+            "primaryMarker": "1",
+            "secondaryMarker": "2",
+            "templateTitle" : "Hard landing (fpm) (*)",
+            "description": "Check sink rate at touchdown, relative to runway slope.\n 600 feet per minute touchdown rate is used by Boeing to check for hard landings."
+        },
+        "requirement": {
+            "name": "Hard landing (g)",
+            "primaryCondition": "$analysis.touchdown_combined.g_vertical.max < 2.1",
+            "secondaryCondition": "1",
+            "primaryMarker": "1",
+            "secondaryMarker": "2",
+            "templateTitle" : "Hard landing (G-force) (*)",
+            "description": "Checks maximum vertical acceleration just after touchdown.\nObviously depends on aircraft.\n2.1G should be a good value for most aircraft."
+        },
+        "requirement": {
             "name": "Max sinkrate",
             "primaryCondition": "$analysis.app.sinkrate.max > -1050",
             "secondaryCondition": "1",

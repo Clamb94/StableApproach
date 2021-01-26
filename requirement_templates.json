@@ -15,6 +15,91 @@
             "primaryMarker": "1",
             "secondaryMarker": "2",
             "description": "Touchdown within touchdown zone" 
+        },	
+        "requirement": {
+            "name": "Bounced landing",
+            "primaryCondition": "$analysis.touchdown_combined.touchdown_count == 1",
+            "secondaryCondition": "1",
+            "primaryMarker": "16",
+            "secondaryMarker": "2",
+            "description": "Checks if you got airborne again after touchdown" 
+        },
+        "requirement": {
+            "name": "Touchdown on main gear",
+            "primaryCondition": "$analysis.touchdown_combined.pitch.min > 0.5",
+            "secondaryCondition": "1",
+            "primaryMarker": "1",
+            "secondaryMarker": "2",
+            "templateTitle" : "Touchdown on main gear (*)",
+            "description": "Checks pitch attitude on touchdown.\nIf the aircraft is not level when stationary on ground, you might need to modify this value" 
+        },
+        "requirement": {
+            "name": "Hard landing (fpm)",
+            "primaryCondition": "$analysis.touchdown_combined.fpm_agl.max > -600",
+            "secondaryCondition": "1",
+            "primaryMarker": "1",
+            "secondaryMarker": "2",
+            "templateTitle" : "Hard landing (fpm) (*)",
+            "description": "Check sink rate at touchdown, relative to runway slope.\n 600 feet per minute touchdown rate is used by Boeing to check for hard landings."
+        },
+        "requirement": {
+            "name": "Hard landing (g)",
+            "primaryCondition": "$analysis.touchdown_combined.g_vertical.max < 2.1",
+            "secondaryCondition": "1",
+            "primaryMarker": "1",
+            "secondaryMarker": "2",
+            "templateTitle" : "Hard landing (G-force) (*)",
+            "description": "Checks maximum vertical acceleration just after touchdown.\nObviously depends on aircraft.\n2.1G should be a good value for most aircraft."
+        },
+        "requirement": {
+            "name": "Max sinkrate",
+            "primaryCondition": "$analysis.app.sinkrate.max > -1050",
+            "secondaryCondition": "1",
+            "primaryMarker": "1",
+            "secondaryMarker": "2",
+            "templateTitle" : "Max sinkrate (*)",
+            "description": "Checks maximum sinkrate during approach.\nMost commercial airlines use 1000ft/min as a limit.\n\nTODO: Make it check glideslope angle" 
+        },
+        "requirement": {
+            "name": "Constant sinkrate",
+            "primaryCondition": "$analysis.app.sinkrate.min - $analysis.app.sinkrate.max < 500",
+            "secondaryCondition": "1",
+            "primaryMarker": "8",
+            "secondaryMarker": "2",
+            "description": "Checks difference between maximum and minimum sinkrate during approach.\n" 
+        },
+        "requirement": {
+            "name": "Glideslope deviation",
+            "primaryCondition": "$analysis.app.gs_dev.max < 1",
+            "secondaryCondition": "$analysis.app.nav.type == 4",
+            "primaryMarker": "1",
+            "secondaryMarker": "4",
+            "description": "Checks max glideslope deviation.\n1 dot is the limit for most airlines (CAT 1)" 
+        },
+        "requirement": {
+            "name": "Localizer deviation",
+            "primaryCondition": "$analysis.app.loc_dev.max < 1",
+            "secondaryCondition": "$analysis.app.nav.type == 4 or\n$analysis.app.nav.type == 5",
+            "primaryMarker": "1",
+            "secondaryMarker": "2",
+            "description": "Checks max localizer deviation during approach.\n1 dot is the limit for most airlines (CAT 1)" 
+        },
+        "requirement": {
+            "name": "Constant speed",
+            "primaryCondition": "$analysis.app.kias.min - $analysis.app.kias.max < 20",
+            "secondaryCondition": "1",
+            "primaryMarker": "1",
+            "secondaryMarker": "2",
+            "description": "Checks speed varianz during approach.\nThere should be no large variation in speed" 
+        },
+        "requirement": {
+            "name": "Tailstrike",
+            "primaryCondition": "$analysis.touchdown_combined.pitch.max < 14\nand\n$analysis.rollout.pitch.max < 14",
+            "secondaryCondition": "1",
+            "primaryMarker": "1",
+            "secondaryMarker": "2",
+            "templateTitle" : "Tailstrike (*)",
+            "description": "Checks pitch attitude relative to ground on touchdown and during rollout.\nIf the pitch attitude is too high, you you might have caused a tailstrike!" 
         },
         "requirement": {
             "name": "Gear down",
@@ -52,11 +137,13 @@
             "description": "When landing at airports with an elevation below 2500ft, mixture must be RICH.\nOnly for MULTI engine piston aircrafts"
         },
         "requirement": {
-            "name": "Prop rpm full forward *",
+            "name": "Prop rpm full forward",
             "primaryCondition": "$sim\/flightmodel\/engine\/ENGN_prop[0] > 270 and\n$sim\/flightmodel\/engine\/ENGN_prop[1] > 270",
             "secondaryCondition": "1",
             "primaryMarker": "126",
-            "secondaryMarker": "2"
+            "secondaryMarker": "2",
+            "templateTitle" : "Prop rpm full forward",
+            "description": "Check if prop lever (blue) are full forward/high.\n TODO: Explain setup"
         },
         "requirement": {
             "name": "Speedbrake armed",

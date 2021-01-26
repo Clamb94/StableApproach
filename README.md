@@ -1,3 +1,2 @@
 # StableApproach
-SSL klappt!
-1234
+Here are all aircraft configs for stableappraoch.

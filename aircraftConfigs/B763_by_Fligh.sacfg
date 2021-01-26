@@ -1,7 +1,7 @@
 {
     "enabled": "true",
     "acf": {
-        "icao": "B753",
+        "icao": "B763",
         "author": "FlightFactor and StepToSky"
     },
     "speed": {
@@ -108,7 +108,7 @@
         },
         "requirement": {
             "name": "Tailstrike",
-            "primaryCondition": "$analysis.touchdown_combined.pitch.max < 9\nand\n$analysis.rollout.pitch.max < 9",
+            "primaryCondition": "$analysis.touchdown_combined.pitch.max < 9.3\nand\n$analysis.rollout.pitch.max < 9.3",
             "secondaryCondition": "1",
             "primaryMarker": "1",
             "secondaryMarker": "2"

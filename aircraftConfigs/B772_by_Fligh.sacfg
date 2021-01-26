@@ -1,8 +1,8 @@
 {
     "enabled": "true",
     "acf": {
-        "icao": "B753",
-        "author": "FlightFactor and StepToSky"
+        "icao": "B772",
+        "author": "FlightFactor "
     },
     "speed": {
         "taxi": "30"
@@ -17,7 +17,7 @@
         "replace": {
             "0": {
                 "old": "sim\/cockpit\/radios\/nav1_freq_hz",
-                "new": "sim\/cockpit2\/radios\/actuators\/nav2_left_frequency_hz"
+                "new": "T7Avionics\/radios\/ils1_freq"
             }
         }
     },
@@ -108,14 +108,14 @@
         },
         "requirement": {
             "name": "Tailstrike",
-            "primaryCondition": "$analysis.touchdown_combined.pitch.max < 9\nand\n$analysis.rollout.pitch.max < 9",
+            "primaryCondition": "$analysis.touchdown_combined.pitch.max < 11.6\nand\n$analysis.rollout.pitch.max < 11.6",
             "secondaryCondition": "1",
             "primaryMarker": "1",
             "secondaryMarker": "2"
         },
         "requirement": {
             "name": "Approach speed",
-            "primaryCondition": "$757Avionics\/fms\/vref >= $analysis.app.kias.min and\n$757Avionics\/fms\/vref + 20 <= $analysis.app.kias.max",
+            "primaryCondition": "$T7Avionics\/fms\/vref >= $analysis.app.kias.min and\n$T7Avionics\/fms\/vref + 20 <= $analysis.app.kias.max",
             "secondaryCondition": "1",
             "primaryMarker": "6",
             "secondaryMarker": "2"

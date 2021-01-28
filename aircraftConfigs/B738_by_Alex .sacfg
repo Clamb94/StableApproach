@@ -111,7 +111,13 @@
             "secondaryCondition": "$analysis.rollout.go_around == 0",
             "primaryMarker": "7",
             "secondaryMarker": "4"
-        }
+        },
+		"requirement": {
+            "name": "Engine start switches CONT",
+            "primaryCondition": "$laminar\/B738\/engine\/starter1_pos == 2 and\n$laminar\/B738\/engine\/starter2_pos == 2",
+            "secondaryCondition": "1",
+            "primaryMarker": "126",
+            "secondaryMarker": "2"
     },
     "hash": ""
 }

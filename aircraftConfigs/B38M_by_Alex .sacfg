@@ -35,6 +35,20 @@
             "primaryMarker": "16",
             "secondaryMarker": "2"
         },
+		"requirement": {
+            "name": "Hard landing (fpm)",
+            "primaryCondition": "$analysis.touchdown_combined.fpm_agl.max > -600",
+            "secondaryCondition": "1",
+            "primaryMarker": "1",
+            "secondaryMarker": "2"
+        },
+        "requirement": {
+            "name": "Hard landing (g)",
+            "primaryCondition": "$analysis.touchdown_combined.g_vertical.max < 2.1",
+            "secondaryCondition": "1",
+            "primaryMarker": "1",
+            "secondaryMarker": "2"
+        },
         "requirement": {
             "name": "Touchdown on main gear",
             "primaryCondition": "$analysis.touchdown_combined.pitch.min > 0.5",

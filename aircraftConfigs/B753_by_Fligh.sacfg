@@ -18,6 +18,14 @@
             "0": {
                 "old": "sim\/cockpit\/radios\/nav1_freq_hz",
                 "new": "sim\/cockpit2\/radios\/actuators\/nav2_left_frequency_hz"
+            },
+            "1": {
+                "old": "sim\/cockpit\/radios\/nav1_hdef_dot",
+                "new": "sim\/cockpit\/radios\/nav2_hdef_dot"
+            },
+            "2": {
+                "old": "sim\/cockpit\/radios\/nav1_vdef_dot",
+                "new": "sim\/cockpit\/radios\/nav2_vdef_dot"
             }
         }
     },
@@ -26,22 +34,22 @@
             "name": "Gear down",
             "primaryCondition": "$sim\/cockpit2\/controls\/gear_handle_down == 1\nand\n$sim\/cockpit2\/annunciators\/gear_unsafe == 0\n",
             "secondaryCondition": "1",
-            "primaryMarker": "126",
-            "secondaryMarker": "2"
+            "primaryMarker": "63",
+            "secondaryMarker": "8"
         },
         "requirement": {
             "name": "Flaps 25\/30",
             "primaryCondition": "$sim\/cockpit2\/controls\/flap_handle_deploy_ratio == 0.833333 or\n$sim\/cockpit2\/controls\/flap_handle_deploy_ratio == 1",
             "secondaryCondition": "1",
-            "primaryMarker": "126",
-            "secondaryMarker": "2"
+            "primaryMarker": "63",
+            "secondaryMarker": "8"
         },
         "requirement": {
             "name": "Speedbrake armed",
             "primaryCondition": "$sim\/cockpit2\/controls\/speedbrake_ratio < -0.4",
             "secondaryCondition": "$analysis.rollout.go_around == 0",
-            "primaryMarker": "14",
-            "secondaryMarker": "2"
+            "primaryMarker": "7",
+            "secondaryMarker": "8"
         },
         "requirement": {
             "name": "On Runway",
@@ -104,21 +112,21 @@
             "primaryCondition": "$analysis.app.loc_dev.max < 1",
             "secondaryCondition": "$analysis.app.nav.type == 4 or\n$analysis.app.nav.type == 5",
             "primaryMarker": "1",
-            "secondaryMarker": "2"
+            "secondaryMarker": "4"
         },
         "requirement": {
             "name": "Tailstrike",
-            "primaryCondition": "$analysis.touchdown_combined.pitch.max < 9\nand\n$analysis.rollout.pitch.max < 9",
+            "primaryCondition": "$analysis.touchdown_combined.pitch.max < 11.8\nand\n$analysis.rollout.pitch.max < 11.8",
             "secondaryCondition": "1",
             "primaryMarker": "1",
             "secondaryMarker": "2"
         },
         "requirement": {
             "name": "Approach speed",
-            "primaryCondition": "$757Avionics\/fms\/vref >= $analysis.app.kias.min and\n$757Avionics\/fms\/vref + 20 <= $analysis.app.kias.max",
+            "primaryCondition": "$757Avionics\/fms\/vref <= $analysis.app.kias.min and\n($757Avionics\/fms\/vref + 20) >= $analysis.app.kias.max",
             "secondaryCondition": "1",
-            "primaryMarker": "6",
-            "secondaryMarker": "2"
+            "primaryMarker": "2",
+            "secondaryMarker": "8"
         }
     },
     "hash": ""

@@ -105,7 +105,7 @@
             "name": "Gear down",
             "primaryCondition": "$sim\/cockpit2\/controls\/gear_handle_down == 1\nand\n$sim\/cockpit2\/annunciators\/gear_unsafe == 0\n",
             "secondaryCondition": "1",
-            "primaryMarker": "126",
+            "primaryMarker": "63",
             "secondaryMarker": "2",
             "templateTitle" : "Gear down and locked",
             "description": "Gear must be down and locked from check height till end of landing roll"           
@@ -114,7 +114,7 @@
             "name": "Flaps down",
             "primaryCondition": "$sim\/cockpit2\/controls\/flap_handle_deploy_ratio == 1",
             "secondaryCondition": "1",
-            "primaryMarker": "126",
+            "primaryMarker": "63",
             "secondaryMarker": "2",
             "description": "Flaps must be fully extended from check height till end of landing roll\n\nFor aicrafts where flaps don't need to be fully extended during landing, you might want to modify this template."    
         },           
@@ -122,8 +122,8 @@
             "name": "Mixture rich",
             "primaryCondition": "$sim\/cockpit2\/engine\/actuators\/mixture_ratio_all > 0.95",
             "secondaryCondition": "$clamb\/stableapproach\/position\/altitude_msl_ft < 2500",
-            "primaryMarker": "28",
-            "secondaryMarker": "16",
+            "primaryMarker": "30",
+            "secondaryMarker": "8",
             "templateTitle" : "Mixture rich (SEP)",
             "description": "When landing at airports with an elevation below 2500ft, mixture must be RICH.\nOnly for SINGLE engine piston aircrafts"
         },
@@ -131,8 +131,8 @@
             "name": "Mixture rich",
             "primaryCondition": "$sim\/cockpit2\/engine\/actuators\/mixture_ratio[0] > 0.95\nand\n$sim\/cockpit2\/engine\/actuators\/mixture_ratio[1] > 0.95",
             "secondaryCondition": "$clamb\/stableapproach\/position\/altitude_msl_ft < 2500",
-            "primaryMarker": "28",
-            "secondaryMarker": "16",
+            "primaryMarker": "30",
+            "secondaryMarker": "8",
             "templateTitle" : "Mixture rich (MEP)",
             "description": "When landing at airports with an elevation below 2500ft, mixture must be RICH.\nOnly for MULTI engine piston aircrafts"
         },
@@ -140,7 +140,7 @@
             "name": "Prop rpm full forward",
             "primaryCondition": "$sim\/flightmodel\/engine\/ENGN_prop[0] > 270 and\n$sim\/flightmodel\/engine\/ENGN_prop[1] > 270",
             "secondaryCondition": "1",
-            "primaryMarker": "126",
+            "primaryMarker": "31",
             "secondaryMarker": "2",
             "templateTitle" : "Prop rpm full forward",
             "description": "Check if prop lever (blue) are full forward/high.\n TODO: Explain setup"
@@ -149,9 +149,17 @@
             "name": "Speedbrake armed",
             "primaryCondition": "$sim\/cockpit2\/controls\/speedbrake_ratio < -0.4",
             "secondaryCondition": "$analysis.rollout.go_around == 0",
-            "primaryMarker": "14",
+            "primaryMarker": "7",
             "secondaryMarker": "2",
             "description": "When performing a full stop landing, speedbrakes must be armed at check height"
+        },
+        "requirement": {
+            "name": "Landing Lights",
+            "primaryCondition": "$sim\/cockpit2\/switches\/landing_lights_on == 1",
+            "secondaryCondition": "1",
+            "primaryMarker": "63",
+            "secondaryMarker": "2",
+            "description": "Landing lights must be on below check height\n\nNote: Does not work with most addon-aircraft, since they are often using custom datarefs"
         }
     }
 }

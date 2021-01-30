@@ -113,7 +113,7 @@
             "primaryMarker": "14",
             "secondaryMarker": "2"
         },
-		"requirement": {
+        "requirement": {
             "name": "Constant speed",
             "primaryCondition": "$analysis.app.kias.min - $analysis.app.kias.max < 20",
             "secondaryCondition": "1",
@@ -121,5 +121,5 @@
             "secondaryMarker": "2"
         }
     },
-    "hash": ""
+    "hash": "e6231642d5fa348227ea09d721492c7c"
 }

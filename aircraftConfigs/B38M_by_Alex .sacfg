@@ -35,7 +35,7 @@
             "primaryMarker": "16",
             "secondaryMarker": "2"
         },
-		"requirement": {
+        "requirement": {
             "name": "Hard landing (fpm)",
             "primaryCondition": "$analysis.touchdown_combined.fpm_agl.max > -600",
             "secondaryCondition": "1",
@@ -112,12 +112,13 @@
             "primaryMarker": "7",
             "secondaryMarker": "4"
         },
-		"requirement": {
+        "requirement": {
             "name": "Engine start switches CONT",
             "primaryCondition": "$laminar\/B738\/engine\/starter1_pos == 2 and\n$laminar\/B738\/engine\/starter2_pos == 2",
             "secondaryCondition": "1",
             "primaryMarker": "126",
             "secondaryMarker": "2"
+        }
     },
-    "hash": ""
+    "hash": "b94a29f4aa6fb99b449acee6797819c7"
 }

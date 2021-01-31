@@ -5,7 +5,7 @@
         "author": "Gliding Kiwi"
     },
     "speed": {
-        "taxi": "3"
+        "taxi": "30"
     },
     "height": {
         "check": {

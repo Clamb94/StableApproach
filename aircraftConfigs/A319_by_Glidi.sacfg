@@ -18,6 +18,10 @@
             "0": {
                 "old": "sim\/cockpit\/radios\/nav1_freq_hz",
                 "new": "toliss_airbus\/pfdoutputs\/general\/ils_frequency"
+            },
+            "1": {
+                "old": "sim\/cockpit\/radios\/nav1_vdef_dot",
+                "new": "AirbusFBW\/ILS1GSRaw"
             }
         }
     },
@@ -121,5 +125,5 @@
             "secondaryMarker": "2"
         }
     },
-    "hash": "883b1b4706e0cf416704183a10fbc0dd"
+    "hash": "1bb09e1e4060f6e91ef52fbcdd754485"
 }

@@ -118,12 +118,12 @@
             "secondaryMarker": "2"
         },
         "requirement": {
-            "name": "Constant speed",
-            "primaryCondition": "$analysis.app.kias.min - $analysis.app.kias.max < 20",
+            "name": "Approach speed",
+            "primaryCondition": "$toliss_airbus\/pfdoutputs\/general\/VLS_value <= $analysis.app.kias.min and\n($toliss_airbus\/pfdoutputs\/general\/VLS_value + 20) >= $analysis.app.kias.max",
             "secondaryCondition": "1",
-            "primaryMarker": "1",
-            "secondaryMarker": "2"
+            "primaryMarker": "2",
+            "secondaryMarker": "8"
         }
     },
-    "hash": "78b0b83810eac31c206ea547379bdc2d"
+    "hash": "cf1a1ae719cc4aca80e96bb0411bc05b"
 }

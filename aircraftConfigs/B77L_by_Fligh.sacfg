@@ -115,11 +115,11 @@
         },
         "requirement": {
             "name": "Approach speed",
-            "primaryCondition": "$T7Avionics\/fms\/vref <= $analysis.app.kias.min and\n$T7Avionics\/fms\/vref + 20 >= $analysis.app.kias.max",
+            "primaryCondition": "$T7Avionics\/fms\/vref <= $analysis.app.kias.min and\n($T7Avionics\/fms\/vref + 20) >= $analysis.app.kias.max",
             "secondaryCondition": "1",
             "primaryMarker": "6",
             "secondaryMarker": "2"
         }
     },
-    "hash": ""
+    "hash": "745694213b999f09a333face79824e99"
 }

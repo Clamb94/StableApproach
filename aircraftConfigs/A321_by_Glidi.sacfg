@@ -5,7 +5,7 @@
         "author": "Gliding Kiwi"
     },
     "speed": {
-        "taxi": "3"
+        "taxi": "30"
     },
     "height": {
         "check": {
@@ -18,6 +18,10 @@
             "0": {
                 "old": "sim\/cockpit\/radios\/nav1_freq_hz",
                 "new": "toliss_airbus\/pfdoutputs\/general\/ils_frequency"
+            },
+            "1": {
+                "old": "sim\/cockpit\/radios\/nav1_vdef_dot",
+                "new": "AirbusFBW\/ILS1GSRaw"
             }
         }
     },
@@ -113,13 +117,13 @@
             "primaryMarker": "14",
             "secondaryMarker": "2"
         },
-		"requirement": {
-            "name": "Constant speed",
-            "primaryCondition": "$analysis.app.kias.min - $analysis.app.kias.max < 20",
+        "requirement": {
+            "name": "Approach speed",
+            "primaryCondition": "$toliss_airbus\/pfdoutputs\/general\/VLS_value <= $analysis.app.kias.min and\n($toliss_airbus\/pfdoutputs\/general\/VLS_value + 20) >= $analysis.app.kias.max",
             "secondaryCondition": "1",
-            "primaryMarker": "1",
-            "secondaryMarker": "2"
+            "primaryMarker": "2",
+            "secondaryMarker": "8"
         }
     },
-    "hash": ""
+    "hash": "cf1a1ae719cc4aca80e96bb0411bc05b"
 }

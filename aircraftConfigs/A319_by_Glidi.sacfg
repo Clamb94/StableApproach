@@ -22,6 +22,10 @@
             "1": {
                 "old": "sim\/cockpit\/radios\/nav1_vdef_dot",
                 "new": "AirbusFBW\/ILS1GSRaw"
+            },
+            "2": {
+                "old": "sim\/cockpit\/radios\/nav1_hdef_dot",
+                "new": "AirbusFBW\/ILS1LocRaw"
             }
         }
     },

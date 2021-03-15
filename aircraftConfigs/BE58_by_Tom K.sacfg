@@ -18,21 +18,21 @@
             "name": "Gear down",
             "primaryCondition": "$sim\/cockpit2\/controls\/gear_handle_down == 1\nand\n$sim\/cockpit2\/annunciators\/gear_unsafe == 0\n",
             "secondaryCondition": "1",
-            "primaryMarker": "126",
+            "primaryMarker": "63",
             "secondaryMarker": "2"
         },
         "requirement": {
             "name": "Flaps down",
             "primaryCondition": "$sim\/cockpit2\/controls\/flap_handle_deploy_ratio == 1",
             "secondaryCondition": "1",
-            "primaryMarker": "126",
+            "primaryMarker": "63",
             "secondaryMarker": "2"
         },
         "requirement": {
             "name": "Mixture rich",
             "primaryCondition": "$sim\/cockpit2\/engine\/actuators\/mixture_ratio[0] > 0.95\nand\n$sim\/cockpit2\/engine\/actuators\/mixture_ratio[1] > 0.95",
             "secondaryCondition": "$clamb\/stableapproach\/position\/altitude_msl_ft < 2000",
-            "primaryMarker": "28",
+            "primaryMarker": "7",
             "secondaryMarker": "16"
         },
         "requirement": {
@@ -113,5 +113,5 @@
             "secondaryMarker": "2"
         }
     },
-    "hash": "6617b4991703308c2f1543efe7294b39"
+    "hash": "645f5f5c083f143ea97ec4c9aee1f14c"
 }

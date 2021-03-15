@@ -22,6 +22,10 @@
             "1": {
                 "old": "sim\/cockpit\/radios\/nav1_vdef_dot",
                 "new": "AirbusFBW\/ILS1GSRaw"
+            },
+            "2": {
+                "old": "sim\/cockpit\/radios\/nav1_hdef_dot",
+                "new": "AirbusFBW\/ILS1LocRaw"
             }
         }
     },
@@ -100,21 +104,21 @@
             "name": "Gear down",
             "primaryCondition": "$sim\/cockpit2\/controls\/gear_handle_down == 1 and\n$AirbusFBW\/NoseGearInd == 2 and\n$AirbusFBW\/LeftGearInd == 2 and\n$AirbusFBW\/RightGearInd == 2\n",
             "secondaryCondition": "1",
-            "primaryMarker": "126",
+            "primaryMarker": "63",
             "secondaryMarker": "2"
         },
         "requirement": {
             "name": "Flaps down",
             "primaryCondition": "$sim\/cockpit2\/controls\/flap_handle_deploy_ratio == 1 or\n$sim\/cockpit2\/controls\/flap_handle_deploy_ratio == 0.75",
             "secondaryCondition": "1",
-            "primaryMarker": "126",
+            "primaryMarker": "63",
             "secondaryMarker": "2"
         },
         "requirement": {
             "name": "Speedbrake armed",
             "primaryCondition": "$sim\/cockpit2\/controls\/speedbrake_ratio < -0.4",
             "secondaryCondition": "$analysis.rollout.go_around == 0",
-            "primaryMarker": "14",
+            "primaryMarker": "7",
             "secondaryMarker": "2"
         },
         "requirement": {
@@ -125,5 +129,5 @@
             "secondaryMarker": "8"
         }
     },
-    "hash": "00c7268834fb93786482f19fb3346572"
+    "hash": "39b5be715fb6c64a4da8580edef77c13"
 }

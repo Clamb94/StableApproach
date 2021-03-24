@@ -9,7 +9,7 @@
     },
     "height": {
         "check": {
-            "vis": "300",
+            "vis": "500",
             "ils": "1000"
         }
     },
@@ -97,7 +97,14 @@
             "secondaryCondition": "$clamb\/stableapproach\/position\/altitude_msl_ft < 2500",
             "primaryMarker": "28",
             "secondaryMarker": "16"
+        },
+        "requirement": {
+            "name": "Touchdown on main gear",
+            "primaryCondition": "$analysis.touchdown_combined.pitch.min > 1",
+            "secondaryCondition": "1",
+            "primaryMarker": "1",
+            "secondaryMarker": "2"
         }
     },
-    "hash": "aa5e02fc74017677e386c0f5fbbe097f"
+    "hash": "fc2bb29da4bafe7c54debe9eac5eb40d"
 }

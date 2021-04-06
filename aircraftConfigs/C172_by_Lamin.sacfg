@@ -18,14 +18,14 @@
             "name": "Flaps constant",
             "primaryCondition": "$sim\/cockpit2\/controls\/flap_handle_deploy_ratio == 1 or\n$sim\/cockpit2\/controls\/flap_handle_deploy_ratio == 0.333333 or\n$sim\/cockpit2\/controls\/flap_handle_deploy_ratio == 0.666666 or\n$sim\/cockpit2\/controls\/flap_handle_deploy_ratio == 0",
             "secondaryCondition": "1",
-            "primaryMarker": "126",
+            "primaryMarker": "63",
             "secondaryMarker": "2"
         },
         "requirement": {
             "name": "Fuel selector BOTH",
             "primaryCondition": "$sim\/cockpit\/engine\/fuel_tank_selector == 4",
             "secondaryCondition": "1",
-            "primaryMarker": "126",
+            "primaryMarker": "63",
             "secondaryMarker": "2"
         },
         "requirement": {
@@ -95,7 +95,7 @@
             "name": "Mixture rich",
             "primaryCondition": "$sim\/cockpit2\/engine\/actuators\/mixture_ratio_all > 0.95",
             "secondaryCondition": "$clamb\/stableapproach\/position\/altitude_msl_ft < 2500",
-            "primaryMarker": "28",
+            "primaryMarker": "30",
             "secondaryMarker": "16"
         },
         "requirement": {

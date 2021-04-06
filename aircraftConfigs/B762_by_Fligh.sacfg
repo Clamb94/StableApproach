@@ -32,12 +32,12 @@
     "requirements": {
         "requirement": {
             "name": "Gear down",
-            "primaryCondition": "$sim\/cockpit2\/controls\/gear_handle_down == 1\nand\n$sim\/cockpit2\/annunciators\/gear_unsafe == 0\n"
+            "primaryCondition": "$sim\/cockpit2\/controls\/gear_handle_down == 1\nand\n$sim\/cockpit2\/annunciators\/gear_unsafe == 0\n",
             "primaryMarker": "63"
         },
         "requirement": {
             "name": "Flaps 25\/30",
-            "primaryCondition": "$sim\/cockpit2\/controls\/flap_handle_deploy_ratio == 0.833333 or\n$sim\/cockpit2\/controls\/flap_handle_deploy_ratio == 1"
+            "primaryCondition": "$sim\/cockpit2\/controls\/flap_handle_deploy_ratio == 0.833333 or\n$sim\/cockpit2\/controls\/flap_handle_deploy_ratio == 1",
             "primaryMarker": "63"
         },
         "requirement": {
@@ -96,8 +96,8 @@
         "requirement": {
             "name": "Approach speed",
             "primaryCondition": "$757Avionics\/fms\/vref <= $analysis.app.kias.min and\n($757Avionics\/fms\/vref + 20) >= $analysis.app.kias.max",
-            "primaryMarker": "2",
+            "primaryMarker": "2"
         }
     },
-    "hash": "bc139eca215d99e39cca04fe673be735"
+    "hash": "82ad6d8cc7681a04935f4876bede30ae"
 }

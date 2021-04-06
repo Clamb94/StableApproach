@@ -77,5 +77,5 @@
             "primaryCondition": "$analysis.touchdown_combined.pitch.min > 1"
         }
     },
-    "hash": ""
+    "hash": "5e924ca2e79e055b583318c78728c79c"
 }

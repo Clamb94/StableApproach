@@ -80,5 +80,5 @@
             "primaryCondition": "$analysis.app.kias.min - $analysis.app.kias.max < 20"
         }
     },
-    "hash": ""
+    "hash": "1a2cd943fcc0fc7ccdf27489bf5daef2"
 }

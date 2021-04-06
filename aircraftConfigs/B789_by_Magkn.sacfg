@@ -61,13 +61,13 @@
         "requirement": {
             "name": "Glideslope deviation",
             "primaryCondition": "$analysis.app.gs_dev.max < 1",
-            "secondaryCondition": "$analysis.app.nav.type == 4"
+            "secondaryCondition": "$analysis.app.nav.type == 4",
             "secondaryMarker": "2"
         },
         "requirement": {
             "name": "Localizer deviation",
             "primaryCondition": "$analysis.app.loc_dev.max < 1",
-            "secondaryCondition": "$analysis.app.nav.type == 4 or\n$analysis.app.nav.type == 5"
+            "secondaryCondition": "$analysis.app.nav.type == 4 or\n$analysis.app.nav.type == 5",
             "secondaryMarker": "2"
         },
         "requirement": {
@@ -84,5 +84,5 @@
             "primaryMarker": "63"
         }
     },
-    "hash": "5a4fc97b2e2549ca89397a3374cb826d"
+    "hash": "eb9528025288056a701656fd44492659"
 }

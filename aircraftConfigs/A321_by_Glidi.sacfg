@@ -13,6 +13,7 @@
             "ils": "1000"
         }
     },
+    "autoUpdate": "true",
     "dref": {
         "replace": {
             "0": {
@@ -96,5 +97,5 @@
             "primaryCondition": "$toliss_airbus\/pfdoutputs\/general\/VLS_value <= $analysis.app.kias.min and\n($toliss_airbus\/pfdoutputs\/general\/VLS_value + 20) >= $analysis.app.kias.max"
         }
     },
-    "hash": "ef38778ad01304a3ba833e4a414afb17"
+    "hash": "b614d7ffb00be0ec7fd29273f0a94bd6"
 }

@@ -13,6 +13,7 @@
             "ils": "1000"
         }
     },
+    "autoUpdate": "true",
     "requirements": {
         "requirement": {
             "name": "Gear down",
@@ -82,5 +83,5 @@
             "primaryCondition": "$analysis.touchdown_combined.pitch.max < 14\nand\n$analysis.rollout.pitch.max < 14"
         }
     },
-    "hash": "5100d38720cf5922d18b038cd87a4a6b"
+    "hash": "2022801becfc1019fc1c3ac5633f5d18"
 }

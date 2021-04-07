@@ -21,6 +21,7 @@
             }
         }
     },
+    "autoUpdate": "true",
     "requirements": {
         "requirement": {
             "name": "Gear down",
@@ -89,5 +90,5 @@
             "primaryMarker": "6"
         }
     },
-    "hash": "e52c5e4de317d0a96a5a82d8eb8c818c"
+    "hash": "8b6a480b58c04d4961f3338836b0f174"
 }

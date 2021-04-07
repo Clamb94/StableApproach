@@ -13,6 +13,7 @@
             "ils": "1000"
         }
     },
+    "autoUpdate": "true",
     "requirements": {
         "requirement": {
             "name": "On Runway",
@@ -85,5 +86,5 @@
             "primaryMarker": "63"
         }
     },
-    "hash": "2e9b20cc237f331b2594845c16f14683"
+    "hash": "67ddc35d6ba15865f657fe23b932e37b"
 }

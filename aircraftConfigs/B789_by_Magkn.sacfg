@@ -13,6 +13,7 @@
             "ils": "1000"
         }
     },
+    "autoUpdate": "true",
     "requirements": {
         "requirement": {
             "name": "Flaps 25\/30",
@@ -84,5 +85,5 @@
             "primaryMarker": "63"
         }
     },
-    "hash": "eb9528025288056a701656fd44492659"
+    "hash": "19f08809b88c978aa58c72ce1c3cd0c1"
 }

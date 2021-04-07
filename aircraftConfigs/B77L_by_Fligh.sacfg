@@ -13,6 +13,7 @@
             "ils": "1000"
         }
     },
+    "autoUpdate": "true",
     "dref": {
         "replace": {
             "0": {
@@ -89,5 +90,5 @@
             "primaryMarker": "6"
         }
     },
-    "hash": "7afd859df8fcc63ed593a5b970e9be88"
+    "hash": "4a2913c8f026f9a734a91643ad3b1e5e"
 }

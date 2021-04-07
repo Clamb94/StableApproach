@@ -13,6 +13,7 @@
             "ils": "1000"
         }
     },
+    "autoUpdate": "true",
     "requirements": {
         "requirement": {
             "name": "Gear down",
@@ -80,5 +81,5 @@
             "primaryCondition": "$analysis.app.kias.min - $analysis.app.kias.max < 20"
         }
     },
-    "hash": "1a2cd943fcc0fc7ccdf27489bf5daef2"
+    "hash": "b1e1db9320da07f87c4fb52e548591a1"
 }

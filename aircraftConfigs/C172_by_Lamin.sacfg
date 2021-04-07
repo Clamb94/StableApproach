@@ -13,6 +13,7 @@
             "ils": "1000"
         }
     },
+    "autoUpdate": "true",
     "requirements": {
         "requirement": {
             "name": "Flaps constant",

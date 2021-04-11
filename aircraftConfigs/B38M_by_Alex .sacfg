@@ -75,8 +75,8 @@
         },
         "requirement": {
             "name": "Speedbrake armed",
-            "primaryCondition": "$sim\/cockpit2\/controls\/speedbrake_ratio < -0.4",
-            "primaryMarker": "7",
+            "primaryCondition": "$laminar\/B738\/annunciator\/speedbrake_armed > 0.1 and\n$laminar\/B738\/annunciator\/speedbrake_extend = 0",
+            "primaryMarker": "3",
             "secondaryCondition": "$analysis.rollout.go_around == 0",
             "secondaryMarker": "4"
         },

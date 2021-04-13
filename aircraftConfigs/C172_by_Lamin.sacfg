@@ -88,8 +88,8 @@
         "requirement": {
             "name": "Touchdown on main gear",
             "primaryCondition": "$analysis.touchdown_combined.pitch.min > 1",
-            "description": " The main gear should touch the runway first"
+            "description": "The main gear should touch the runway first"
         }
     },
-    "hash": "91a076c4073d806dbcf354e5baa14940"
+    "hash": "1d4ba99bb9bcea1279f30b0496cbc3a9"
 }

@@ -17,74 +17,89 @@
     "requirements": {
         "requirement": {
             "name": "On Runway",
-            "primaryCondition": "$analysis.touchdown_combined.threshold_dist.min > 0 and\n$analysis.rollout.centerline_dist.max < (($analysis.rwy.width \/ 2) - 1) and\n$analysis.rollout.rwy_remaining > 0\n"
+            "primaryCondition": "$analysis.touchdown_combined.threshold_dist.min > 0 and\n$analysis.rollout.centerline_dist.max < (($analysis.rwy.width \/ 2) - 1) and\n$analysis.rollout.rwy_remaining > 0\n",
+            "description": "Touchdown not before runway threshold\nNo runway excursion during rollout\nNo runway overshoot"
         },
         "requirement": {
             "name": "Touchdown zone",
-            "primaryCondition": "$analysis.touchdown_combined.threshold_dist.max < $analysis.rwy.length.tdz and\n$analysis.touchdown_combined.threshold_dist.min > 0"
+            "primaryCondition": "$analysis.touchdown_combined.threshold_dist.max < $analysis.rwy.length.tdz and\n$analysis.touchdown_combined.threshold_dist.min > 0",
+            "description": "Touchdown(s) within touchdown zone"
         },
         "requirement": {
             "name": "Bounced landing",
-            "primaryCondition": "$analysis.touchdown_combined.touchdown_count == 1"
+            "primaryCondition": "$analysis.touchdown_combined.touchdown_count == 1",
+            "description": "After touchdown,\nthe aircraft should not get airborne again"
         },
         "requirement": {
             "name": "Hard landing (fpm)",
-            "primaryCondition": "$analysis.touchdown_combined.fpm_agl.max > -600"
+            "primaryCondition": "$analysis.touchdown_combined.fpm_agl.max > -600",
+            "description": "Maximum sinkrate during touchdown:\n600 fpm"
         },
         "requirement": {
             "name": "Hard landing (g)",
-            "primaryCondition": "$analysis.touchdown_combined.g_vertical.max < 2.1"
+            "primaryCondition": "$analysis.touchdown_combined.g_vertical.max < 2.1",
+            "description": "Max vertical acceleration after touchdown:\n2.1 G"
         },
         "requirement": {
             "name": "Touchdown on main gear",
-            "primaryCondition": "$analysis.touchdown_combined.pitch.min > 0.5"
+            "primaryCondition": "$analysis.touchdown_combined.pitch.min > 0.5",
+            "description": "The main gear should touch the runway first"
         },
         "requirement": {
             "name": "Max sinkrate",
-            "primaryCondition": "$analysis.app.sinkrate.max > -1050"
+            "primaryCondition": "$analysis.app.sinkrate.max > -1050",
+            "description": "Max sinkrate during approach is normally:\n1000fpm"
         },
         "requirement": {
             "name": "Approach speed",
-            "primaryCondition": "$laminar\/B738\/FMS\/vref <= $analysis.app.kias.min\nand\n($laminar\/B738\/FMS\/vref + $laminar\/B738\/FMS\/approach_wind_corr + 10) >= $analysis.app.kias.max"
+            "primaryCondition": "$laminar\/B738\/FMS\/vref <= $analysis.app.kias.min\nand\n($laminar\/B738\/FMS\/vref + $laminar\/B738\/FMS\/approach_wind_corr + 10) >= $analysis.app.kias.max",
+            "description": "Speed during approach must be between:\nVREF\n  and\nVREF + wind correction + 10"
         },
         "requirement": {
             "name": "Glideslope deviation",
             "primaryCondition": "$analysis.app.gs_dev.max < 1",
             "secondaryCondition": "$analysis.app.nav.type == 4",
-            "secondaryMarker": "4"
+            "secondaryMarker": "4",
+            "description": "Maximum 1 dot glideslope deviation.\nFrom check height until 150ft above runway."
         },
         "requirement": {
             "name": "Localizer deviation",
             "primaryCondition": "$analysis.app.loc_dev.max < 1",
             "secondaryCondition": "$analysis.app.nav.type == 4 or\n$analysis.app.nav.type == 5",
-            "secondaryMarker": "4"
+            "secondaryMarker": "4",
+            "description": "Maximum 1 dot localizer deviation.\nFrom check height until 150ft above runway."
         },
         "requirement": {
             "name": "Tailstrike",
-            "primaryCondition": "$analysis.touchdown_combined.pitch.max < 10.5\nand\n$analysis.rollout.pitch.max < 10.5"
+            "primaryCondition": "$analysis.touchdown_combined.pitch.max < 10.5\nand\n$analysis.rollout.pitch.max < 10.5",
+            "description": "Pitch attitude during touchdown and rollout\nshould not be too high. Danger of tailstrike!"
         },
         "requirement": {
             "name": "Gear down",
             "primaryCondition": "$sim\/cockpit2\/controls\/gear_handle_down == 1\nand\n$sim\/cockpit2\/annunciators\/gear_unsafe == 0\n",
-            "primaryMarker": "63"
+            "primaryMarker": "63",
+            "description": "Gear must be down and locked\nbelow check height"
         },
         "requirement": {
             "name": "Flaps 30\/40",
             "primaryCondition": "$sim\/cockpit2\/controls\/flap_handle_deploy_ratio == 1 or\n$sim\/cockpit2\/controls\/flap_handle_deploy_ratio == 0.875",
-            "primaryMarker": "63"
+            "primaryMarker": "63",
+            "description": "Flaps must be in landing position (30\/40)\nbelow check height until taxi speed"
         },
         "requirement": {
             "name": "Speedbrake armed",
             "primaryCondition": "$laminar\/B738\/annunciator\/speedbrake_armed > 0.1 and\n$laminar\/B738\/annunciator\/speedbrake_extend = 0",
             "primaryMarker": "3",
             "secondaryCondition": "$analysis.rollout.go_around == 0",
-            "secondaryMarker": "4"
+            "secondaryMarker": "4",
+            "description": "Speedbrakes must be in the ARMED position\nbelow check height"
         },
         "requirement": {
             "name": "Engine start switches CONT",
             "primaryCondition": "$laminar\/B738\/engine\/starter1_pos == 2 and\n$laminar\/B738\/engine\/starter2_pos == 2",
-            "primaryMarker": "63"
+            "primaryMarker": "63",
+            "description": "Engine start switches must be in\nthe CONT position\nbelow check height"
         }
     },
-    "hash": "67ddc35d6ba15865f657fe23b932e37b"
+    "hash": "b70531daab0fa1f06ead416473b2c0ea"
 }

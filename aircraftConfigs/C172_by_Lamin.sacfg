@@ -17,66 +17,79 @@
     "requirements": {
         "requirement": {
             "name": "Flaps constant",
-            "primaryCondition": "$sim\/cockpit2\/controls\/flap_handle_deploy_ratio == 1 or\n$sim\/cockpit2\/controls\/flap_handle_deploy_ratio == 0.333333 or\n$sim\/cockpit2\/controls\/flap_handle_deploy_ratio == 0.666666 or\n$sim\/cockpit2\/controls\/flap_handle_deploy_ratio == 0",
-            "primaryMarker": "63"
+            "primaryCondition": "$sim\/cockpit2\/controls\/flap_handle_deploy_ratio == $-sim\/cockpit2\/controls\/flap_handle_deploy_ratio\n",
+            "primaryMarker": "63",
+            "description": "Flaps may not be moved\nfrom check height until reaching taxi speed"
         },
         "requirement": {
             "name": "Fuel selector BOTH",
             "primaryCondition": "$sim\/cockpit\/engine\/fuel_tank_selector == 4",
-            "primaryMarker": "63"
+            "primaryMarker": "63",
+            "description": "Fuel selector must be in the BOTH position\nfrom check height until reaching taxi speed"
         },
         "requirement": {
             "name": "On Runway",
-            "primaryCondition": "$analysis.touchdown_combined.threshold_dist.min > 0 and\n$analysis.rollout.centerline_dist.max < (($analysis.rwy.width \/ 2) - 1) and\n$analysis.rollout.rwy_remaining > 0\n"
+            "primaryCondition": "$analysis.touchdown_combined.threshold_dist.min > 0 and\n$analysis.rollout.centerline_dist.max < (($analysis.rwy.width \/ 2) - 1) and\n$analysis.rollout.rwy_remaining > 0\n",
+            "description": "Touchdown not before runway threshold\nNo runway excursion during rollout\nNo runway overshoot"
         },
         "requirement": {
             "name": "Bounced landing",
-            "primaryCondition": "$analysis.touchdown_combined.touchdown_count == 1"
+            "primaryCondition": "$analysis.touchdown_combined.touchdown_count == 1",
+            "description": "After touchdown,\nthe aircraft should not get airborne again"
         },
         "requirement": {
             "name": "Hard landing (fpm)",
-            "primaryCondition": "$analysis.touchdown_combined.fpm_agl.max > -600"
+            "primaryCondition": "$analysis.touchdown_combined.fpm_agl.max > -600",
+            "description": "Maximum sinkrate during touchdown: 600 fpm"
         },
         "requirement": {
             "name": "Hard landing (g)",
-            "primaryCondition": "$analysis.touchdown_combined.g_vertical.max < 2.1"
+            "primaryCondition": "$analysis.touchdown_combined.g_vertical.max < 2.1",
+            "description": "Max vertical acceleration after touchdown:\n2.1 G"
         },
         "requirement": {
             "name": "Constant sinkrate",
             "primaryCondition": "$analysis.app.sinkrate.min - $analysis.app.sinkrate.max < 500",
-            "primaryMarker": "8"
+            "primaryMarker": "8",
+            "description": "The difference between maximum and minimum\nsinkrate during approach should not be greater than:\n500 fpm"
         },
         "requirement": {
             "name": "Glideslope deviation",
             "primaryCondition": "$analysis.app.gs_dev.max < 1",
             "secondaryCondition": "$analysis.app.nav.type == 4",
-            "secondaryMarker": "4"
+            "secondaryMarker": "4",
+            "description": "Maximum 1 dot glideslope deviation.\nFrom check height until 150ft above runway."
         },
         "requirement": {
             "name": "Localizer deviation",
             "primaryCondition": "$analysis.app.loc_dev.max < 1",
             "secondaryCondition": "$analysis.app.nav.type == 4 or\n$analysis.app.nav.type == 5",
-            "secondaryMarker": "2"
+            "secondaryMarker": "2",
+            "description": "Maximum 1 dot localizer deviation.\nFrom check height until 150ft above runway."
         },
         "requirement": {
             "name": "Constant speed",
-            "primaryCondition": "$analysis.app.kias.min - $analysis.app.kias.max < 20"
+            "primaryCondition": "$analysis.app.kias.min - $analysis.app.kias.max < 20",
+            "description": "Difference between minimum and maximium\nspeed (KIAS) during approach:\nmax. 20 kn"
         },
         "requirement": {
             "name": "Tailstrike",
-            "primaryCondition": "$analysis.touchdown_combined.pitch.max < 14\nand\n$analysis.rollout.pitch.max < 9"
+            "primaryCondition": "$analysis.touchdown_combined.pitch.max < 14\nand\n$analysis.rollout.pitch.max < 9",
+            "description": "Pitch attitude during touchdown and rollout\nshould not be too high. Danger of tailstrike!"
         },
         "requirement": {
             "name": "Mixture rich",
             "primaryCondition": "$sim\/cockpit2\/engine\/actuators\/mixture_ratio_all > 0.95",
             "primaryMarker": "30",
             "secondaryCondition": "$clamb\/stableapproach\/position\/altitude_msl_ft < 2500",
-            "secondaryMarker": "16"
+            "secondaryMarker": "16",
+            "description": "When landing on airports with an elevation\nof 2500ft or less, mixture should be RICH for landing"
         },
         "requirement": {
             "name": "Touchdown on main gear",
-            "primaryCondition": "$analysis.touchdown_combined.pitch.min > 1"
+            "primaryCondition": "$analysis.touchdown_combined.pitch.min > 1",
+            "description": "The main gear should touch the runway first"
         }
     },
-    "hash": "96495974f7298a5275d5d5eb10e46679"
+    "hash": "e4dcc1ff9f5fd6e3e135a41e3156a720"
 }

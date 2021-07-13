@@ -1,5 +1,25 @@
 {
 "requirements": {
+	    "group": {
+            "name": "Group1",
+            "requirement": {
+                "name": "Caution_G_1",
+                "primaryCondition": "1",
+                "type": "1",
+                "beginConditionMarker": "#CH",
+                "endConditionMarker": "#TAXI",
+                "secondaryCondition": "2",
+                "secondaryConditionMarker": "123",
+                "description": "Maximum sinkrate during touchdown: 600 fpm"
+            },
+            "requirement": {
+                "name": "Warning_G_1",
+                "primaryCondition": "1",
+                "type": "2",
+                "beginConditionMarker": "#CH",
+                "endConditionMarker": "#TD-3000ms"
+            }
+        },
         "requirement": {
             "name": "On Runway",
             "primaryCondition": "$analysis.touchdown_combined.threshold_dist.min > 0 and\n$analysis.rollout.centerline_dist.max < (($analysis.rwy.width \/ 2) - 1) and\n$analysis.rollout.rwy_remaining > 0\n",

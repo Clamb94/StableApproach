@@ -19,7 +19,7 @@
                 "type": "2",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "#TD-3000ms",
-				"templateTitle" : "Warning_G_1_TT"
+		"templateTitle" : "Warning_G_1_TT"
             }
         },
         "requirement": {

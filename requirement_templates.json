@@ -2,6 +2,7 @@
 "requirements": {
 	    "group": {
             "name": "Group1",
+			"description" : "Group1description ist lalaaskflj ölaskjdf ölksjfdla lang",
             "requirement": {
                 "name": "Caution_G_1",
                 "primaryCondition": "1",
@@ -18,6 +19,7 @@
                 "type": "2",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "#TD-3000ms"
+				"templateTitle" : "Warning_G_1_TT",
             }
         },
         "requirement": {

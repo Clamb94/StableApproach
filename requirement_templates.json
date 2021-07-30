@@ -2,7 +2,7 @@
 "requirements": {
 	    "group": {
             "name": "TODO",
-			"description" : "Todo: Templates are not available yet",
+	    "description" : "Todo: Templates are not available yet",
             "requirement": {
             	"name": "TODO",
             	"primaryCondition": "1",

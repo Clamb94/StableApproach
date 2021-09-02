@@ -282,7 +282,8 @@
                 "primaryCondition": "$analysis.touchdown_combined.pitch.max < 7.5\nand\n$analysis.rollout.pitch.max < 7.5",
                 "type": "1",
                 "beginConditionMarker": "#CH",
-                "endConditionMarker": "#TD-3000ms"
+                "endConditionMarker": "#INSTANT",
+                "description": "Pitch attitude during touchdown and rollout\nshould be below 7.5 degree.\nDanger of tailstrike!"
             }
         }
     },

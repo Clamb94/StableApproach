@@ -50,7 +50,7 @@
         },
         "requirement": {
             "name": "Centerline deviation",
-            "primaryCondition": "abs($clamb\/stableapproach\/runway\/cte) < (($analysis.rwy.width \/ 2) - 1)",
+            "primaryCondition": "abs($clamb\/stableapproach\/live\/runway\/cte) < (($analysis.rwy.width \/ 2) - 1)",
             "type": "2",
             "beginConditionMarker": "#TD_FIRST",
             "endConditionMarker": "$clamb\/stableapproach\/position\/groundspeed_kn < 60",

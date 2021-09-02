@@ -11,7 +11,7 @@
         "additional": {
             "name": "IMC",
             "height": "1000",
-            "primaryCondition": "$sim\/weather\/visibility_reported_m < 5000 or\n((($sim\/weather\/cloud_base_msl_m[0] - $analysis.touchdown.elevation) < 450) and $sim\/weather\/cloud_coverage[0] >= 4)",
+            "primaryCondition": "$sim\/weather\/visibility_reported_m < 5000 or\n((($sim\/weather\/cloud_base_msl_m[0] - $analysis.touchdown.elevation) < 450)\nand $sim\/weather\/cloud_coverage[0] >= 4)",
             "description": "Instrument approach in IMC conditions"
         },
         "additional": {
@@ -28,6 +28,13 @@
         }
     },
     "autoUpdate": "true",
+    "dref": {
+        "replace": {
+            "sim\/cockpit\/radios\/nav1_freq_hz": "sim\/cockpit2\/radios\/actuators\/nav2_left_frequency_hz",
+            "sim\/cockpit\/radios\/nav1_hdef_dot": "sim\/cockpit\/radios\/nav2_hdef_dot",
+            "sim\/cockpit\/radios\/nav1_vdef_dot": "sim\/cockpit\/radios\/nav2_vdef_dot"
+        }
+    },
     "requirements": {
         "group": {
             "name": "Stopping distance",
@@ -131,7 +138,7 @@
             "name": "Approach speed",
             "requirement": {
                 "name": "Vref not set",
-                "primaryCondition": "$757Avionics\/fms\/vref > 50",
+                "primaryCondition": "$laminar\/B738\/FMS\/vref > 50",
                 "type": "2",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "#TD-3000ms",
@@ -148,7 +155,7 @@
             },
             "requirement": {
                 "name": "Approach speed",
-                "primaryCondition": "($757Avionics\/fms\/vref) <= $sim\/cockpit2\/gauges\/indicators\/airspeed_kts_pilot\nand\n($757Avionics\/fms\/vref + 15) >= $sim\/cockpit2\/gauges\/indicators\/airspeed_kts_pilot",
+                "primaryCondition": "($757Avionics\/fms\/vref ) <= $sim\/cockpit2\/gauges\/indicators\/airspeed_kts_pilot\nand\n($757Avionics\/fms\/vref + 15) >= $sim\/cockpit2\/gauges\/indicators\/airspeed_kts_pilot",
                 "type": "1",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "$.ft_ARTE < 100",
@@ -224,14 +231,14 @@
                 "type": "2",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "#TAXI",
-                "description": "Flaps must be in landing position (30\/40) below check height until taxi speed"
+                "description": "Flaps must be in landing position (25\/30) below check height until taxi speed"
             }
         },
         "group": {
             "name": "Speedbrake",
             "requirement": {
                 "name": "Speedbrake not armed",
-                "primaryCondition": "$sim\/cockpit2\/controls\/speedbrake_ratio < -0.1",
+                "primaryCondition": "$sim\/cockpit2\/controls\/speedbrake_ratio < -0.2",
                 "type": "2",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "#TD-3000ms",
@@ -245,7 +252,7 @@
             "name": "Autoflight",
             "requirement": {
                 "name": "Autoland",
-                "primaryCondition": "$laminar\/autopilot\/ap_on == 0",
+                "primaryCondition": "$sim\/cockpit2\/autopilot\/servos_on == 0",
                 "type": "0",
                 "beginConditionMarker": "#TD-3000ms",
                 "endConditionMarker": "#TD+3000ms",
@@ -253,7 +260,7 @@
             },
             "requirement": {
                 "name": "Autopilot engaged",
-                "primaryCondition": "$laminar\/autopilot\/ap_on == 0",
+                "primaryCondition": "$sim\/cockpit2\/autopilot\/servos_on == 0",
                 "type": "0",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "#TD-3000ms",
@@ -261,34 +268,21 @@
             }
         },
         "group": {
-            "name": "Thrust",
-            "requirement": {
-                "name": "High\/Low thrust",
-                "primaryCondition": "$laminar\/B738\/engine\/indicators\/N1_percent_1 > 40 and\n$laminar\/B738\/engine\/indicators\/N1_percent_1 < 80",
-                "type": "1",
-                "beginConditionMarker": "#CH",
-                "endConditionMarker": "$.ft_ARTE < 100",
-                "tolerance": "5000",
-                "description": "\"Appropriate\" thrust settings is required.\nRecommended: 40-80% N1 below check height until flare begins"
-            }
-        },
-        "group": {
             "name": "No Tailstrike",
             "requirement": {
                 "name": "Tailstrike",
-                "primaryCondition": "$analysis.touchdown_combined.pitch.max < 11.8\nand\n$analysis.rollout.pitch.max < 11.8",
-                "type": "1",
+                "primaryCondition": "$analysis.touchdown_combined.pitch.max < 10.5\nand\n$analysis.rollout.pitch.max < 10.5",
+                "type": "2",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "#INSTANT",
-                "description": "Pitch attitude during touchdown and rollout should be below 7.5 degree.\nDanger of tailstrike!"
+                "description": "Pitch attitude during touchdown and rollout\nshould not be too high. Danger of tailstrike!"
             },
             "requirement": {
-                "name": "High pitch on touchdown",
-                "primaryCondition": "$analysis.touchdown_combined.pitch.max < 8",
+                "name": "Touchdown high pitch attitude",
+                "primaryCondition": "$analysis.touchdown_combined.pitch.max < 7.5\nand\n$analysis.rollout.pitch.max < 7.5",
                 "type": "1",
                 "beginConditionMarker": "#CH",
-                "endConditionMarker": "#TD-3000ms",
-                "description": "Pitch attitude during touchdown and rollout should be below 7.5 degree.\nDanger of tailstrike!"
+                "endConditionMarker": "#TD-3000ms"
             }
         }
     },

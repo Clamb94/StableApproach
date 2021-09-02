@@ -138,7 +138,7 @@
             "name": "Approach speed",
             "requirement": {
                 "name": "Vref not set",
-                "primaryCondition": "$laminar\/B738\/FMS\/vref > 50",
+                "primaryCondition": "$757Avionics\/fms\/vref > 50",
                 "type": "2",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "#TD-3000ms",

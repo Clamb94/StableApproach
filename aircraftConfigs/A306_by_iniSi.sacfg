@@ -135,7 +135,7 @@
                 "type": "2",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "#INSTANT",
-                "description": "Speed should be relatively constant below check height (max. 20kn between min/max)"
+                "description": "Speed should be relatively constant below check height (max. 20kn between min\/max)"
             }
         },
         "group": {
@@ -254,5 +254,5 @@
             }
         }
     },
-    "hash": "2afba9d1aac66e3486ea341879567ac1"
+    "hash": "1dc236c2835f6eb0c9fc43ff7a08585d"
 }

@@ -1,5 +1,6 @@
 {
   "plugin_version": {
-    "int": 950
+    "semver": "0.10.0",
+    "int": 1000
   }
 }

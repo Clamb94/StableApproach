@@ -1,131 +1,13 @@
 {
 "requirements": {
-        "requirement": {
-            "name": "On Runway",
-            "primaryCondition": "$analysis.touchdown_combined.threshold_dist.min > 0 and\n$analysis.rollout.centerline_dist.max < (($analysis.rwy.width \/ 2) - 1) and\n$analysis.rollout.rwy_remaining > 0\n",
-            "description": "Aircraft on runway surface from first touchdown till end of landing roll"  
-        },
-        "requirement": {     
-            "name": "Touchdown zone",
-            "primaryCondition": "$analysis.touchdown_combined.threshold_dist.max < $analysis.rwy.length.tdz and\n$analysis.touchdown_combined.threshold_dist.min > 0",
-            "description": "Touchdown within touchdown zone" 
-        },	
-        "requirement": {
-            "name": "Bounced landing",
-            "primaryCondition": "$analysis.touchdown_combined.touchdown_count == 1",
-            "description": "Checks if you got airborne again after touchdown" 
-        },
-        "requirement": {
-            "name": "Touchdown on main gear",
-            "primaryCondition": "$analysis.touchdown_combined.pitch.min > 0.5",
-            "templateTitle" : "Touchdown on main gear (*)",
-            "description": "Checks pitch attitude on touchdown.\nIf the aircraft is not level when stationary on ground, you might need to modify this value" 
-        },
-        "requirement": {
-            "name": "Hard landing (fpm)",
-            "primaryCondition": "$analysis.touchdown_combined.fpm_agl.max > -600",
-            "templateTitle" : "Hard landing (fpm) (*)",
-            "description": "Check sink rate at touchdown, relative to runway slope.\n 600 feet per minute touchdown rate is used by Boeing to check for hard landings."
-        },
-        "requirement": {
-            "name": "Hard landing (g)",
-            "primaryCondition": "$analysis.touchdown_combined.g_vertical.max < 2.1",
-            "templateTitle" : "Hard landing (G-force) (*)",
-            "description": "Checks maximum vertical acceleration just after touchdown.\nObviously depends on aircraft.\n2.1G should be a good value for most aircraft."
-        },
-        "requirement": {
-            "name": "Max sinkrate",
-            "primaryCondition": "$analysis.app.sinkrate.max > -1050",
-            "templateTitle" : "Max sinkrate (*)",
-            "description": "Checks maximum sinkrate during approach.\nMost commercial airlines use 1000ft/min as a limit.\n\nTODO: Make it check glideslope angle" 
-        },
-        "requirement": {
-            "name": "Constant sinkrate",
-            "primaryCondition": "$analysis.app.sinkrate.min - $analysis.app.sinkrate.max < 500",
-            "description": "Checks difference between maximum and minimum sinkrate during approach.\n" 
-        },
-        "requirement": {
-            "name": "Glideslope deviation",
-            "primaryCondition": "$analysis.app.gs_dev.max < 1",
-            "secondaryCondition": "$analysis.app.nav.type == 4",       
-            "secondaryMarker": "4",
-            "description": "Checks max glideslope deviation.\n1 dot is the limit for most airlines (CAT 1)" 
-        },
-        "requirement": {
-            "name": "Localizer deviation",
-            "primaryCondition": "$analysis.app.loc_dev.max < 1",
-            "secondaryCondition": "$analysis.app.nav.type == 4 or\n$analysis.app.nav.type == 5",          
-            "secondaryMarker": "2",
-            "description": "Checks max localizer deviation during approach.\n1 dot is the limit for most airlines (CAT 1)" 
-        },
-        "requirement": {
-            "name": "Constant speed",
-            "primaryCondition": "$analysis.app.kias.min - $analysis.app.kias.max < 20",
-            "description": "Checks speed varianz during approach.\nThere should be no large variation in speed" 
-        },
-        "requirement": {
-            "name": "Tailstrike",
-            "primaryCondition": "$analysis.touchdown_combined.pitch.max < 14\nand\n$analysis.rollout.pitch.max < 14",
-            "templateTitle" : "Tailstrike (*)",
-            "description": "Checks pitch attitude relative to ground on touchdown and during rollout.\nIf the pitch attitude is too high, you you might have caused a tailstrike!" 
-        },
-        "requirement": {
-            "name": "Gear down",
-            "primaryCondition": "$sim\/cockpit2\/controls\/gear_handle_down == 1\nand\n$sim\/cockpit2\/annunciators\/gear_unsafe == 0\n",        
-            "primaryMarker": "63",
-            "templateTitle" : "Gear down and locked",
-            "description": "Gear must be down and locked from check height till end of landing roll"           
-        },
-        "requirement": {
-            "name": "Flaps down",
-            "primaryCondition": "$sim\/cockpit2\/controls\/flap_handle_deploy_ratio == 1",          
-            "primaryMarker": "63",
-            "description": "Flaps must be fully extended from check height till end of landing roll\n\nFor aicrafts where flaps don't need to be fully extended during landing, you might want to modify this template."    
-        },
-		"requirement": {
-            "name": "Flaps constant",
-            "primaryCondition": "$sim\/cockpit2\/controls\/flap_handle_deploy_ratio == $-sim\/cockpit2\/controls\/flap_handle_deploy_ratio",
-            "primaryMarker": "63",
-            "description": "Flaps must not be moved below check height\nuntil reaching taxi speed"    
-        }, 
-        "requirement": {
-            "name": "Mixture rich",
-            "primaryCondition": "$sim\/cockpit2\/engine\/actuators\/mixture_ratio_all > 0.95",
-            "secondaryCondition": "$clamb\/stableapproach\/position\/altitude_msl_ft < 2500",
-            "primaryMarker": "30",
-            "secondaryMarker": "8",
-            "templateTitle" : "Mixture rich (SEP)",
-            "description": "When landing at airports with an elevation below 2500ft, mixture must be RICH.\nOnly for SINGLE engine piston aircrafts"
-        },
-        "requirement": {
-            "name": "Mixture rich",
-            "primaryCondition": "$sim\/cockpit2\/engine\/actuators\/mixture_ratio[0] > 0.95\nand\n$sim\/cockpit2\/engine\/actuators\/mixture_ratio[1] > 0.95",
-            "secondaryCondition": "$clamb\/stableapproach\/position\/altitude_msl_ft < 2500",
-            "primaryMarker": "30",
-            "secondaryMarker": "8",
-            "templateTitle" : "Mixture rich (MEP)",
-            "description": "When landing at airports with an elevation below 2500ft, mixture must be RICH.\nOnly for MULTI engine piston aircrafts"
-        },
-        "requirement": {
-            "name": "Prop rpm full forward",
-            "primaryCondition": "$sim\/flightmodel\/engine\/ENGN_prop[0] > 270 and\n$sim\/flightmodel\/engine\/ENGN_prop[1] > 270",           
-            "primaryMarker": "31",
-            "templateTitle" : "Prop rpm full forward",
-            "description": "Check if prop lever (blue) are full forward/high.\n TODO: Explain setup"
-        },
-        "requirement": {
-            "name": "Speedbrake armed",
-            "primaryCondition": "$sim\/cockpit2\/controls\/speedbrake_ratio < -0.4",
-            "secondaryCondition": "$analysis.rollout.go_around == 0",
-            "primaryMarker": "7",
-            "secondaryMarker": "2",
-            "description": "When performing a full stop landing, speedbrakes must be armed at check height"
-        },
-        "requirement": {
-            "name": "Landing Lights",
-            "primaryCondition": "$sim\/cockpit2\/switches\/landing_lights_on == 1",            
-            "primaryMarker": "63",
-            "description": "Landing lights must be on below check height\n\nNote: Does not work with most addon-aircraft, since they are often using custom datarefs"
+	    "group": {
+            "name": "TODO",
+	    "description" : "Todo: Templates are not available yet",
+            "requirement": {
+            	"name": "TODO",
+            	"primaryCondition": "1",
+            	"description": "TODO: Templates are not available yet"  
+       	     }
         }
     }
 }

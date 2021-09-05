@@ -136,7 +136,7 @@
             "name": "Approach speed",
             "requirement": {
                 "name": "Vref not set",
-                "primaryCondition": "$757Avionics\/fms\/vref > 50",
+                "primaryCondition": "$T7Avionics\/fms\/vref > 50",
                 "type": "2",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "#TD-3000ms",
@@ -144,7 +144,7 @@
             },
             "requirement": {
                 "name": "Approach speed",
-                "primaryCondition": "($757Avionics\/fms\/vref - 3) <= $sim\/cockpit2\/gauges\/indicators\/airspeed_kts_pilot\nand\n($757Avionics\/fms\/vref + 20) >= $sim\/cockpit2\/gauges\/indicators\/airspeed_kts_pilot",
+                "primaryCondition": "($T7Avionics\/fms\/vref - 3) <= $sim\/cockpit2\/gauges\/indicators\/airspeed_kts_pilot\nand\n($T7Avionics\/fms\/vref + 20) >= $sim\/cockpit2\/gauges\/indicators\/airspeed_kts_pilot",
                 "type": "2",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "$.ft_ARTE < 100",
@@ -153,7 +153,7 @@
             },
             "requirement": {
                 "name": "Approach speed",
-                "primaryCondition": "($757Avionics\/fms\/vref ) <= $sim\/cockpit2\/gauges\/indicators\/airspeed_kts_pilot\nand\n($757Avionics\/fms\/vref + 15) >= $sim\/cockpit2\/gauges\/indicators\/airspeed_kts_pilot",
+                "primaryCondition": "($T7Avionics\/fms\/vref) <= $sim\/cockpit2\/gauges\/indicators\/airspeed_kts_pilot\nand\n($T7Avionics\/fms\/vref + 15) >= $sim\/cockpit2\/gauges\/indicators\/airspeed_kts_pilot",
                 "type": "1",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "$.ft_ARTE < 100",

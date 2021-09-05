@@ -275,7 +275,7 @@
                 "type": "2",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "#INSTANT",
-                "description": "Pitch attitude during touchdown and rollout\nshould not be too high. Danger of tailstrike!"
+                "description": "Very high pitch attitude!\nTailstrike most likely occured.\nMake sure your speed at touchdown is not (much) below VREF"
             },
             "requirement": {
                 "name": "Touchdown high pitch attitude",
@@ -283,9 +283,9 @@
                 "type": "1",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "#INSTANT",
-                "description": "Pitch attitude during touchdown and rollout\nshould be below 7.5 degree.\nDanger of tailstrike!"
+                "description": "Pitch attitude during touchdown and rollout\nshould be below 7.5 degree.\nDanger of tailstrike!\nMake sure your speed at touchdown is not (much) below VREF"
             }
         }
     },
-    "hash": "3548e24d2163a4f9ed8d83e348697ea4"
+    "hash": "df2f0be225052a54e97bc797c4e563d5"
 }

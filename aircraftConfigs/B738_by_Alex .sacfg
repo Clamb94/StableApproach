@@ -285,13 +285,21 @@
             "name": "No Tailstrike",
             "requirement": {
                 "name": "Tailstrike",
-                "primaryCondition": "$analysis.touchdown_combined.pitch.max < 10.5\nand\n$analysis.rollout.pitch.max < 10.5",
+                "primaryCondition": "$analysis.touchdown_combined.pitch.max < 10.5\nand\n$analysis.rollout.pitch.max < 9.3",
+                "type": "2",
+                "beginConditionMarker": "#CH",
+                "endConditionMarker": "#INSTANT",
+                "description": "Very high pitch attitude!\nTailstrike most likely occured.\nMake sure your speed at touchdown is not (much) below VREF"
+            },
+            "requirement": {
+                "name": "Touchdown high pitch attitude",
+                "primaryCondition": "$analysis.touchdown_combined.pitch.max < 7.5\nand\n$analysis.rollout.pitch.max < 8.0",
                 "type": "1",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "#INSTANT",
-                "description": "Pitch attitude during touchdown and rollout\nshould not be too high. Danger of tailstrike!"
+                "description": "Pitch attitude during touchdown and rollout should be below 8.0 degree.\nDanger of tailstrike!\nMake sure your speed at touchdown is not (much) below VREF"
             }
         }
     },
-    "hash": "057376f77443d6f17785a3022b2bbe3e"
+    "hash": "0e03a3bb9ba4082a91474b8da48b86c7"
 }

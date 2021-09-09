@@ -148,7 +148,7 @@
             },
             "requirement": {
                 "name": "Approach speed",
-                "primaryCondition": "($aero787\/data\/vref) <= $sim\/cockpit2\/gauges\/indicators\/airspeed_kts_pilot\nand\n($aero787\/data\/vref+ 15) >= $sim\/cockpit2\/gauges\/indicators\/airspeed_kts_pilot",
+                "primaryCondition": "($aero787\/data\/vref) <= $sim\/cockpit2\/gauges\/indicators\/airspeed_kts_pilot\nand\n($aero787\/data\/vref + 15) >= $sim\/cockpit2\/gauges\/indicators\/airspeed_kts_pilot",
                 "type": "1",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "$.ft_ARTE < 100",

@@ -2,7 +2,7 @@
     "enabled": "true",
     "acf": {
         "icao": "B772",
-        "author": "FlightFactor and StepToSky"
+        "author": "FlightFactor "
     },
     "speed": {
         "taxi": "30"

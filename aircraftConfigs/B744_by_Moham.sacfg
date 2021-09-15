@@ -27,7 +27,7 @@
             "description": "Visual approach can only be selected manually\n\nPlugins -> StableApproach -> Check height"
         }
     },
-    "autoUpdate": "false",
+    "autoUpdate": "true",
     "requirements": {
         "group": {
             "name": "Stopping distance",

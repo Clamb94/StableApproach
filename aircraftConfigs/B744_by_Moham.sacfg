@@ -130,13 +130,21 @@
         "group": {
             "name": "Approach speed",
             "requirement": {
+                "name": "Vref not set",
+                "primaryCondition": "$laminar\/B747\/airspeed\/Vref > 50",
+                "type": "2",
+                "beginConditionMarker": "#CH",
+                "endConditionMarker": "#TD-3000ms",
+                "description": "Approach VREF should be set in the CDU"
+            },
+            "requirement": {
                 "name": "Approach speed",
                 "primaryCondition": "($laminar\/B747\/airspeed\/Vref - 3) <= $sim\/cockpit2\/gauges\/indicators\/airspeed_kts_pilot\nand\n($laminar\/B747\/airspeed\/Vref + 20) >= $sim\/cockpit2\/gauges\/indicators\/airspeed_kts_pilot",
                 "type": "2",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "$.ft_ARTE < 100",
                 "tolerance": "3000",
-                "description": "Speed during approach must be between:\nTarget speed (Speed bug) -5\/+10 KIAS"
+                "description": "Speed during approach must be between:\nVREF\n  and\nVREF + 15"
             },
             "requirement": {
                 "name": "Approach speed",
@@ -145,7 +153,7 @@
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "$.ft_ARTE < 100",
                 "tolerance": "3000",
-                "description": "Speed during approach must be between:\nTarget speed (Speed bug) -5\/+10 KIAS"
+                "description": "Speed during approach must be between:\nVREF\n  and\nVREF + 15"
             }
         },
         "group": {
@@ -284,5 +292,5 @@
             }
         }
     },
-    "hash": "de1a7075f95a63aaba7d52d70d5ce315"
+    "hash": "4a0c915fa818863550e2496ecf7b07c5"
 }

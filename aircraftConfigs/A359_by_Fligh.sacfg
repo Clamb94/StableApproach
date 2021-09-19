@@ -1,8 +1,8 @@
 {
     "enabled": "true",
     "acf": {
-        "icao": "A306",
-        "author": "iniSimulations "
+        "icao": "A359",
+        "author": "FlightFactor and ToLiss"
     },
     "speed": {
         "taxi": "30"
@@ -28,6 +28,13 @@
         }
     },
     "autoUpdate": "true",
+    "dref": {
+        "replace": {
+            "sim\/cockpit\/radios\/nav1_freq_hz": "airbus_qpac\/pfdoutputs\/general\/ils_frequency",
+            "sim\/cockpit\/radios\/nav1_hdef_dot": "AirbusFBW\/LOCvalCapt",
+            "sim\/cockpit\/radios\/nav1_vdef_dot": "AirbusFBW\/GSValCapt"
+        }
+    },
     "requirements": {
         "group": {
             "name": "Stopping distance",
@@ -152,7 +159,7 @@
             "name": "Glideslope deviation",
             "requirement": {
                 "name": "Glideslope deviation",
-                "primaryCondition": "abs ($sim\/cockpit\/radios\/nav1_vdef_dot) < 1.3",
+                "primaryCondition": "abs ($AirbusFBW\/GSValCapt ) < 1.3",
                 "type": "2",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "$.ft_ARTE < 200",
@@ -163,7 +170,7 @@
             },
             "requirement": {
                 "name": "Glideslope deviation",
-                "primaryCondition": "abs($sim\/cockpit\/radios\/nav1_vdef_dot) < 1",
+                "primaryCondition": "abs($AirbusFBW\/GSValCapt ) < 1",
                 "type": "1",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "$.ft_ARTE < 200",
@@ -176,7 +183,7 @@
             "name": "Localizer deviation",
             "requirement": {
                 "name": "Localizer deviation",
-                "primaryCondition": "abs($sim\/cockpit\/radios\/nav1_hdef_dot ) < 1.3",
+                "primaryCondition": "abs($AirbusFBW\/LOCvalCapt) < 1.3",
                 "type": "2",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "#TD-3000ms",
@@ -187,7 +194,7 @@
             },
             "requirement": {
                 "name": "Localizer deviation",
-                "primaryCondition": "abs($sim\/cockpit\/radios\/nav1_hdef_dot ) < 1",
+                "primaryCondition": "abs(AirbusFBW\/LOCvalCapt) < 1",
                 "type": "1",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "#TD-3000ms",
@@ -201,7 +208,7 @@
             "name": "Gear",
             "requirement": {
                 "name": "Gear not down",
-                "primaryCondition": "$A300\/GEAR\/ldg1_down == 1\nand\n$A300\/GEAR\/ldg2_down == 1\nand\n$A300\/GEAR\/ldg3_down == 1",
+                "primaryCondition": "$model\/controls\/gearc == 1\nand\n$model\/controls\/gearl == 1\nand\n$model\/controls\/gearr == 1",
                 "type": "2",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "#TAXI",
@@ -237,7 +244,7 @@
             "name": "Autoflight",
             "requirement": {
                 "name": "Autoland",
-                "primaryCondition": "$sim\/cockpit\/autopilot\/autopilot_mode < 2",
+                "primaryCondition": "$AirbusFBW\/AP1Engage == 0 and $AirbusFBW\/AP2Engage == 0",
                 "type": "0",
                 "beginConditionMarker": "#TD-3000ms",
                 "endConditionMarker": "#TD+3000ms",
@@ -245,7 +252,7 @@
             },
             "requirement": {
                 "name": "Autopilot engaged",
-                "primaryCondition": "$sim\/cockpit\/autopilot\/autopilot_mode < 2",
+                "primaryCondition": "$AirbusFBW\/AP1Engage == 0 and $AirbusFBW\/AP2Engage == 0",
                 "type": "0",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "#TD-3000ms",
@@ -264,5 +271,5 @@
             }
         }
     },
-    "hash": "dc7c0faa50910be84bcd9977dae539de"
+    "hash": "beae7c8039fe4cbae4d8a541bff09d98"
 }

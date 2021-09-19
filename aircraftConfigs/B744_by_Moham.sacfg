@@ -131,7 +131,7 @@
             "name": "Approach speed",
             "requirement": {
                 "name": "Approach speed",
-                "primaryCondition": "($laminar\/B747\/autopilot\/ias_bug_value - 8) <= $sim\/cockpit2\/gauges\/indicators\/airspeed_kts_pilot\nand\n($laminar\/B747\/autopilot\/ias_bug_value + 15) >= $sim\/cockpit2\/gauges\/indicators\/airspeed_kts_pilot",
+                "primaryCondition": "($laminar\/B747\/airspeed\/Vref - 3) <= $sim\/cockpit2\/gauges\/indicators\/airspeed_kts_pilot\nand\n($laminar\/B747\/airspeed\/Vref + 20) >= $sim\/cockpit2\/gauges\/indicators\/airspeed_kts_pilot",
                 "type": "2",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "$.ft_ARTE < 100",
@@ -140,7 +140,7 @@
             },
             "requirement": {
                 "name": "Approach speed",
-                "primaryCondition": "($laminar\/B747\/autopilot\/ias_bug_value - 5) <= $sim\/cockpit2\/gauges\/indicators\/airspeed_kts_pilot\nand\n($laminar\/B747\/autopilot\/ias_bug_value + 10) >= $sim\/cockpit2\/gauges\/indicators\/airspeed_kts_pilot",
+                "primaryCondition": "($laminar\/B747\/airspeed\/Vref) <= $sim\/cockpit2\/gauges\/indicators\/airspeed_kts_pilot\nand\n($laminar\/B747\/airspeed\/Vref + 15) >= $sim\/cockpit2\/gauges\/indicators\/airspeed_kts_pilot",
                 "type": "1",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "$.ft_ARTE < 100",
@@ -284,5 +284,5 @@
             }
         }
     },
-    "hash": "2af4862e02aea7d24a77958ad54833af"
+    "hash": "de1a7075f95a63aaba7d52d70d5ce315"
 }

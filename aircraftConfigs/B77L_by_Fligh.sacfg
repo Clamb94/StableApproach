@@ -2,7 +2,7 @@
     "enabled": "true",
     "acf": {
         "icao": "B77L",
-        "author": "FlightFactor "
+        "author": "FlightFactor"
     },
     "speed": {
         "taxi": "30"

@@ -163,7 +163,7 @@
                 "type": "2",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "$.ft_ARTE < 200",
-                "secondaryCondition": "$analysis.app.nav.type == 4 and\n$.not_vis_app",
+                "secondaryCondition": "$analysis.app.nav.gs.type == 6 and\n$.not_vis_app",
                 "secondaryConditionMarker": "#TD-3000ms",
                 "tolerance": "2000",
                 "description": "Maximum 1 dot glideslope deviation.\nFrom check height until 200ft above runway threshold elevation (ARTE).\nNot required for VISUAL approaches"
@@ -174,7 +174,7 @@
                 "type": "1",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "$.ft_ARTE < 200",
-                "secondaryCondition": "$analysis.app.nav.type == 4 and\n$.not_vis_app",
+                "secondaryCondition": "$analysis.app.nav.gs.type == 6 and\n$.not_vis_app",
                 "secondaryConditionMarker": "#TD-3000ms",
                 "description": "Maximum 1 dot glideslope deviation.\nFrom check height until 200ft above runway threshold elevation (ARTE).\nNot required for VISUAL approaches"
             }
@@ -187,7 +187,7 @@
                 "type": "2",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "#TD-3000ms",
-                "secondaryCondition": "($analysis.app.nav.type == 4 or\n$analysis.app.nav.type == 5) and\n$.not_vis_app",
+                "secondaryCondition": "$analysis.app.nav.loc.type != 0 and\n$.not_vis_app",
                 "secondaryConditionMarker": "#TD-3000ms",
                 "tolerance": "2000",
                 "description": "Maximum 1 dot localizer deviation\nfrom check height till touchdown.\nNot required for VISUAL approaches"
@@ -198,7 +198,7 @@
                 "type": "1",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "#TD-3000ms",
-                "secondaryCondition": "($analysis.app.nav.type == 4 or\n$analysis.app.nav.type == 5) and\n$.not_vis_app",
+                "secondaryCondition": "$analysis.app.nav.loc.type != 0 and\n$.not_vis_app",
                 "secondaryConditionMarker": "#TD-3000ms",
                 "tolerance": "2000",
                 "description": "Maximum 1 dot localizer deviation\nfrom check height till touchdown.\nNot required for VISUAL approaches"

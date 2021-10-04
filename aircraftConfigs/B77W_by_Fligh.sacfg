@@ -115,7 +115,7 @@
             "name": "Sinkrate",
             "requirement": {
                 "name": "High sinkrate",
-                "primaryCondition": "$sim\/flightmodel\/position\/vh_ind_fpm > -1300",
+                "primaryCondition": "if ($clamb\/stableapproach\/live\/app\/gs\/type != 6)\n$sim\/flightmodel\/position\/vh_ind_fpm > -1300;\nelse\n$sim\/flightmodel\/position\/vh_ind_fpm >\n$clamb\/stableapproach\/live\/app\/gs\/angle \/ 3 * -1300",
                 "type": "2",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "#TD_LAST",
@@ -124,7 +124,7 @@
             },
             "requirement": {
                 "name": "High sinkrate",
-                "primaryCondition": "$sim\/flightmodel\/position\/vh_ind_fpm > -1100",
+                "primaryCondition": "if ($clamb\/stableapproach\/live\/app\/gs\/type != 6)\n$sim\/flightmodel\/position\/vh_ind_fpm > -1100;\nelse\n$sim\/flightmodel\/position\/vh_ind_fpm >\n$clamb\/stableapproach\/live\/app\/gs\/angle \/ 3 * -1100",
                 "type": "1",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "#TAXI",
@@ -165,22 +165,22 @@
             "name": "Glideslope deviation",
             "requirement": {
                 "name": "Glideslope deviation",
-                "primaryCondition": "abs ($sim\/cockpit\/radios\/nav1_vdef_dot) < 1.3",
+                "primaryCondition": "abs ($analysis.app.gs_dev.max ) < 1.3",
                 "type": "2",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "$.ft_ARTE < 200",
-                "secondaryCondition": "$analysis.app.nav.type == 4 and\n$.not_vis_app",
+                "secondaryCondition": "$analysis.app.nav.gs.type == 6 and\n$.not_vis_app",
                 "secondaryConditionMarker": "#TD-3000ms",
                 "tolerance": "2000",
                 "description": "Maximum 1 dot glideslope deviation.\nFrom check height until 200ft above runway threshold elevation (ARTE).\nNot required for VISUAL approaches"
             },
             "requirement": {
                 "name": "Glideslope deviation",
-                "primaryCondition": "abs($sim\/cockpit\/radios\/nav1_vdef_dot) < 1",
+                "primaryCondition": "abs($sim\/cockpit\/radios\/nav1_vdef_dot ) < 1",
                 "type": "1",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "$.ft_ARTE < 200",
-                "secondaryCondition": "$analysis.app.nav.type == 4 and\n$.not_vis_app",
+                "secondaryCondition": "$analysis.app.nav.gs.type == 6 and\n$.not_vis_app",
                 "secondaryConditionMarker": "#TD-3000ms",
                 "description": "Maximum 1 dot glideslope deviation.\nFrom check height until 200ft above runway threshold elevation (ARTE).\nNot required for VISUAL approaches"
             }
@@ -189,22 +189,22 @@
             "name": "Localizer deviation",
             "requirement": {
                 "name": "Localizer deviation",
-                "primaryCondition": "abs($sim\/cockpit\/radios\/nav1_hdef_dot) < 1.3",
+                "primaryCondition": "abs($sim\/cockpit\/radios\/nav1_hdef_dot ) < 1.3",
                 "type": "2",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "#TD-3000ms",
-                "secondaryCondition": "($analysis.app.nav.type == 4 or\n$analysis.app.nav.type == 5) and\n$.not_vis_app",
+                "secondaryCondition": "$analysis.app.nav.loc.type != 0 and\n$.not_vis_app",
                 "secondaryConditionMarker": "#TD-3000ms",
                 "tolerance": "2000",
                 "description": "Maximum 1 dot localizer deviation\nfrom check height till touchdown.\nNot required for VISUAL approaches"
             },
             "requirement": {
                 "name": "Localizer deviation",
-                "primaryCondition": "abs($sim\/cockpit\/radios\/nav1_hdef_dot) < 1",
+                "primaryCondition": "abs($sim\/cockpit\/radios\/nav1_hdef_dot ) < 1",
                 "type": "1",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "#TD-3000ms",
-                "secondaryCondition": "($analysis.app.nav.type == 4 or\n$analysis.app.nav.type == 5) and\n$.not_vis_app",
+                "secondaryCondition": "$analysis.app.nav.loc.type != 0 and\n$.not_vis_app",
                 "secondaryConditionMarker": "#TD-3000ms",
                 "tolerance": "2000",
                 "description": "Maximum 1 dot localizer deviation\nfrom check height till touchdown.\nNot required for VISUAL approaches"
@@ -283,7 +283,19 @@
                 "endConditionMarker": "#INSTANT",
                 "description": "Pitch attitude during touchdown and rollout\nshould be below 6.3 degree.\nDanger of tailstrike!\nMake sure your speed at touchdown is not (much) below VREF"
             }
+        },
+        "group": {
+            "name": "Wind limits",
+            "requirement": {
+                "name": "Strong tailwind",
+                "primaryCondition": "$clamb\/stableapproach\/live\/runway\/hwc_kn > -10",
+                "type": "1",
+                "beginConditionMarker": "$.ft_ARTE < 50",
+                "endConditionMarker": "#TD_LAST",
+                "tolerance": "1000",
+                "description": "Tailwind on runway was above 10kn.\nMake the opposite runway would be more suitable."
+            }
         }
     },
-    "hash": "7c4ca33e1da4b6886fcae9ba26d4c4ec"
+    "hash": "0c8960d70f1c31d522b062c0a5e745eb"
 }

@@ -117,7 +117,7 @@
             "name": "Sinkrate",
             "requirement": {
                 "name": "High sinkrate",
-                "primaryCondition": "$sim\/flightmodel\/position\/vh_ind_fpm > -1300",
+                "primaryCondition": "if ($clamb\/stableapproach\/live\/app\/gs\/type != 6)\n$sim\/flightmodel\/position\/vh_ind_fpm > -1300;\nelse\n$sim\/flightmodel\/position\/vh_ind_fpm >\n$clamb\/stableapproach\/live\/app\/gs\/angle \/ 3 * -1300",
                 "type": "2",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "#TD_LAST",
@@ -126,7 +126,7 @@
             },
             "requirement": {
                 "name": "High sinkrate",
-                "primaryCondition": "$sim\/flightmodel\/position\/vh_ind_fpm > -1100",
+                "primaryCondition": "if ($clamb\/stableapproach\/live\/app\/gs\/type != 6)\n$sim\/flightmodel\/position\/vh_ind_fpm > -1100;\nelse\n$sim\/flightmodel\/position\/vh_ind_fpm >\n$clamb\/stableapproach\/live\/app\/gs\/angle \/ 3 * -1100",
                 "type": "1",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "#TAXI",
@@ -269,7 +269,19 @@
                 "endConditionMarker": "#INSTANT",
                 "description": "Pitch attitude during touchdown and rollout\nshould not be too high. Danger of tailstrike!"
             }
+        },
+        "group": {
+            "name": "Wind limits",
+            "requirement": {
+                "name": "Strong tailwind",
+                "primaryCondition": "$clamb\/stableapproach\/live\/runway\/hwc_kn > -10",
+                "type": "1",
+                "beginConditionMarker": "$.ft_ARTE < 50",
+                "endConditionMarker": "#TD_LAST",
+                "tolerance": "1000",
+                "description": "Tailwind on runway was above 10kn.\nMake the opposite runway would be more suitable."
+            }
         }
     },
-    "hash": "beae7c8039fe4cbae4d8a541bff09d98"
+    "hash": "95f8fc6099de1ec3f4921e7fc2c52e4c"
 }

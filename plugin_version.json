@@ -1,6 +1,7 @@
 {
   "plugin_version": {
     "semver": "0.11.0-beta.2",
-    "int": 1000
+    "int": 1000,
+    "update_link":"https://www.google.de/"
   }
 }

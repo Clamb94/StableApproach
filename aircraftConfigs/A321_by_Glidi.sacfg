@@ -117,7 +117,7 @@
             "name": "Sinkrate",
             "requirement": {
                 "name": "High sinkrate",
-                "primaryCondition": "$sim\/flightmodel\/position\/vh_ind_fpm > -1300",
+                "primaryCondition": "if ($clamb\/stableapproach\/live\/app\/gs\/type != 6)\n$sim\/flightmodel\/position\/vh_ind_fpm > -1300;\nelse\n$sim\/flightmodel\/position\/vh_ind_fpm >\n$clamb\/stableapproach\/live\/app\/gs\/angle \/ 3 * -1300",
                 "type": "2",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "#TD_LAST",
@@ -126,7 +126,7 @@
             },
             "requirement": {
                 "name": "High sinkrate",
-                "primaryCondition": "$sim\/flightmodel\/position\/vh_ind_fpm > -1100",
+                "primaryCondition": "if ($clamb\/stableapproach\/live\/app\/gs\/type != 6)\n$sim\/flightmodel\/position\/vh_ind_fpm > -1100;\nelse\n$sim\/flightmodel\/position\/vh_ind_fpm >\n$clamb\/stableapproach\/live\/app\/gs\/angle \/ 3 * -1100",
                 "type": "1",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "#TAXI",
@@ -163,7 +163,7 @@
                 "type": "2",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "$.ft_ARTE < 200",
-                "secondaryCondition": "$analysis.app.nav.type == 4 and\n$.not_vis_app",
+                "secondaryCondition": "$analysis.app.nav.gs.type == 6 and\n$.not_vis_app",
                 "secondaryConditionMarker": "#TD-3000ms",
                 "tolerance": "2000",
                 "description": "Maximum 1 dot glideslope deviation.\nFrom check height until 200ft above runway threshold elevation (ARTE).\nNot required for VISUAL approaches"
@@ -174,7 +174,7 @@
                 "type": "1",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "$.ft_ARTE < 200",
-                "secondaryCondition": "$analysis.app.nav.type == 4 and\n$.not_vis_app",
+                "secondaryCondition": "$analysis.app.nav.gs.type == 6 and\n$.not_vis_app",
                 "secondaryConditionMarker": "#TD-3000ms",
                 "description": "Maximum 1 dot glideslope deviation.\nFrom check height until 200ft above runway threshold elevation (ARTE).\nNot required for VISUAL approaches"
             }
@@ -187,7 +187,7 @@
                 "type": "2",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "#TD-3000ms",
-                "secondaryCondition": "($analysis.app.nav.type == 4 or\n$analysis.app.nav.type == 5) and\n$.not_vis_app",
+                "secondaryCondition": "$analysis.app.nav.loc.type != 0 and\n$.not_vis_app",
                 "secondaryConditionMarker": "#TD-3000ms",
                 "tolerance": "2000",
                 "description": "Maximum 1 dot localizer deviation\nfrom check height till touchdown.\nNot required for VISUAL approaches"
@@ -198,7 +198,7 @@
                 "type": "1",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "#TD-3000ms",
-                "secondaryCondition": "($analysis.app.nav.type == 4 or\n$analysis.app.nav.type == 5) and\n$.not_vis_app",
+                "secondaryCondition": "$analysis.app.nav.loc.type != 0 and\n$.not_vis_app",
                 "secondaryConditionMarker": "#TD-3000ms",
                 "tolerance": "2000",
                 "description": "Maximum 1 dot localizer deviation\nfrom check height till touchdown.\nNot required for VISUAL approaches"
@@ -277,7 +277,19 @@
                 "endConditionMarker": "#INSTANT",
                 "description": "Pitch attitude during touchdown and rollout\nshould be below 7.8 degree.\nDanger of tailstrike!\nMake sure your speed at touchdown is not (much) below VLS"
             }
+        },
+        "group": {
+            "name": "Wind limits",
+            "requirement": {
+                "name": "Strong tailwind",
+                "primaryCondition": "$clamb\/stableapproach\/live\/runway\/hwc_kn > -10",
+                "type": "1",
+                "beginConditionMarker": "$.ft_ARTE < 50",
+                "endConditionMarker": "#TD_LAST",
+                "tolerance": "1000",
+                "description": "Tailwind on runway was above 10kn.\nMake the opposite runway would be more suitable."
+            }
         }
     },
-    "hash": "36d23024aefca69a598a00df673d09d2"
+    "hash": "18abd7e9df95d7bdb3408d7571ce9a1a"
 }

@@ -1,7 +1,6 @@
 {
   "plugin_version": {
-    "semver": "0.11.1",
-    "int": 1000,
+    "semver": "1.0.0-rc.1",
     "update_link":"http://discord.stableapproach.net/"
   }
 }

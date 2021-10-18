@@ -247,6 +247,8 @@
             "type": "2",
             "beginConditionMarker": "#CH",
             "endConditionMarker": "#TAXI",
+            "secondaryCondition": "$laminar\/B738\/engine_start_auto != 1",
+            "secondaryConditionMarker": "#CH",
             "tolerance": "500",
             "description": "Engine start switches must be in position\nCONT below check height"
         },
@@ -313,5 +315,5 @@
             }
         }
     },
-    "hash": "8a11a4c915ca27bec1dd0e2b3bdfcaf1"
+    "hash": "6ccaead5039ad742260ce3f0b8a08b11"
 }

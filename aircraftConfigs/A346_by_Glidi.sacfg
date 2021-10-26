@@ -263,7 +263,7 @@
             "name": "No Tailstrike",
             "requirement": {
                 "name": "Tailstrike",
-                "primaryCondition": "$analysis.touchdown_combined.pitch.max < 15.5\nand\n$analysis.rollout.pitch.max < 15.5",
+                "primaryCondition": "$analysis.touchdown_combined.pitch.max < 8.5\nand\n$analysis.rollout.pitch.max < 8.5",
                 "type": "2",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "#INSTANT",
@@ -271,11 +271,11 @@
             },
             "requirement": {
                 "name": "Touchdown high pitch attitude",
-                "primaryCondition": "$analysis.touchdown_combined.pitch.max < 7.8\nand\n$analysis.rollout.pitch.max < 7.8",
+                "primaryCondition": "$analysis.touchdown_combined.pitch.max < 7.5\nand\n$analysis.rollout.pitch.max < 7.5",
                 "type": "1",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "#INSTANT",
-                "description": "Pitch attitude during touchdown and rollout\nshould be below 7.8 degree.\nDanger of tailstrike!\nMake sure your speed at touchdown is not (much) below VLS"
+                "description": "Pitch attitude during touchdown and rollout\nshould be below 7.5 degree.\nDanger of tailstrike!\nMake sure your speed at touchdown is not (much) below VLS"
             }
         },
         "group": {
@@ -299,5 +299,5 @@
             "description": "Seatbelt signs should be on"
         }
     },
-    "hash": "145e649760263beea708cfa468cb4f96"
+    "hash": "f67f6e315e623abf15928e437d3392d3"
 }

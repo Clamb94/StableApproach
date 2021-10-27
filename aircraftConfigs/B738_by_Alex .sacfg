@@ -280,7 +280,7 @@
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "$.ft_ARTE < 100",
                 "tolerance": "5000",
-                "description": "Appropriate thrust settings is required.\nRecommended: 40-80% N1 below check height until flare begins"
+                "description": "Appropriate thrust settings is required.\nRecommended: 40-80%% N1 below check height until flare begins"
             }
         },
         "group": {
@@ -315,5 +315,5 @@
             }
         }
     },
-    "hash": "508dea79051fb3de1183b5db963fd3be"
+    "hash": "3678a369f31856888593c2d8623011f1"
 }

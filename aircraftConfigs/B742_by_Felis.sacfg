@@ -1,8 +1,8 @@
 {
     "enabled": "true",
     "acf": {
-        "icao": "B744",
-        "author": "Mohammad Gazzawi \/ Sergio Santagada \/ Javier Rollon \/ Jim Gregory \/ Michael M. \/ YesAviation \/ PresentMonkey \/ Wolfair \/ Notchmaster \/ Reddeviln \/ Totedemac\/ Ghostfire \/ Mark Parker \/ Others (see github)"
+        "icao": "B742",
+        "author": "Felis Leopard"
     },
     "speed": {
         "taxi": "30"
@@ -130,16 +130,8 @@
         "group": {
             "name": "Approach speed",
             "requirement": {
-                "name": "Vref not set",
-                "primaryCondition": "$laminar\/B747\/airspeed\/Vref > 50",
-                "type": "2",
-                "beginConditionMarker": "#CH",
-                "endConditionMarker": "#TD-3000ms",
-                "description": "Approach VREF should be set in the CDU"
-            },
-            "requirement": {
                 "name": "Approach speed",
-                "primaryCondition": "($laminar\/B747\/airspeed\/Vref - 3) <= $sim\/cockpit2\/gauges\/indicators\/airspeed_kts_pilot\nand\n($laminar\/B747\/airspeed\/Vref + 20) >= $sim\/cockpit2\/gauges\/indicators\/airspeed_kts_pilot",
+                "primaryCondition": "($B742\/AP_panel\/AT_spd_set_rotary - 8) <= $sim\/cockpit2\/gauges\/indicators\/airspeed_kts_pilot\nand\n($B742\/AP_panel\/AT_spd_set_rotary + 15) >= $sim\/cockpit2\/gauges\/indicators\/airspeed_kts_pilot",
                 "type": "2",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "$.ft_ARTE < 100",
@@ -148,7 +140,7 @@
             },
             "requirement": {
                 "name": "Approach speed",
-                "primaryCondition": "($laminar\/B747\/airspeed\/Vref) <= $sim\/cockpit2\/gauges\/indicators\/airspeed_kts_pilot\nand\n($laminar\/B747\/airspeed\/Vref + 15) >= $sim\/cockpit2\/gauges\/indicators\/airspeed_kts_pilot",
+                "primaryCondition": "($B742\/AP_panel\/AT_spd_set_rotary - 5) <= $sim\/cockpit2\/gauges\/indicators\/airspeed_kts_pilot\nand\n($B742\/AP_panel\/AT_spd_set_rotary + 10) >= $sim\/cockpit2\/gauges\/indicators\/airspeed_kts_pilot",
                 "type": "1",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "$.ft_ARTE < 100",
@@ -209,7 +201,7 @@
             "name": "Gear",
             "requirement": {
                 "name": "Gear not down",
-                "primaryCondition": "$sim\/cockpit2\/controls\/gear_handle_down == 1\nand\n$sim\/cockpit2\/annunciators\/gear_unsafe == 0\n",
+                "primaryCondition": "$B742\/controls\/gear_lever_pos == 1\nand\n$B742\/front_lamps\/LG_gear_down_lit == 1\n",
                 "type": "2",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "#TAXI",
@@ -220,7 +212,7 @@
             "name": "Flaps",
             "requirement": {
                 "name": "Flaps not in position",
-                "primaryCondition": "$sim\/cockpit2\/controls\/flap_handle_deploy_ratio == 1 or\n$sim\/cockpit2\/controls\/flap_handle_deploy_ratio == 0.833",
+                "primaryCondition": "$sim\/cockpit2\/controls\/flap_handle_deploy_ratio == 1 or\n$sim\/cockpit2\/controls\/flap_handle_deploy_ratio == 0.83",
                 "type": "2",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "#TAXI",
@@ -231,7 +223,7 @@
             "name": "Speedbrake",
             "requirement": {
                 "name": "Speedbrake not armed",
-                "primaryCondition": "$sim\/cockpit2\/controls\/speedbrake_ratio < -0.1",
+                "primaryCondition": "$sim\/cockpit2\/controls\/speedbrake_ratio == 0.333333",
                 "type": "2",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "#TD-3000ms",
@@ -245,7 +237,7 @@
             "name": "Autoflight",
             "requirement": {
                 "name": "Autoland",
-                "primaryCondition": "$sim\/cockpit\/autopilot\/autopilot_mode < 2",
+                "primaryCondition": "$B742\/AP_panel\/AP_engage_A < 2 and $B742\/AP_panel\/AP_engage_B < 2",
                 "type": "0",
                 "beginConditionMarker": "#TD-3000ms",
                 "endConditionMarker": "#TD+3000ms",
@@ -253,7 +245,7 @@
             },
             "requirement": {
                 "name": "Autopilot engaged",
-                "primaryCondition": "$sim\/cockpit\/autopilot\/autopilot_mode < 2",
+                "primaryCondition": "$B742\/AP_panel\/AP_engage_A < 2 and $B742\/AP_panel\/AP_engage_B < 2",
                 "type": "0",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "#TD-3000ms",
@@ -261,22 +253,10 @@
             }
         },
         "group": {
-            "name": "Thrust",
-            "requirement": {
-                "name": "High\/Low thrust",
-                "primaryCondition": "$sim\/cockpit2\/engine\/indicators\/N1_percent#0 > 40 and\n$sim\/cockpit2\/engine\/indicators\/N1_percent#0 < 80",
-                "type": "1",
-                "beginConditionMarker": "#CH",
-                "endConditionMarker": "$.ft_ARTE < 100",
-                "tolerance": "5000",
-                "description": "\"Appropriate\" thrust settings is required.\nRecommended: 40-80% N1 below check height until flare begins"
-            }
-        },
-        "group": {
             "name": "No Tailstrike",
             "requirement": {
                 "name": "Tailstrike",
-                "primaryCondition": "$analysis.touchdown_combined.pitch.max < 11\nand\n$analysis.rollout.pitch.max < 11",
+                "primaryCondition": "$analysis.touchdown_combined.pitch.max < 12\nand\n$analysis.rollout.pitch.max < 12",
                 "type": "2",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "#INSTANT",
@@ -304,5 +284,5 @@
             }
         }
     },
-    "hash": "4028b8d20ee3a422e2b5987bb4747020"
+    "hash": "ab4912ea972224fba78f66f28532cb1f"
 }

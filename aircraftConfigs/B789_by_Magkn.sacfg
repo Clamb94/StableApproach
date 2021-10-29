@@ -223,7 +223,7 @@
                 "primaryCondition": "$sim\/cockpit2\/controls\/flap_handle_deploy_ratio == 1 or\n$sim\/cockpit2\/controls\/flap_handle_deploy_ratio == 0.833333",
                 "type": "2",
                 "beginConditionMarker": "#CH",
-                "endConditionMarker": "#TAXI",
+                "endConditionMarker": "$sim\/cockpit2\/gauges\/indicators\/airspeed_kts_pilot < 60",
                 "description": "Flaps must be in landing position (25\/30) below check height until taxi speed"
             }
         },
@@ -292,5 +292,5 @@
             }
         }
     },
-    "hash": "5c1e251039c9c6d75113de8e4ccdde87"
+    "hash": "0692da6b004af1efdce768850c63ec0a"
 }

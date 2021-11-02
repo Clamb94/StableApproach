@@ -181,7 +181,7 @@
             "primaryCondition": "$sim\/cockpit\/engine\/fuel_pump_on#0 == 1 and $sim\/cockpit\/engine\/fuel_pump_on#1 == 1",
             "type": "2",
             "beginConditionMarker": "#CH",
-            "endConditionMarker": "#TD",
+            "endConditionMarker": "#TD+3000ms",
             "tolerance": "1000",
             "description": "Fuel pumps must be ON"
         },
@@ -190,7 +190,7 @@
             "primaryCondition": "$FJS\/Q4XP\/FlightControls\/PropHandle_1 > 0.95 and $FJS\/Q4XP\/FlightControls\/PropHandle_2 > 0.95",
             "type": "2",
             "beginConditionMarker": "#CH",
-            "endConditionMarker": "#TD",
+            "endConditionMarker": "#TD+3000ms",
             "tolerance": "1000",
             "description": "PROP lever muss be full forward"
         },

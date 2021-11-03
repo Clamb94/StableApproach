@@ -9,7 +9,7 @@ This GitHub only contains configuration files. Nothing you need to download to u
 
 ---
 
-### [Download StableApproach Plugin](https://github.com/Clamb94/StableApproach/releases)
+### [Download StableApproach X-Plane plugin](https://github.com/Clamb94/StableApproach/releases)
 
 ---
 

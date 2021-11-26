@@ -5,12 +5,13 @@
   },
   "va":{
     "report_server":{
+      "enabled": false,
       "host": "api.stableapproach.net",
       "target": "/report/new"
     },
     "aircraft_profiles":{
-      "use_custom": "false",
-      "revert_to_default": "true"
+      "use_custom": false,
+      "revert_to_default": true
     }
   }
 }

@@ -1,6 +1,12 @@
 {
   "plugin_version": {
-    "semver": "1.0.0",
+    "semver": "1.1.0-beta.1",
     "update_link":"https://github.com/Clamb94/StableApproach/releases"
+  },
+  "va":{
+    "report_server":{
+      "host": "api.stableapproach.net",
+      "target": "/report/new"
+    }
   }
 }

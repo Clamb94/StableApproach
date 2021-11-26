@@ -7,6 +7,10 @@
     "report_server":{
       "host": "api.stableapproach.net",
       "target": "/report/new"
+    },
+    "aircraft_profiles":{
+      "use_custom": "false",
+      "revert_to_default": "true"
     }
   }
 }

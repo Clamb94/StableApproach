@@ -223,7 +223,7 @@
                 "type": "2",
                 "beginConditionMarker": "#CH",
                 "endConditionMarker": "$sim\/cockpit2\/gauges\/indicators\/airspeed_kts_pilot < 60",
-                "description": "Flaps must be in landing position (25\/30) below check height until taxi speed"
+                "description": "Flaps must be in landing position (3\/FULL) below check height until taxi speed"
             }
         },
         "group": {
@@ -291,5 +291,5 @@
             }
         }
     },
-    "hash": "a542cc10899c3be566e1a1919980d875"
+    "hash": "c0beea5b6b99eb58530d9b755dbed62d"
 }

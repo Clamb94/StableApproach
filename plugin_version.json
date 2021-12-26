@@ -11,7 +11,7 @@
     },
     "aircraft_profiles":{
       "use_custom": true,
-      "revert_to_default": true
+      "revert_to_default": false
     }
   }
 }

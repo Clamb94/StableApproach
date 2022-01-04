@@ -31,7 +31,7 @@
         },
         {
             "name": "VMC",
-            "height": 1000,
+            "height": 500,
             "primaryCondition": "1",
             "description": "Instrument approach in VMC conditions"
         },

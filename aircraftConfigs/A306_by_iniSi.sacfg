@@ -152,7 +152,7 @@
                 {
                     "name": "Approach speed",
                     "type": 2,
-                    "primaryCondition": "($1-sim/fms/perf/vapp - 8) <= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot\nand\n($1-sim/fms/perf/vapp + 15) >= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot",
+                    "primaryCondition": "($A300\/FMS\/vapp_speed - 8) <= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot\nand\n($A300\/FMS\/vapp_speed + 15) >= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "$.ft_ARTE < 100",
                     "tolerance": 3000,
@@ -161,7 +161,7 @@
                 {
                     "name": "Approach speed",
                     "type": 1,
-                    "primaryCondition": "($1-sim/fms/perf/vapp - 5) <= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot\nand\n($1-sim/fms/perf/vapp + 10) >= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot",
+                    "primaryCondition": "($A300\/FMS\/vapp_speed- 5) <= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot\nand\n($A300\/FMS\/vapp_speed + 10) >= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "$.ft_ARTE < 100",
                     "tolerance": 3000,

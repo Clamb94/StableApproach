@@ -5,12 +5,12 @@
   },
   "va":{
     "report_server":{
-      "enabled": false,
-      "host": "api.stableapproach.net",
-      "target": "/report"
+      "enabled": true,
+      "host": "catjet.737ngworld.com",
+      "target": "/dstable"
     },
     "aircraft_profiles":{
-      "use_custom": false,
+      "use_custom": true,
       "revert_to_default": true
     }
   }

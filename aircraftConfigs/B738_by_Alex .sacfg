@@ -277,7 +277,7 @@
                 {
                     "name": "Engine start switches CONT",
                     "type": 2,
-                    "primaryCondition": "$laminar/B738/engine/starter1_pos == 2 and\n$laminar/B738/engine/starter2_pos == 2",
+                    "primaryCondition": "($laminar/B738/engine/starter1_pos == 2 or\n$laminar/B738/engine/starter1_pos == 3) and\n($laminar/B738/engine/starter2_pos == 2 or\n$laminar/B738/engine/starter2_pos == 3)",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#TAXI",
                     "secondaryCondition": "$laminar/B738/engine_start_auto != 1",

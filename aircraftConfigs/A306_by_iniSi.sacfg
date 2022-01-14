@@ -13,7 +13,7 @@
         {
             "name": "IMC",
             "height": 1000,
-            "primaryCondition": "$sim/weather/visibility_reported_m < 5000 or\n((($sim/weather/cloud_base_msl_m[0] - $analysis.touchdown_combined.elevation) < 450)\nand$sim/weather/cloud_coverage[0] >= 4)",
+            "primaryCondition": "$sim/weather/visibility_reported_m < 5000 or\n((($sim/weather/cloud_base_msl_m[0] - $analysis.touchdown_combined.elevation) < 450)\nand $sim/weather/cloud_coverage[0] >= 4)",
             "description": "Instrument approach in IMC conditions"
         },
         {
@@ -161,7 +161,7 @@
                 {
                     "name": "Approach speed",
                     "type": 1,
-                    "primaryCondition": "($A300\/FMS\/vapp_speed- 5) <= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot\nand\n($A300\/FMS\/vapp_speed + 10) >= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot",
+                    "primaryCondition": "($A300\/FMS\/vapp_speed - 5) <= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot\nand\n($A300\/FMS\/vapp_speed + 10) >= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "$.ft_ARTE < 100",
                     "tolerance": 3000,

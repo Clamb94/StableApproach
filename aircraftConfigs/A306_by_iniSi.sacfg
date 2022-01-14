@@ -13,7 +13,7 @@
         {
             "name": "IMC",
             "height": 1000,
-            "primaryCondition": "$sim/weather/visibility_reported_m < 5000 or\n((($sim/weather/cloud_base_msl_m[0] - $analysis.touchdown_combined.elevation) < 450)\nand$sim/weather/cloud_coverage[0] >= 4)",
+            "primaryCondition": "$sim/weather/visibility_reported_m < 5000 or ((($sim/weather/cloud_base_msl_m[0] - $analysis.touchdown_combined.elevation) < 450) and $sim/weather/cloud_coverage[0] >= 4)",
             "description": "Instrument approach in IMC conditions"
         },
         {
@@ -26,7 +26,7 @@
             "name": "VISUAL",
             "height": 500,
             "primaryCondition": "0",
-            "description": "Visual approach can only be selected manually\n\nPlugins -> StableApproach -> Check height"
+            "description": "Visual approach can only be selected manually Plugins -> StableApproach -> Check height"
         }
     ],
     "requirementGroups": [
@@ -39,7 +39,7 @@
                     "primaryCondition": "$analysis.rollout.rwy_remaining > 0",
                     "beginConditionMarker": "#TD_FIRST",
                     "endConditionMarker": "$clamb/stableapproach/position/groundspeed_kn < 60",
-                    "description": "Taxi speed when reaching end of runway\n"
+                    "description": "Taxi speed when reaching end of runway"
                 }
             ]
         },
@@ -48,7 +48,7 @@
                 {
                     "name": "Touchdown zone",
                     "type": 2,
-                    "primaryCondition": "$analysis.touchdown_combined.threshold_dist.max < $analysis.rwy.length.tdz and\n$analysis.touchdown_combined.threshold_dist.min > 0",
+                    "primaryCondition": "$analysis.touchdown_combined.threshold_dist.max < $analysis.rwy.length.tdz and $analysis.touchdown_combined.threshold_dist.min > 0",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#INSTANT",
                     "description": "Touchdown(s) within touchdown zone"
@@ -90,7 +90,7 @@
                     "primaryCondition": "$analysis.touchdown_combined.fpm_agl.max > -900",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#TAXI",
-                    "description": "Maximum sinkrate during touchdown:\n600 fpm"
+                    "description": "Maximum sinkrate during touchdown: 600 fpm"
                 },
                 {
                     "name": "Hard landing (fpm)",
@@ -98,7 +98,7 @@
                     "primaryCondition": "$analysis.touchdown_combined.fpm_agl.max > -600",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#TAXI",
-                    "description": "Maximum sinkrate during touchdown:\n600 fpm"
+                    "description": "Maximum sinkrate during touchdown: 600 fpm"
                 }
             ]
         },
@@ -111,7 +111,7 @@
                     "primaryCondition": "$analysis.touchdown_combined.g_vertical.max < 2.6",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#TAXI",
-                    "description": "Max vertical acceleration after touchdown:\n2.1 G"
+                    "description": "Max vertical acceleration after touchdown: 2.1 G"
                 },
                 {
                     "name": "Hard landing (g)",
@@ -119,7 +119,7 @@
                     "primaryCondition": "$analysis.touchdown_combined.g_vertical.max < 2.1",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#TAXI",
-                    "description": "Max vertical acceleration after touchdown:\n2.1 G"
+                    "description": "Max vertical acceleration after touchdown: 2.1 G"
                 }
             ]
         },
@@ -129,20 +129,20 @@
                 {
                     "name": "High sinkrate",
                     "type": 2,
-                    "primaryCondition": "if ($clamb/stableapproach/live/app/gs/type != 6)\n$sim/flightmodel/position/vh_ind_fpm > -1300;\nelse\n$sim/flightmodel/position/vh_ind_fpm >\n$clamb/stableapproach/live/app/gs/angle / 3 * -1300",
+                    "primaryCondition": "if ($clamb/stableapproach/live/app/gs/type != 6) $sim/flightmodel/position/vh_ind_fpm > -1300; else $sim/flightmodel/position/vh_ind_fpm > $clamb/stableapproach/live/app/gs/angle / 3 * -1300",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#TD_LAST",
                     "tolerance": 3000,
-                    "description": "Max sinkrate during approach is normally:\n1000fpm"
+                    "description": "Max sinkrate during approach is normally: 1000fpm"
                 },
                 {
                     "name": "High sinkrate",
                     "type": 1,
-                    "primaryCondition": "if ($clamb/stableapproach/live/app/gs/type != 6)\n$sim/flightmodel/position/vh_ind_fpm > -1100;\nelse\n$sim/flightmodel/position/vh_ind_fpm >\n$clamb/stableapproach/live/app/gs/angle / 3 * -1100",
+                    "primaryCondition": "if ($clamb/stableapproach/live/app/gs/type != 6) $sim/flightmodel/position/vh_ind_fpm > -1100; else $sim/flightmodel/position/vh_ind_fpm > $clamb/stableapproach/live/app/gs/angle / 3 * -1100",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#TAXI",
                     "tolerance": 3000,
-                    "description": "Max sinkrate during approach is normally:\n1000fpm"
+                    "description": "Max sinkrate during approach is normally: 1000fpm"
                 }
             ]
         },
@@ -152,20 +152,20 @@
                 {
                     "name": "Approach speed",
                     "type": 2,
-                    "primaryCondition": "($A300\/FMS\/vapp_speed - 8) <= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot\nand\n($A300\/FMS\/vapp_speed + 15) >= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot",
+                    "primaryCondition": "($A300\/FMS\/vapp_speed - 8) <= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot and ($A300\/FMS\/vapp_speed + 15) >= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "$.ft_ARTE < 100",
                     "tolerance": 3000,
-                    "description": "Speed during approach must be between:\nVAPP -5/+10 KIAS"
+                    "description": "Speed during approach must be between: VAPP -5/+10 KIAS"
                 },
                 {
                     "name": "Approach speed",
                     "type": 1,
-                    "primaryCondition": "($A300\/FMS\/vapp_speed - 5) <= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot\nand\n($A300\/FMS\/vapp_speed + 10) >= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot",
+                    "primaryCondition": "($A300\/FMS\/vapp_speed - 5) <= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot and ($A300\/FMS\/vapp_speed + 10) >= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "$.ft_ARTE < 100",
                     "tolerance": 3000,
-                    "description": "Speed during approach must be between:\nVAPP -5/+10 KIAS"
+                    "description": "Speed during approach must be between: VAPP -5/+10 KIAS"
                 }
             ]
         },
@@ -178,10 +178,10 @@
                     "primaryCondition": "abs ($sim/cockpit/radios/nav1_vdef_dot) < 1.3",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "$.ft_ARTE < 200",
-                    "secondaryCondition": "$analysis.app.nav.gs.type == 6 and\n$.not_vis_app",
+                    "secondaryCondition": "$analysis.app.nav.gs.type == 6 and $.not_vis_app",
                     "secondaryConditionMarker": "#TD-3000ms",
                     "tolerance": 2000,
-                    "description": "Maximum 1 dot glideslope deviation.\nFrom check height until 200ft above runway threshold elevation (ARTE).\nNot required for VISUAL approaches"
+                    "description": "Maximum 1 dot glideslope deviation. From check height until 200ft above runway threshold elevation (ARTE). Not required for VISUAL approaches"
                 },
                 {
                     "name": "Glideslope deviation",
@@ -189,9 +189,9 @@
                     "primaryCondition": "abs($sim/cockpit/radios/nav1_vdef_dot) < 1",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "$.ft_ARTE < 200",
-                    "secondaryCondition": "$analysis.app.nav.gs.type == 6 and\n$.not_vis_app",
+                    "secondaryCondition": "$analysis.app.nav.gs.type == 6 and $.not_vis_app",
                     "secondaryConditionMarker": "#TD-3000ms",
-                    "description": "Maximum 1 dot glideslope deviation.\nFrom check height until 200ft above runway threshold elevation (ARTE).\nNot required for VISUAL approaches"
+                    "description": "Maximum 1 dot glideslope deviation. From check height until 200ft above runway threshold elevation (ARTE). Not required for VISUAL approaches"
                 }
             ]
         },
@@ -204,10 +204,10 @@
                     "primaryCondition": "abs($sim/cockpit/radios/nav1_hdef_dot) < 1.3",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#TD-3000ms",
-                    "secondaryCondition": "$analysis.app.nav.loc.type != 0 and\n$.not_vis_app",
+                    "secondaryCondition": "$analysis.app.nav.loc.type != 0 and $.not_vis_app",
                     "secondaryConditionMarker": "#TD-3000ms",
                     "tolerance": 2000,
-                    "description": "Maximum 1 dot localizer deviation\nfrom check height till touchdown.\nNot required for VISUAL approaches"
+                    "description": "Maximum 1 dot localizer deviation from check height till touchdown. Not required for VISUAL approaches"
                 },
                 {
                     "name": "Localizer deviation",
@@ -215,10 +215,10 @@
                     "primaryCondition": "abs($sim/cockpit/radios/nav1_hdef_dot) < 1",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#TD-3000ms",
-                    "secondaryCondition": "$analysis.app.nav.loc.type != 0 and\n$.not_vis_app",
+                    "secondaryCondition": "$analysis.app.nav.loc.type != 0 and $.not_vis_app",
                     "secondaryConditionMarker": "#TD-3000ms",
                     "tolerance": 2000,
-                    "description": "Maximum 1 dot localizer deviation\nfrom check height till touchdown.\nNot required for VISUAL approaches"
+                    "description": "Maximum 1 dot localizer deviation from check height till touchdown. Not required for VISUAL approaches"
                 }
             ]
         },
@@ -228,10 +228,10 @@
                 {
                     "name": "Gear not down",
                     "type": 2,
-                    "primaryCondition": "$A300/GEAR/ldg1_down == 1\nand\n$A300/GEAR/ldg2_down == 1\nand\n$A300/GEAR/ldg3_down == 1",
+                    "primaryCondition": "$A300/GEAR/ldg1_down == 1 and $A300/GEAR/ldg2_down == 1 and $A300/GEAR/ldg3_down == 1",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#TAXI",
-                    "description": "Gear must be down and locked\nbelow check height"
+                    "description": "Gear must be down and locked below check height"
                 }
             ]
         },
@@ -241,7 +241,7 @@
                 {
                     "name": "Flaps not in position",
                     "type": 2,
-                    "primaryCondition": "$sim/cockpit2/controls/flap_handle_deploy_ratio == 0.75 or\n$sim/cockpit2/controls/flap_handle_deploy_ratio == 1",
+                    "primaryCondition": "$sim/cockpit2/controls/flap_handle_deploy_ratio == 1 or $sim/cockpit2/controls/flap_handle_deploy_ratio >= 0.745",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "$sim/cockpit2/gauges/indicators/airspeed_kts_pilot < 60",
                     "description": "Flaps must be in landing position (20/20 or FULL) below check height until taxi speed"
@@ -260,7 +260,7 @@
                     "secondaryCondition": "$analysis.rollout.go_around == 0",
                     "secondaryConditionMarker": "#TD-3000ms",
                     "tolerance": 500,
-                    "description": "Speedbrakes must be in the ARMED position\nbelow check height.\nNot required in case of touch-and-go"
+                    "description": "Speedbrakes must be in the ARMED position below check height. Not required in case of touch-and-go"
                 }
             ]
         },
@@ -291,10 +291,10 @@
                 {
                     "name": "Tailstrike",
                     "type": 1,
-                    "primaryCondition": "$analysis.touchdown_combined.pitch.max < 10.5\nand\n$analysis.rollout.pitch.max < 10.5",
+                    "primaryCondition": "$analysis.touchdown_combined.pitch.max < 10.5 and $analysis.rollout.pitch.max < 10.5",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#INSTANT",
-                    "description": "Pitch attitude during touchdown and rollout\nshould not be too high. Danger of tailstrike!"
+                    "description": "Pitch attitude during touchdown and rollout should not be too high. Danger of tailstrike!"
                 }
             ]
         },
@@ -308,7 +308,7 @@
                     "beginConditionMarker": "$.ft_ARTE < 50",
                     "endConditionMarker": "#TD_LAST",
                     "tolerance": 1000,
-                    "description": "Tailwind on runway was above 10kn.\nMake the opposite runway would be more suitable."
+                    "description": "Tailwind on runway was above 10kn. Make the opposite runway would be more suitable."
                 }
             ]
         }

@@ -6,7 +6,7 @@
   "va":{
     "report_server":{
       "enabled": false,
-      "host": "ayatem.aerovirtual.com.ar",
+      "host": "system.aerovirtual.com.ar",
       "target": "/dstable"
     },
     "aircraft_profiles":{

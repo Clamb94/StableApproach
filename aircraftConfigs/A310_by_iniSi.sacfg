@@ -1,7 +1,7 @@
 {
     "enabled": true,
     "acf": {
-        "icao": "A306",
+        "icao": "A310",
         "author": "iniSimulations"
     },
     "speed": {
@@ -241,7 +241,7 @@
                 {
                     "name": "Flaps not in position",
                     "type": 2,
-                    "primaryCondition": "$sim/cockpit2/controls/flap_handle_deploy_ratio == 0.75 or\n$sim/cockpit2/controls/flap_handle_deploy_ratio == 1",
+                    "primaryCondition": "$sim/cockpit2/controls/flap_handle_deploy_ratio > 0.95 or ($sim/cockpit2/controls/flap_handle_deploy_ratio >= 0.745 and $sim/cockpit2/controls/flap_handle_deploy_ratio <= 0.755)",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "$sim/cockpit2/gauges/indicators/airspeed_kts_pilot < 60",
                     "description": "Flaps must be in landing position (20/20 or FULL) below check height until taxi speed"

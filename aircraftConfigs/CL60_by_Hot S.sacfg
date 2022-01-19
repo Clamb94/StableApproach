@@ -244,7 +244,7 @@
                 {
                     "name": "Speedbrake not armed",
                     "type": 2,
-                    "primaryCondition": "$CL650/pedestal/gnd_spoilers == 1",
+                    "primaryCondition": "$CL650/pedestal/gnd_spoilers >= 1",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#TD-3000ms",
                     "secondaryCondition": "$analysis.rollout.go_around == 0",

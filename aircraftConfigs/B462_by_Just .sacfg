@@ -244,7 +244,7 @@
                 {
                     "name": "Autoland",
                     "type": 0,
-                    "primaryCondition": "$sim/cockpit/autopilot/autopilot_mode == 2",
+                    "primaryCondition": "$sim/cockpit/autopilot/autopilot_mode != 2",
                     "beginConditionMarker": "#TD-3000ms",
                     "endConditionMarker": "#TD+3000ms",
                     "description": "Information only: Autoland"
@@ -252,7 +252,7 @@
                 {
                     "name": "Autopilot engaged",
                     "type": 0,
-                    "primaryCondition": "$sim/cockpit/autopilot/autopilot_mode == 2",
+                    "primaryCondition": "$sim/cockpit/autopilot/autopilot_mode != 2",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#TD-3000ms",
                     "tolerance": 1000,

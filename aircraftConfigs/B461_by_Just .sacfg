@@ -1,8 +1,8 @@
 {
     "enabled": true,
     "acf": {
-        "icao": "A330",
-        "author": "JARDESIGN (C)"
+        "icao": "B461",
+        "author": "Just Flight / Thranda Design"
     },
     "speed": {
         "taxi": 30
@@ -26,7 +26,7 @@
             "name": "VISUAL",
             "height": 500,
             "primaryCondition": "0",
-            "description": "Visual approach can only be selected manually  Plugins -> StableApproach -> Check height"
+            "description": "Visual approach can only be selected manually\nPlugins -> StableApproach -> Check height"
         }
     ],
     "requirementGroups": [
@@ -152,20 +152,10 @@
                 {
                     "name": "Approach speed",
                     "type": 2,
-                    "primaryCondition": "($sim/custom/xap/pfd/vappr_knots - 3) <= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot and ($sim/custom/xap/pfd/vappr_knots + 20) >= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot",
+                    "primaryCondition": "$analysis.app.kias.min - $analysis.app.kias.max < 20",
                     "beginConditionMarker": "#CH",
-                    "endConditionMarker": "$.ft_ARTE < 100",
-                    "tolerance": 3000,
-                    "description": "Speed during approach must be between: vAPP and vAPP +15"
-                },
-                {
-                    "name": "Approach speed",
-                    "type": 1,
-                    "primaryCondition": "$sim/custom/xap/pfd/vappr_knots <= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot and ($sim/custom/xap/pfd/vappr_knots + 15) >= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot",
-                    "beginConditionMarker": "#CH",
-                    "endConditionMarker": "$.ft_ARTE < 100",
-                    "tolerance": 3000,
-                    "description": "Speed during approach must be between: vAPP and vAPP +15"
+                    "endConditionMarker": "#INSTANT",
+                    "description": "Speed should be relatively constant below check height (max. 20kn between min/max)"
                 }
             ]
         },
@@ -181,7 +171,7 @@
                     "secondaryCondition": "$analysis.app.nav.gs.type == 6 and $.not_vis_app",
                     "secondaryConditionMarker": "#TD-3000ms",
                     "tolerance": 2000,
-                    "description": "Maximum 1 dot glideslope deviation. From check height until 200ft above runway threshold elevation (ARTE). Not required for VISUAL approaches"
+                    "description": "Maximum 1 dot glideslope deviation.\nFrom check height until 200ft above runway threshold elevation (ARTE).\nNot required for VISUAL approaches"
                 },
                 {
                     "name": "Glideslope deviation",
@@ -191,7 +181,7 @@
                     "endConditionMarker": "$.ft_ARTE < 200",
                     "secondaryCondition": "$analysis.app.nav.gs.type == 6 and $.not_vis_app",
                     "secondaryConditionMarker": "#TD-3000ms",
-                    "description": "Maximum 1 dot glideslope deviation. From check height until 200ft above runway threshold elevation (ARTE). Not required for VISUAL approaches"
+                    "description": "Maximum 1 dot glideslope deviation.\nFrom check height until 200ft above runway threshold elevation (ARTE).\nNot required for VISUAL approaches"
                 }
             ]
         },
@@ -207,7 +197,7 @@
                     "secondaryCondition": "$analysis.app.nav.loc.type != 0 and $.not_vis_app",
                     "secondaryConditionMarker": "#TD-3000ms",
                     "tolerance": 2000,
-                    "description": "Maximum 1 dot localizer deviation from check height till touchdown. Not required for VISUAL approaches"
+                    "description": "Maximum 1 dot localizer deviation from check height till touchdown.\nNot required for VISUAL approaches"
                 },
                 {
                     "name": "Localizer deviation",
@@ -218,7 +208,7 @@
                     "secondaryCondition": "$analysis.app.nav.loc.type != 0 and $.not_vis_app",
                     "secondaryConditionMarker": "#TD-3000ms",
                     "tolerance": 2000,
-                    "description": "Maximum 1 dot localizer deviation from check height till touchdown. Not required for VISUAL approaches"
+                    "description": "Maximum 1 dot localizer deviation from check height till touchdown.\nNot required for VISUAL approaches"
                 }
             ]
         },
@@ -228,7 +218,7 @@
                 {
                     "name": "Gear not down",
                     "type": 2,
-                    "primaryCondition": "$sim/cockpit2/controls/gear_handle_down == 1",
+                    "primaryCondition": "$sim/flightmodel2/gear/deploy_ratio == 1",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#TAXI",
                     "description": "Gear must be down below check height"
@@ -241,26 +231,10 @@
                 {
                     "name": "Flaps not in position",
                     "type": 2,
-                    "primaryCondition": "$jd/flaps/config > 6.750 or ($jd/flaps/config >= 5.750 and $jd/flaps/config <= 6.250)",
+                    "primaryCondition": "$sim/cockpit2/controls/flap_ratio > 0.95 or ($sim/cockpit2/controls/flap_ratio >= 0.745 and $sim/cockpit2/controls/flap_ratio <= 0.755)",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#TAXI",
-                    "description": "Flaps must be in landing position (CONF3 or FULL) below check height until taxi speed"
-                }
-            ]
-        },
-        {
-            "name": "Speedbrake",
-            "requirements": [
-                {
-                    "name": "Speedbrake not armed",
-                    "type": 2,
-                    "primaryCondition": "$jd/spdbrakes/handle == -1",
-                    "beginConditionMarker": "#CH",
-                    "endConditionMarker": "#TD-3000ms",
-                    "secondaryCondition": "$analysis.rollout.go_around == 0",
-                    "secondaryConditionMarker": "#TD-3000ms",
-                    "tolerance": 500,
-                    "description": "Speedbrakes must be in the ARMED position below check height.\nNot required in case of touch-and-go"
+                    "description": "Flaps must be in landing position (30 or 33) below check height until taxi speed"
                 }
             ]
         },
@@ -270,7 +244,7 @@
                 {
                     "name": "Autoland",
                     "type": 0,
-                    "primaryCondition": "$sim/custom/xap/fcu/ap1 != 1 or $sim/custom/xap/fcu/ap2 != 1",
+                    "primaryCondition": "$sim/cockpit/autopilot/autopilot_mode != 2",
                     "beginConditionMarker": "#TD-3000ms",
                     "endConditionMarker": "#TD+3000ms",
                     "description": "Information only: Autoland"
@@ -278,7 +252,7 @@
                 {
                     "name": "Autopilot engaged",
                     "type": 0,
-                    "primaryCondition": "$sim/custom/xap/fcu/ap1 != 1 or $sim/custom/xap/fcu/ap2 != 1",
+                    "primaryCondition": "$sim/cockpit/autopilot/autopilot_mode != 2",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#TD-3000ms",
                     "tolerance": 1000,

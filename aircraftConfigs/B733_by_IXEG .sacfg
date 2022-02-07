@@ -333,7 +333,7 @@
                     "beginConditionMarker": "$.ft_ARTE < 50",
                     "endConditionMarker": "#TD_LAST",
                     "tolerance": 1000,
-                    "description": "Tailwind on runway was above 10kn.\nMake the opposite runway would be more suitable."
+                    "description": "Tailwind on runway was above 10kn.\nThe opposite runway might be more suitable."
                 }
             ]
         }

@@ -8,7 +8,9 @@
       "enabled": false,
       "host": "api.stableapproach.net",
       "target": "/report",
-      "semver_range": ">=1.2.0"
+      "semver": {
+        "min": "1.2.0",
+        "max": "1.99.0"
     },
     "aircraft_profiles":{
       "use_custom": false,

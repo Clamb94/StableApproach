@@ -11,6 +11,7 @@
       "semver": {
         "min": "1.2.0",
         "max": "1.99.0"
+      }
     },
     "aircraft_profiles":{
       "use_custom": false,

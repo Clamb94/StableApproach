@@ -7,7 +7,8 @@
     "report_server":{
       "enabled": false,
       "host": "api.stableapproach.net",
-      "target": "/report"
+      "target": "/report",
+      "semver_range": ">=1.2.0"
     },
     "aircraft_profiles":{
       "use_custom": false,

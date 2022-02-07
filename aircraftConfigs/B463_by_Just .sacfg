@@ -48,7 +48,7 @@
                 {
                     "name": "Touchdown zone",
                     "type": 2,
-                    "primaryCondition": "$analysis.touchdown_combined.threshold_dist.max < $analysis.rwy.length.tdz and $analysis.touchdown_combined.threshold_dist.min > 0",
+                    "primaryCondition": "$analysis.touchdown_combined.threshold_dist.max < $analysis.rwy.length.tdz and\n$analysis.touchdown_combined.threshold_dist.min > 0",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#INSTANT",
                     "description": "Touchdown(s) within touchdown zone"

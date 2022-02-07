@@ -44,14 +44,31 @@
             ]
         },
         {
+            "name": "Touchdown zone",
             "requirements": [
                 {
-                    "name": "Touchdown zone",
+                    "name": "Early touchdown",
                     "type": 2,
-                    "primaryCondition": "$analysis.touchdown_combined.threshold_dist.max < $analysis.rwy.length.tdz and\n$analysis.touchdown_combined.threshold_dist.min > 0",
+                    "primaryCondition": "$analysis.touchdown_combined.threshold_dist.min > -5",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#INSTANT",
-                    "description": "Touchdown(s) within touchdown zone"
+                    "description": "Touchdown before runway threshold"
+                },
+                {
+                    "name": "Long landing",
+                    "type": 2,
+                    "primaryCondition": "$analysis.touchdown_combined.threshold_dist.max < ($analysis.rwy.length.tdz * 1.15)",
+                    "beginConditionMarker": "#CH",
+                    "endConditionMarker": "#INSTANT",
+                    "description": "Late touchdown"
+                },
+                {
+                    "name": "Long landing",
+                    "type": 1,
+                    "primaryCondition": "$analysis.touchdown_combined.threshold_dist.max < $analysis.rwy.length.tdz",
+                    "beginConditionMarker": "#CH",
+                    "endConditionMarker": "#INSTANT",
+                    "description": "Touchdown not within touchdown zone"
                 }
             ]
         },

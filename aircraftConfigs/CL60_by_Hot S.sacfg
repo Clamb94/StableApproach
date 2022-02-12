@@ -1,24 +1,19 @@
 {
     "enabled": true,
     "acf": {
-        "icao": "B773",
-        "author": "FlightFactor "
+        "icao": "CL60",
+        "author": "Hot Start"
     },
     "speed": {
         "taxi": 30
     },
     "autoUpdate": true,
-    "replace_dref": [
-        {
-            "old": "sim/cockpit/radios/nav1_freq_hz",
-            "new": "T7Avionics/radios/ils1_freq"
-        }
-    ],
+    "replace_dref": [],
     "checkHeights": [
         {
             "name": "IMC",
             "height": 1000,
-            "primaryCondition": "$sim/weather/visibility_reported_m < 5000 or\n((($sim/weather/cloud_base_msl_m[0] - $analysis.touchdown_combined.elevation) < 450)\nand $sim/weather/cloud_coverage[0] >= 4)",
+            "primaryCondition": "$sim/weather/visibility_reported_m < 5000 or\n((($sim/weather/cloud_base_msl_m[0] - $analysis.touchdown_combined.elevation) < 450) and $sim/weather/cloud_coverage[0] >= 4)",
             "description": "Instrument approach in IMC conditions"
         },
         {
@@ -155,30 +150,12 @@
             "name": "Approach speed",
             "requirements": [
                 {
-                    "name": "Vref not set",
-                    "type": 2,
-                    "primaryCondition": "$T7Avionics/fms/vref > 50",
-                    "beginConditionMarker": "#CH",
-                    "endConditionMarker": "#TD-3000ms",
-                    "description": "Approach VREF should be set in the CDU"
-                },
-                {
                     "name": "Approach speed",
                     "type": 2,
-                    "primaryCondition": "($T7Avionics/fms/vref - 3) <= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot\nand\n($T7Avionics/fms/vref + 20) >= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot",
+                    "primaryCondition": "$analysis.app.kias.min - $analysis.app.kias.max < 20",
                     "beginConditionMarker": "#CH",
-                    "endConditionMarker": "$.ft_ARTE < 100",
-                    "tolerance": 3000,
-                    "description": "Speed during approach must be between:\nVREF\n  and\nVREF + 15"
-                },
-                {
-                    "name": "Approach speed",
-                    "type": 1,
-                    "primaryCondition": "($T7Avionics/fms/vref) <= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot\nand\n($T7Avionics/fms/vref + 15) >= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot",
-                    "beginConditionMarker": "#CH",
-                    "endConditionMarker": "$.ft_ARTE < 100",
-                    "tolerance": 3000,
-                    "description": "Speed during approach must be between:\nVREF\n  and\nVREF + 15"
+                    "endConditionMarker": "#INSTANT",
+                    "description": "Speed should be relatively constant below check height (max. 20kn between min/max)"
                 }
             ]
         },
@@ -241,7 +218,7 @@
                 {
                     "name": "Gear not down",
                     "type": 2,
-                    "primaryCondition": "$sim/cockpit2/controls/gear_handle_down == 1\nand\n$sim/cockpit2/annunciators/gear_unsafe == 0\n",
+                    "primaryCondition": "$CL650/fo_state/gear_dn_all == 1\n",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#TAXI",
                     "description": "Gear must be down and locked\nbelow check height"
@@ -254,10 +231,10 @@
                 {
                     "name": "Flaps not in position",
                     "type": 2,
-                    "primaryCondition": "$sim/cockpit2/controls/flap_handle_deploy_ratio == 1 or\n$sim/cockpit2/controls/flap_handle_deploy_ratio == 0.833333",
+                    "primaryCondition": "$CL650/fo_state/flaps_ind == 45",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "$sim/cockpit2/gauges/indicators/airspeed_kts_pilot < 60",
-                    "description": "Flaps must be in landing position (25/30) below check height until taxi speed"
+                    "description": "Flaps must be in landing position (30/40) below check height until taxi speed"
                 }
             ]
         },
@@ -267,7 +244,7 @@
                 {
                     "name": "Speedbrake not armed",
                     "type": 2,
-                    "primaryCondition": "$sim/cockpit2/controls/speedbrake_ratio < -0.2",
+                    "primaryCondition": "$CL650/pedestal/gnd_spoilers >= 1",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#TD-3000ms",
                     "secondaryCondition": "$analysis.rollout.go_around == 0",
@@ -277,13 +254,60 @@
                 }
             ]
         },
+		{
+            "name": "REV armed",
+            "requirements": [
+                {
+                    "name": "Reversers not armed",
+                    "type": 2,
+                    "primaryCondition": "$CL650/pedestal/thr_rev/arm_R == 1 and $CL650/pedestal/thr_rev/arm_L == 1",
+                    "beginConditionMarker": "#CH",
+                    "endConditionMarker": "#TD-3000ms",
+                    "secondaryCondition": "$analysis.rollout.go_around == 0",
+                    "secondaryConditionMarker": "#TD-3000ms",
+                    "tolerance": 500,
+                    "description": "Reversers must be ARMED\nbelow check height.\nNot required in case of touch-and-go"
+                }
+            ]
+        },
+		{
+            "name": "Anti-skid",
+            "requirements": [
+                {
+                    "name": "Anti-skid not armed",
+                    "type": 2,
+                    "primaryCondition": "$CL650/pedestal/gear/anti_skid == 1",
+                    "beginConditionMarker": "#CH",
+                    "endConditionMarker": "#TD-3000ms",
+                    "secondaryCondition": "$analysis.rollout.go_around == 0",
+                    "secondaryConditionMarker": "#TD-3000ms",
+                    "tolerance": 500,
+                    "description": "Anti-skid must be ARMED\nbelow check height.\nNot required in case of touch-and-go"
+                }
+            ]
+        },
+        {
+			"name": "Ignition not on",
+            "requirements": [
+                {
+                    "name": "Ignition",
+                    "type": 2,
+                    "primaryCondition": "$CL650/overhead/ign/cont_value == 1",
+                    "beginConditionMarker": "#CH",
+                    "endConditionMarker": "#TAXI",
+                    "secondaryConditionMarker": "#CH",
+                    "tolerance": 500,
+                    "description": "Ignition must be ON below check height"
+                }
+            ]
+        },
         {
             "name": "Autoflight",
             "requirements": [
                 {
                     "name": "Autoland",
                     "type": 0,
-                    "primaryCondition": "$sim/cockpit2/autopilot/servos_on == 0",
+                    "primaryCondition": "$CL650/FCP/ap_eng_value == 0",
                     "beginConditionMarker": "#TD-3000ms",
                     "endConditionMarker": "#TD+3000ms",
                     "description": "Information only: Autoland"
@@ -291,31 +315,11 @@
                 {
                     "name": "Autopilot engaged",
                     "type": 0,
-                    "primaryCondition": "$sim/cockpit2/autopilot/servos_on == 0",
+                    "primaryCondition": "$CL650/FCP/ap_eng_value == 0",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#TD-3000ms",
+					"description": "Information only: Autopilot used during approach",
                     "tolerance": 1000
-                }
-            ]
-        },
-        {
-            "name": "No Tailstrike",
-            "requirements": [
-                {
-                    "name": "Tailstrike",
-                    "type": 2,
-                    "primaryCondition": "$analysis.touchdown_combined.pitch.max < 7.8\nand\n$analysis.rollout.pitch.max < 7.8",
-                    "beginConditionMarker": "#CH",
-                    "endConditionMarker": "#INSTANT",
-                    "description": "Very high pitch attitude!\nTailstrike most likely occured.\nMake sure your speed at touchdown is not (much) below VREF"
-                },
-                {
-                    "name": "Touchdown high pitch attitude",
-                    "type": 1,
-                    "primaryCondition": "$analysis.touchdown_combined.pitch.max < 6.3\nand\n$analysis.rollout.pitch.max < 6.3",
-                    "beginConditionMarker": "#CH",
-                    "endConditionMarker": "#INSTANT",
-                    "description": "Pitch attitude during touchdown and rollout\nshould be below 6.3 degree.\nDanger of tailstrike!\nMake sure your speed at touchdown is not (much) below VREF"
                 }
             ]
         },

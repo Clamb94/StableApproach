@@ -270,6 +270,15 @@
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "$sim/cockpit2/gauges/indicators/airspeed_kts_pilot < 60",
                     "description": "Flaps must be in landing position (30/40) below check height until taxi speed"
+                },
+                {
+                    "name": "FMC/Flap disagree",
+                    "type": 2,
+                    "primaryCondition": "$laminar/B738/FMS/approach_flaps_set == 1",
+                    "beginConditionMarker": "#CH",
+                    "endConditionMarker": "#TD-3000ms",
+                    "tolerance": 1000,
+                    "description": "Landing flap selection in FMC (APPROACH REF page) does not match used flap position."
                 }
             ]
         },

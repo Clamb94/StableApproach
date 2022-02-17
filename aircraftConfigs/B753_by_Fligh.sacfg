@@ -180,19 +180,13 @@
             "name": "Approach speed",
             "requirements": [
                 {
-                    "name": "Vref not set",
-                    "type": 2,
-                    "primaryCondition": "$757Avionics/fms/vref > 50",
-                    "beginConditionMarker": "#CH",
-                    "endConditionMarker": "#TD-3000ms",
-                    "description": "Approach VREF should be set in the CDU"
-                },
-                {
                     "name": "Approach speed",
                     "type": 2,
                     "primaryCondition": "($757Avionics/fms/vref - 3) <= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot\nand\n($757Avionics/fms/vref + 20) >= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "$.ft_ARTE < 100",
+                    "secondaryCondition": "$757Avionics/fms/vref > 50",
+                    "secondaryConditionMarker": "#CH",
                     "tolerance": 3000,
                     "description": "Speed during approach must be between:\nVREF\n  and\nVREF + 15"
                 },
@@ -202,8 +196,32 @@
                     "primaryCondition": "($757Avionics/fms/vref ) <= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot\nand\n($757Avionics/fms/vref + 15) >= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "$.ft_ARTE < 100",
+                    "secondaryCondition": "$757Avionics/fms/vref > 50",
+                    "secondaryConditionMarker": "#TD-3000ms",
                     "tolerance": 3000,
                     "description": "Speed during approach must be between:\nVREF\n  and\nVREF + 15"
+                },
+                {
+                    "name": "Approach speed",
+                    "type": 2,
+                    "primaryCondition": "($757Avionics/ap/spd_act - 8) <= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot\nand\n($757Avionics/ap/spd_act + +15) >= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot",
+                    "beginConditionMarker": "#CH",
+                    "endConditionMarker": "$.ft_ARTE < 100",
+                    "secondaryCondition": "$757Avionics/fms/vref < 50",
+                    "secondaryConditionMarker": "#CH",
+                    "tolerance": 3000,
+                    "description": "This only applies if VREF has NOT been set in the CDU:\nSpeed during approach must be between:\nVREF\n  and\nVREF + 15"
+                },
+                {
+                    "name": "Approach speed",
+                    "type": 1,
+                    "primaryCondition": "($757Avionics/ap/spd_act -5) <= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot\nand\n($757Avionics/fms/vref + 10) >= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot",
+                    "beginConditionMarker": "#CH",
+                    "endConditionMarker": "$.ft_ARTE < 100",
+                    "secondaryCondition": "$757Avionics/fms/vref < 50",
+                    "secondaryConditionMarker": "#TD-3000ms",
+                    "tolerance": 3000,
+                    "description": "This only applies if VREF has NOT been set in the CDU:\nSpeed during approach must be between:\nMCP SPEED -5\n  and\nMCP SPEED + 10"
                 }
             ]
         },

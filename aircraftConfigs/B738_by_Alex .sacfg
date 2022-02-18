@@ -266,7 +266,7 @@
                 {
                     "name": "Flaps not in position",
                     "type": 2,
-                    "primaryCondition": "$laminar/B738/flap_indicator#0 > 45 or $laminar/B738/flap_indicator#0 == 33",
+                    "primaryCondition": "$laminar/B738/flap_indicator#0 > 45 or ($laminar/B738/flap_indicator#0 > 30 and $laminar/B738/flap_indicator#0 < 36)",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "$sim/cockpit2/gauges/indicators/airspeed_kts_pilot < 60",
                     "description": "Flaps must be in landing position (30/40) below check height until taxi speed"

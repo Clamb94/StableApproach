@@ -26,7 +26,7 @@
         {
             "name": "IMC",
             "height": 1000,
-            "primaryCondition": "$sim/weather/visibility_reported_m < 5000 or\n((($sim/weather/cloud_base_msl_m[0] - $analysis.touchdown_combined.elevation) < 450)\nand$sim/weather/cloud_coverage[0] >= 4)",
+            "primaryCondition": "$sim/weather/visibility_reported_m < 5000 or\n((($sim/weather/cloud_base_msl_m[0] - $analysis.touchdown_combined.elevation) < 450)\nand $sim/weather/cloud_coverage[0] >= 4)",
             "description": "Instrument approach in IMC conditions"
         },
         {
@@ -207,7 +207,7 @@
                 {
                     "name": "Glideslope deviation",
                     "type": 2,
-                    "primaryCondition": "abs ($AirbusFBW/GSValCapt ) < 1.3",
+                    "primaryCondition": "abs ($AirbusFBW/GSvalCapt ) < 1.3",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "$.ft_ARTE < 200",
                     "secondaryCondition": "$analysis.app.nav.gs.type == 6 and\n$.not_vis_app",
@@ -218,7 +218,7 @@
                 {
                     "name": "Glideslope deviation",
                     "type": 1,
-                    "primaryCondition": "abs($AirbusFBW/GSValCapt ) < 1",
+                    "primaryCondition": "abs($AirbusFBW/GSvalCapt ) < 1",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "$.ft_ARTE < 200",
                     "secondaryCondition": "$analysis.app.nav.gs.type == 6 and\n$.not_vis_app",
@@ -244,7 +244,7 @@
                 {
                     "name": "Localizer deviation",
                     "type": 1,
-                    "primaryCondition": "abs(AirbusFBW/LOCvalCapt) < 1",
+                    "primaryCondition": "abs($AirbusFBW/LOCvalCapt) < 1",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#TD-3000ms",
                     "secondaryCondition": "$analysis.app.nav.loc.type != 0 and\n$.not_vis_app",

@@ -101,44 +101,23 @@
             ]
         },
         {
-            "name": "Touchdown rate (fpm)",
-            "requirements": [
-                {
-                    "name": "Severe hard landing (fpm)",
-                    "type": 2,
-                    "primaryCondition": "$analysis.touchdown_combined.fpm_agl.max > -900",
-                    "beginConditionMarker": "#CH",
-                    "endConditionMarker": "#TAXI",
-                    "description": "Maximum sinkrate during touchdown:\n600 fpm"
-                },
-                {
-                    "name": "Hard landing (fpm)",
-                    "type": 2,
-                    "primaryCondition": "$analysis.touchdown_combined.fpm_agl.max > -600",
-                    "beginConditionMarker": "#CH",
-                    "endConditionMarker": "#TAXI",
-                    "description": "Maximum sinkrate during touchdown:\n600 fpm"
-                }
-            ]
-        },
-        {
             "name": "Touchdown g-force",
             "requirements": [
                 {
-                    "name": "Severe hard landing (g)",
+                    "name": "Severe hard landing (HLIS)",
                     "type": 2,
-                    "primaryCondition": "$analysis.touchdown_combined.g_vertical.max < 2.6",
-                    "beginConditionMarker": "#CH",
-                    "endConditionMarker": "#TAXI",
-                    "description": "Max vertical acceleration after touchdown:\n2.1 G"
+                    "primaryCondition": "($CL650/HLIS/delta_acc / 9.81) < 1.3",
+                    "beginConditionMarker": "#TAXI",
+                    "endConditionMarker": "#INSTANT",
+                    "description": "Max acceleration recorded by HLIS should be below 0.9"
                 },
                 {
-                    "name": "Hard landing (g)",
+                    "name": "Hard landing (HLIS)",
                     "type": 2,
-                    "primaryCondition": "$analysis.touchdown_combined.g_vertical.max < 2.1",
-                    "beginConditionMarker": "#CH",
-                    "endConditionMarker": "#TAXI",
-                    "description": "Max vertical acceleration after touchdown:\n2.1 G"
+                    "primaryCondition": "($CL650/HLIS/delta_acc / 9.81) < 0.9",
+                    "beginConditionMarker": "#TAXI",
+                    "endConditionMarker": "#INSTANT",
+                    "description": "Max acceleration recorded by HLIS should be below 0.9"
                 }
             ]
         },

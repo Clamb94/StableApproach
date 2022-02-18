@@ -131,20 +131,20 @@
                 {
                     "name": "High sinkrate",
                     "type": 2,
-                    "primaryCondition": "$sim/flightmodel/position/vh_ind_fpm > -1300",
+                    "primaryCondition": "if ($clamb/stableapproach/live/app/gs/type != 6)\n$sim/flightmodel/position/vh_ind_fpm > -1300;\nelse\n$sim/flightmodel/position/vh_ind_fpm >\n$clamb/stableapproach/live/app/gs/angle / 3 * -1300",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#TD_LAST",
                     "tolerance": 3000,
-                    "description": "Max sinkrate during approach is normally: 1000fpm"
+                    "description": "Max sinkrate during approach is normally:\n1000fpm"
                 },
                 {
                     "name": "High sinkrate",
                     "type": 1,
-                    "primaryCondition": "$sim/flightmodel/position/vh_ind_fpm > -1100",
+                    "primaryCondition": "if ($clamb/stableapproach/live/app/gs/type != 6)\n$sim/flightmodel/position/vh_ind_fpm > -1100;\nelse\n$sim/flightmodel/position/vh_ind_fpm >\n$clamb/stableapproach/live/app/gs/angle / 3 * -1100",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#TAXI",
                     "tolerance": 3000,
-                    "description": "Max sinkrate during approach is normally: 1000fpm"
+                    "description": "Max sinkrate during approach is normally:\n1000fpm"
                 }
             ]
         },

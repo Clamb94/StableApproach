@@ -19,7 +19,7 @@
         },
         {
             "old": "sim/cockpit/radios/nav1_vdef_dot",
-            "new": "AirbusFBW/GSValCapt"
+            "new": "AirbusFBW/GSvalCapt"
         }
     ],
     "checkHeights": [

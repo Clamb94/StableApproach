@@ -39,6 +39,8 @@
                     "primaryCondition": "$analysis.rollout.rwy_remaining > 0",
                     "beginConditionMarker": "#TD_FIRST",
                     "endConditionMarker": "$clamb/stableapproach/position/groundspeed_kn < 60",
+                    "secondaryCondition": "$analysis.rollout.go_around == 0",
+                    "secondaryConditionMarker": "#TD-3000ms",
                     "description": "Taxi speed when reaching end of runway\n"
                 }
             ]
@@ -79,7 +81,7 @@
                     "type": 2,
                     "primaryCondition": "abs($clamb/stableapproach/live/runway/cte) < (($analysis.rwy.width / 2) - 1)",
                     "beginConditionMarker": "#TD_FIRST",
-                    "endConditionMarker": "$clamb/stableapproach/position/groundspeed_kn < 60",
+                    "endConditionMarker": "$clamb/stableapproach/position/groundspeed_kn < 60 or $clamb/stableapproach/position/altitude_agl_ft > 50",
                     "tolerance": 1000,
                     "description": "Stay on centerline until reaching 60kn groundspeed"
                 }
@@ -268,7 +270,7 @@
                     "type": 2,
                     "primaryCondition": "$laminar/B738/flap_indicator#0 > 45 or ($laminar/B738/flap_indicator#0 > 30 and $laminar/B738/flap_indicator#0 < 36)",
                     "beginConditionMarker": "#CH",
-                    "endConditionMarker": "$sim/cockpit2/gauges/indicators/airspeed_kts_pilot < 60",
+                    "endConditionMarker": "#TD_LAST",
                     "description": "Flaps must be in landing position (30/40) below check height until taxi speed"
                 },
                 {

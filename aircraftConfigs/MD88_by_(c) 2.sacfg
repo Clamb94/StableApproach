@@ -39,19 +39,38 @@
                     "primaryCondition": "$analysis.rollout.rwy_remaining > 0",
                     "beginConditionMarker": "#TD_FIRST",
                     "endConditionMarker": "$clamb/stableapproach/position/groundspeed_kn < 60",
+                    "secondaryCondition": "$analysis.rollout.go_around == 0",
+                    "secondaryConditionMarker": "#TD-3000ms",
                     "description": "Taxi speed when reaching end of runway\n"
                 }
             ]
         },
         {
+            "name": "Touchdown zone",
             "requirements": [
                 {
-                    "name": "Touchdown zone",
+                    "name": "Early touchdown",
                     "type": 2,
-                    "primaryCondition": "$analysis.touchdown_combined.threshold_dist.max < $analysis.rwy.length.tdz and $analysis.touchdown_combined.threshold_dist.min > 0",
+                    "primaryCondition": "$analysis.touchdown_combined.threshold_dist.min > -5",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#INSTANT",
-                    "description": "Touchdown(s) within touchdown zone"
+                    "description": "Touchdown before runway threshold"
+                },
+                {
+                    "name": "Long landing",
+                    "type": 2,
+                    "primaryCondition": "$analysis.touchdown_combined.threshold_dist.max < ($analysis.rwy.length.tdz * 1.15)",
+                    "beginConditionMarker": "#CH",
+                    "endConditionMarker": "#INSTANT",
+                    "description": "Late touchdown"
+                },
+                {
+                    "name": "Long landing",
+                    "type": 1,
+                    "primaryCondition": "$analysis.touchdown_combined.threshold_dist.max < $analysis.rwy.length.tdz",
+                    "beginConditionMarker": "#CH",
+                    "endConditionMarker": "#INSTANT",
+                    "description": "Touchdown not within touchdown zone"
                 }
             ]
         },
@@ -62,7 +81,7 @@
                     "type": 2,
                     "primaryCondition": "abs($clamb/stableapproach/live/runway/cte) < (($analysis.rwy.width / 2) - 1)",
                     "beginConditionMarker": "#TD_FIRST",
-                    "endConditionMarker": "$clamb/stableapproach/position/groundspeed_kn < 60",
+                    "endConditionMarker": "$clamb/stableapproach/position/groundspeed_kn < 60 or $clamb/stableapproach/position/altitude_agl_ft > 50",
                     "tolerance": 1000,
                     "description": "Stay on centerline until reaching 60kn groundspeed"
                 }
@@ -129,7 +148,7 @@
                 {
                     "name": "High sinkrate",
                     "type": 2,
-                    "primaryCondition": "$sim/flightmodel/position/vh_ind_fpm > -1300",
+                    "primaryCondition": "if ($clamb/stableapproach/live/app/gs/type != 6)\n$sim/flightmodel/position/vh_ind_fpm > -1300;\nelse\n$sim/flightmodel/position/vh_ind_fpm >\n$clamb/stableapproach/live/app/gs/angle / 3 * -1300",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#TD_LAST",
                     "tolerance": 3000,
@@ -138,7 +157,7 @@
                 {
                     "name": "High sinkrate",
                     "type": 1,
-                    "primaryCondition": "$sim/flightmodel/position/vh_ind_fpm > -1100",
+                    "primaryCondition": "if ($clamb/stableapproach/live/app/gs/type != 6)\n$sim/flightmodel/position/vh_ind_fpm > -1100;\nelse\n$sim/flightmodel/position/vh_ind_fpm >\n$clamb/stableapproach/live/app/gs/angle / 3 * -1100",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#TAXI",
                     "tolerance": 3000,
@@ -243,7 +262,7 @@
                     "type": 2,
                     "primaryCondition": "$Rotate/md80/systems/flap_handle_position_ratio > 0.940 or ($Rotate/md80/systems/flap_handle_position_ratio >= 0.745 and $Rotate/md80/systems/flap_handle_position_ratio <= 0.755)",
                     "beginConditionMarker": "#CH",
-                    "endConditionMarker": "#TAXI",
+                    "endConditionMarker": "#TD_LAST"",
                     "description": "Flaps must be in landing position (28 or 40) below check height until taxi speed"
                 }
             ]
@@ -310,7 +329,7 @@
                     "beginConditionMarker": "$.ft_ARTE < 50",
                     "endConditionMarker": "#TD_LAST",
                     "tolerance": 1000,
-                    "description": "Tailwind on runway was above 10kn.\nMake the opposite runway would be more suitable."
+                    "description": "Tailwind on runway was above 10kn.\nThe opposite runway might be more suitable."
                 }
             ]
         }

@@ -5,7 +5,7 @@
   },
   "va":{
     "report_server":{
-      "enabled": false,
+      "enabled": true,
       "host": "api.stableapproach.net",
       "target": "/report",
       "semver": {
@@ -15,7 +15,7 @@
     },
     "aircraft_profiles":{
       "use_custom": true,
-      "revert_to_default": false
+      "revert_to_default": true
     }
   }
 }

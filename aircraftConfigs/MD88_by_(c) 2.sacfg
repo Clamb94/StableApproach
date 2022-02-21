@@ -171,7 +171,7 @@
                 {
                     "name": "Approach speed",
                     "type": 2,
-                    "primaryCondition": "($Rotate/md80/autopilot/at_target_speed - 3) <= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot and ($Rotate/md80/autopilot/at_target_speed + 20) >= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot",
+                    "primaryCondition": "($Rotate/md80/autopilot/at_target_speed - 8) <= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot and ($Rotate/md80/autopilot/at_target_speed + 15) >= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "$.ft_ARTE < 100",
                     "tolerance": 3000,
@@ -180,7 +180,7 @@
                 {
                     "name": "Approach speed",
                     "type": 1,
-                    "primaryCondition": "$Rotate/md80/autopilot/at_target_speed <= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot and ($Rotate/md80/autopilot/at_target_speed + 15) >= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot",
+                    "primaryCondition": "($Rotate/md80/autopilot/at_target_speed - 5) <= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot and ($Rotate/md80/autopilot/at_target_speed + 10) >= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "$.ft_ARTE < 100",
                     "tolerance": 3000,
@@ -262,7 +262,7 @@
                     "type": 2,
                     "primaryCondition": "$Rotate/md80/systems/flap_handle_position_ratio > 0.940 or ($Rotate/md80/systems/flap_handle_position_ratio >= 0.745 and $Rotate/md80/systems/flap_handle_position_ratio <= 0.755)",
                     "beginConditionMarker": "#CH",
-                    "endConditionMarker": "#TD_LAST"",
+                    "endConditionMarker": "#TD_LAST",
                     "description": "Flaps must be in landing position (28 or 40) below check height until taxi speed"
                 }
             ]

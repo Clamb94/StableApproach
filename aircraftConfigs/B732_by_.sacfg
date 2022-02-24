@@ -247,7 +247,7 @@
                 {
                     "name": "Gear not down",
                     "type": 2,
-                    "primaryCondition": "$FJS/732/FltControls/GearHandlePosition == 0 and $FJS/732/Annun/SysAnnunLIT_119 == 0 and $FJS/732/Annun/SysAnnunLIT_121 == 0 and $FJS/732/Annun/SysAnnunLIT_1117 == 0",
+                    "primaryCondition": "$FJS/732/FltControls/GearHandlePosition == 0 and $FJS/732/Annun/SysAnnunLIT_119 == 0 and $FJS/732/Annun/SysAnnunLIT_121 == 0 and $FJS/732/Annun/SysAnnunLIT_117 == 0",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#TAXI",
                     "description": "Gear must be down and locked\nbelow check height"

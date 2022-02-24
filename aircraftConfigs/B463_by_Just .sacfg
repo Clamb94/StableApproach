@@ -233,7 +233,7 @@
                 {
                     "name": "Flaps not in position",
                     "type": 2,
-                    "primaryCondition": "$sim/cockpit2/controls/flap_ratio > 0.95 or ($sim/cockpit2/controls/flap_ratio >= 0.745 and $sim/cockpit2/controls/flap_ratio <= 0.755)",
+                    "primaryCondition": "$sim/cockpit2/controls/flap_ratio > 0.95 or ($sim/cockpit2/controls/flap_ratio >= 0.7 and $sim/cockpit2/controls/flap_ratio <= 0.8)",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#TD_LAST"",
                     "description": "Flaps must be in landing position (30 or 33) below check height until taxi speed"

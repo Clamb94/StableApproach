@@ -260,7 +260,7 @@
                 {
                     "name": "Flaps not in position",
                     "type": 2,
-                    "primaryCondition": "$Rotate/md80/systems/flap_handle_position_ratio > 0.940 or ($Rotate/md80/systems/flap_handle_position_ratio >= 0.745 and $Rotate/md80/systems/flap_handle_position_ratio <= 0.755)",
+                    "primaryCondition": "$Rotate/md80/systems/flap_handle_position_ratio > 0.95 or ($Rotate/md80/systems/flap_handle_position_ratio >= 0.7 and $Rotate/md80/systems/flap_handle_position_ratio <= 0.8)",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#TD_LAST",
                     "description": "Flaps must be in landing position (28 or 40) below check height until taxi speed"

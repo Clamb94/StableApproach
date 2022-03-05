@@ -5,7 +5,7 @@
   },
   "va":{
     "report_server":{
-      "enabled": false,
+      "enabled": true,
       "host": "system.aerovirtual.com.ar",
       "target": "/dstable"
     },

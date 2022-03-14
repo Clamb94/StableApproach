@@ -263,9 +263,10 @@
                 {
                     "name": "Flaps not in position",
                     "type": 2,
-                    "primaryCondition": "$FJS/Q4XP/FlightControls/FlapsHandle == 0.5 or\n$FJS/Q4XP/FlightControls/FlapsHandle == 0.75 or\n$FJS/Q4XP/FlightControls/FlapsHandle == 1",
+                    "primaryCondition": "($FJS/Q4XP/FlightControls/FlapsHandle > 0.45 and $FJS/Q4XP/FlightControls/FlapsHandle < 0.55) or ($FJS/Q4XP/FlightControls/FlapsHandle > 0.7 and $FJS/Q4XP/FlightControls/FlapsHandle < 0.8) or $FJS/Q4XP/FlightControls/FlapsHandle > 0.95",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#TD_LAST",
+					"tolerance": 500,
                     "description": "Flaps must be in landing position (10/20/35) below check height until taxi speed"
                 }
             ]

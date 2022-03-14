@@ -81,7 +81,7 @@
                     "type": 2,
                     "primaryCondition": "abs($clamb/stableapproach/live/runway/cte) < (($analysis.rwy.width / 2) - 1)",
                     "beginConditionMarker": "#TD_FIRST",
-                    "endConditionMarker": "$clamb/stableapproach/position/groundspeed_kn < 60 or $clamb/stableapproach/position/altitude_agl_ft > 50",
+                    "endConditionMarker": "$clamb/stableapproach/position/groundspeed_kn < 60 or $clamb/stableapproach/position/altitude_agl_ft > 25",
                     "tolerance": 1000,
                     "description": "Stay on centerline until reaching 60kn groundspeed"
                 }
@@ -171,7 +171,7 @@
                 {
                     "name": "Approach speed",
                     "type": 2,
-                    "primaryCondition": "($Rotate/md80/autopilot/at_target_speed - 3) <= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot and ($Rotate/md80/autopilot/at_target_speed + 20) >= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot",
+                    "primaryCondition": "($Rotate/md80/autopilot/at_target_speed - 8) <= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot and ($Rotate/md80/autopilot/at_target_speed + 15) >= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "$.ft_ARTE < 100",
                     "tolerance": 3000,
@@ -180,7 +180,7 @@
                 {
                     "name": "Approach speed",
                     "type": 1,
-                    "primaryCondition": "$Rotate/md80/autopilot/at_target_speed <= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot and ($Rotate/md80/autopilot/at_target_speed + 15) >= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot",
+                    "primaryCondition": "($Rotate/md80/autopilot/at_target_speed - 5) <= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot and ($Rotate/md80/autopilot/at_target_speed + 10) >= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "$.ft_ARTE < 100",
                     "tolerance": 3000,
@@ -260,9 +260,9 @@
                 {
                     "name": "Flaps not in position",
                     "type": 2,
-                    "primaryCondition": "$Rotate/md80/systems/flap_handle_position_ratio > 0.940 or ($Rotate/md80/systems/flap_handle_position_ratio >= 0.745 and $Rotate/md80/systems/flap_handle_position_ratio <= 0.755)",
+                    "primaryCondition": "$Rotate/md80/systems/flap_handle_position_ratio > 0.95 or ($Rotate/md80/systems/flap_handle_position_ratio >= 0.7 and $Rotate/md80/systems/flap_handle_position_ratio <= 0.8)",
                     "beginConditionMarker": "#CH",
-                    "endConditionMarker": "#TD_LAST"",
+                    "endConditionMarker": "#TD_LAST",
                     "description": "Flaps must be in landing position (28 or 40) below check height until taxi speed"
                 }
             ]

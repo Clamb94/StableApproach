@@ -303,7 +303,7 @@
                 {
                     "name": "Autoland",
                     "type": 0,
-                    "primaryCondition": "$Rotate/aircraft/controls/fgs_appr_land == 1",
+                    "primaryCondition": "$Rotate/aircraft/controls/fgs_autoflight == 0",
                     "beginConditionMarker": "#TD-3000ms",
                     "endConditionMarker": "#TD+3000ms",
                     "description": "Information only: Autoland"
@@ -311,7 +311,7 @@
                 {
                     "name": "Autopilot engaged",
                     "type": 0,
-                    "primaryCondition": "$Rotate/aircraft/controls/fgs_autoflight == 1",
+                    "primaryCondition": "$Rotate/aircraft/controls/fgs_autoflight == 0",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#TD-3000ms",
                     "tolerance": 1000,

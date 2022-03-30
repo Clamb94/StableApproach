@@ -168,6 +168,14 @@
         {
             "name": "Approach speed",
             "requirements": [
+			    {
+                    "name": "Vapp not set",
+                    "type": 2,
+                    "primaryCondition": "$Rotate/aircraft/systems/fms_data_vapp#0 > 50",
+                    "beginConditionMarker": "#CH",
+                    "endConditionMarker": "#TD-3000ms",
+                    "description": "Set/confirm Vapp in FMC/CDU"
+                },
                 {
                     "name": "Approach speed",
                     "type": 2,
@@ -175,7 +183,7 @@
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "$.ft_ARTE < 100",
                     "tolerance": 3000,
-                    "description": "Speed during approach must be between:\nVREF and VREF +15"
+                    "description": "Speed during approach must be between:\nVapp -5 and Vapp +10"
                 },
                 {
                     "name": "Approach speed",
@@ -184,7 +192,7 @@
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "$.ft_ARTE < 100",
                     "tolerance": 3000,
-                    "description": "Speed during approach must be between:\nVREF and VREF +15"
+                    "description": "Speed during approach must be between:\nVapp -5 and Vapp +10"
                 }
             ]
         },

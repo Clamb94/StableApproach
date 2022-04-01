@@ -117,11 +117,11 @@
                 },
                 {
                     "name": "Hard landing (g)",
-                    "type": 2,
+                    "type": 1,
                     "primaryCondition": "$analysis.touchdown_combined.g_vertical.max < 2.1",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#TAXI",
-                    "description": "Max vertical acceleration after touchdown: 2.1 G"
+                    "description": "Max vertical acceleration after touchdown:\n2.1 G"
                 }
             ]
         },

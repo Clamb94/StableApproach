@@ -113,7 +113,7 @@
                 },
                 {
                     "name": "Hard landing (fpm)",
-                    "type": 2,
+                    "type": 1,
                     "primaryCondition": "$analysis.touchdown_combined.fpm_agl.max > -600",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#TAXI",

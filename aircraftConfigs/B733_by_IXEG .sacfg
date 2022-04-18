@@ -289,7 +289,7 @@
                 {
                     "name": "Autoland",
                     "type": 0,
-                    "primaryCondition": "$ixeg/733/RA/AFDS/autopilot_on == 1",
+                    "primaryCondition": "$ixeg/733/RA/AFDS/autopilot_on == 0",
                     "beginConditionMarker": "#TD-3000ms",
                     "endConditionMarker": "#TD+3000ms",
                     "description": "Information only: Autoland"
@@ -297,7 +297,7 @@
                 {
                     "name": "Autopilot engaged",
                     "type": 0,
-                    "primaryCondition": "$ixeg/733/RA/AFDS/autopilot_on == 1",
+                    "primaryCondition": "$ixeg/733/RA/AFDS/autopilot_on == 0",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#TD-3000ms",
                     "tolerance": 1000

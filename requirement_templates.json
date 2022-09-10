@@ -1,6 +1,6 @@
 {
 
-    "taxiSpeed" : 25,
+    "taxiSpeed" : 30,
     "checkHeights": [
         {
             "name": "IMC",

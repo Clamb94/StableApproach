@@ -60,7 +60,7 @@
         {
             "template": "Approach speed (Vref)",
             "replace": {
-                "$VAPP": "$laminar/B747/airspeed/Vref",
+                "$VREF": "$laminar/B747/airspeed/Vref",
                 "KIAS": "$sim/cockpit2/gauges/indicators/airspeed_kts_pilot"
             }
         },

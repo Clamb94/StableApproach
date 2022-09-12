@@ -73,7 +73,7 @@
         {
             "template": "Approach speed (Vref)",
             "replace": {
-                "$VAPP": "$toliss_airbus/pfdoutputs/general/VLS_value",
+                "$VREF": "$toliss_airbus/pfdoutputs/general/VLS_value",
                 "KIAS": "$sim/cockpit2/gauges/indicators/airspeed_kts_pilot"
             }
         },

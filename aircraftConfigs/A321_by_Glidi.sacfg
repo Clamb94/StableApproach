@@ -67,7 +67,7 @@
         {
             "template": "Localizer deviation",
             "replace": {
-                "$HODT": "$AirbusFBW/ILS1LocRaw"
+                "$HDOT": "$AirbusFBW/ILS1LocRaw"
             }
         },
         {

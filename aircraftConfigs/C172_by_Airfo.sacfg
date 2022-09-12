@@ -60,7 +60,7 @@
         {
             "template": "Localizer deviation",
             "replace": {
-                "$HODT": "$sim/cockpit/radios/nav1_hdef_dot"
+                "$HDOT": "$sim/cockpit/radios/nav1_hdef_dot"
             }
         },
         {

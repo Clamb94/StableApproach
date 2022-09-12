@@ -64,7 +64,7 @@
             "template": "Flaps",
             "replace": {
                 "$FLAPSCONDITION": "($FJS/Q4XP/FlightControls/FlapsHandle > 0.45 and $FJS/Q4XP/FlightControls/FlapsHandle < 0.55) or ($FJS/Q4XP/FlightControls/FlapsHandle > 0.7 and $FJS/Q4XP/FlightControls/FlapsHandle < 0.8) or $FJS/Q4XP/FlightControls/FlapsHandle > 0.95",
-                "FLAPSTEXT": "10/20/35"
+                "$FLAPSTEXT": "10/20/35"
             }
         },
         {

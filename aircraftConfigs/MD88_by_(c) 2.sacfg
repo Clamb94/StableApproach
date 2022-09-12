@@ -61,14 +61,14 @@
             "template": "Approach speed (Vapp)",
             "replace": {
                 "$VAPP": "$Rotate/md80/autopilot/at_target_speed",
-                "KIAS": "$sim/cockpit2/gauges/indicators/airspeed_kts_pilot"
+                "$KIAS": "$sim/cockpit2/gauges/indicators/airspeed_kts_pilot"
             }
         },
         {
             "template": "Flaps",
             "replace": {
                 "$FLAPSCONDITION": "$Rotate/md80/systems/flap_handle_position_ratio > 0.95 or ($Rotate/md80/systems/flap_handle_position_ratio >= 0.7 and $Rotate/md80/systems/flap_handle_position_ratio <= 0.8)",
-                "FLAPSTEXT": "25/30"
+                "$FLAPSTEXT": "25/30"
             }
         },
         {

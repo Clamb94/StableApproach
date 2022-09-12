@@ -61,14 +61,14 @@
             "template": "Approach speed (Vapp)",
             "replace": {
                 "$VAPP": "$sim/cockpit/autopilot/airspeed",
-                "KIAS": "$sim/cockpit2/gauges/indicators/airspeed_kts_pilot"
+                "$KIAS": "$sim/cockpit2/gauges/indicators/airspeed_kts_pilot"
             }
         },
         {
             "template": "Flaps",
             "replace": {
                 "$FLAPSCONDITION": "$sim/cockpit2/controls/flap_handle_deploy_ratio > 0.95 or ($sim/cockpit2/controls/flap_handle_deploy_ratio >= 0.825 and $sim/cockpit2/controls/flap_handle_deploy_ratio <= 0.925)",
-                "FLAPSTEXT": "30/40"
+                "$FLAPSTEXT": "30/40"
             }
         },
         {

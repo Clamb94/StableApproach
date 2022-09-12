@@ -61,14 +61,14 @@
             "template": "Approach speed (Vapp)",
             "replace": {
                 "$VAPP": "$A300/FMS/vapp_speed",
-                "KIAS": "$sim/cockpit2/gauges/indicators/airspeed_kts_pilot"
+                "$KIAS": "$sim/cockpit2/gauges/indicators/airspeed_kts_pilot"
             }
         },
         {
             "template": "Flaps",
             "replace": {
                 "$FLAPSCONDITION": "$sim/cockpit2/controls/flap_handle_deploy_ratio > 0.95 or ($sim/cockpit2/controls/flap_handle_deploy_ratio >= 0.7 and $sim/cockpit2/controls/flap_handle_deploy_ratio <= 0.8)",
-                "FLAPSTEXT": "20/20 or FULL"
+                "$FLAPSTEXT": "20/20 or FULL"
             }
         },
         {

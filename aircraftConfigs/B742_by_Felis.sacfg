@@ -61,14 +61,14 @@
             "template": "Approach speed (Vapp)",
             "replace": {
                 "$VAPP": "$B742/AP_panel/AT_spd_set_rotary",
-                "KIAS": "$sim/cockpit2/gauges/indicators/airspeed_kts_pilot"
+                "$KIAS": "$sim/cockpit2/gauges/indicators/airspeed_kts_pilot"
             }
         },
         {
             "template": "Flaps",
             "replace": {
                 "$FLAPSCONDITION": "$sim/cockpit2/controls/flap_handle_deploy_ratio > 0.95 or ($sim/cockpit2/controls/flap_handle_deploy_ratio >= 0.78 and $sim/cockpit2/controls/flap_handle_deploy_ratio <= 0.88)",
-                "FLAPSTEXT": "25/30"
+                "$FLAPSTEXT": "25/30"
             }
         },
         {

@@ -92,7 +92,7 @@
             "template": "Flaps",
             "replace": {
                 "$FLAPSCONDITION": "$Rotate/aircraft/systems/flaps_cmd_pos_deg == 35 or $Rotate/aircraft/systems/flaps_cmd_pos_deg == 50",
-                "FLAPSTEXT": "35/50"
+                "$FLAPSTEXT": "35/50"
             }
         },
         {

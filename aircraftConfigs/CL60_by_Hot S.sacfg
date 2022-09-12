@@ -79,7 +79,7 @@
             "template": "Flaps",
             "replace": {
                 "$FLAPSCONDITION": "$CL650/fo_state/flaps_ind == 45",
-                "FLAPSTEXT": "45"
+                "$FLAPSTEXT": "45"
             }
         },
         {

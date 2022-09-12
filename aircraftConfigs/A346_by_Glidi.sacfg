@@ -74,14 +74,14 @@
             "template": "Approach speed (Vref)",
             "replace": {
                 "$VREF": "$toliss_airbus/pfdoutputs/general/VLS_value",
-                "KIAS": "$sim/cockpit2/gauges/indicators/airspeed_kts_pilot"
+                "$KIAS": "$sim/cockpit2/gauges/indicators/airspeed_kts_pilot"
             }
         },
         {
             "template": "Flaps",
             "replace": {
                 "$FLAPSCONDITION": "$sim/cockpit2/controls/flap_handle_deploy_ratio > 0.95 or ($sim/cockpit2/controls/flap_handle_deploy_ratio >= 0.7 and $sim/cockpit2/controls/flap_handle_deploy_ratio <= 0.8)",
-                "FLAPSTEXT": "3 or FULL"
+                "$FLAPSTEXT": "3 or FULL"
             }
         },
         {

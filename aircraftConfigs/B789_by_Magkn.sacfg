@@ -92,7 +92,7 @@
             "template": "Flaps",
             "replace": {
                 "$FLAPSCONDITION": "$sim/cockpit2/controls/flap_handle_deploy_ratio >= 0.95 or ($sim/cockpit2/controls/flap_handle_deploy_ratio >= 0.83 and $sim/cockpit2/controls/flap_handle_deploy_ratio <= 0.93)",
-                "FLAPSTEXT": "25/30"
+                "$FLAPSTEXT": "25/30"
             }
         },
         {

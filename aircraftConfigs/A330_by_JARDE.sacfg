@@ -61,14 +61,14 @@
             "template": "Approach speed (Vapp)",
             "replace": {
                 "$VAPP": "$sim/custom/xap/pfd/vappr_knots",
-                "KIAS": "$sim/cockpit2/gauges/indicators/airspeed_kts_pilot"
+                "$KIAS": "$sim/cockpit2/gauges/indicators/airspeed_kts_pilot"
             }
         },
         {
             "template": "Flaps",
             "replace": {
                 "$FLAPSCONDITION": "$jd/flaps/config > 6.750 or ($jd/flaps/config >= 5.750 and $jd/flaps/config <= 6.250)",
-                "FLAPSTEXT": "3 or FULL"
+                "$FLAPSTEXT": "3 or FULL"
             }
         },
         {

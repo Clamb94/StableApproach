@@ -42,14 +42,20 @@
         {
             "template": "Sink rate"
         },
-	{
+        {
             "template": "Bank angle"
         },
         {
-            "template": "Glideslope deviation"
+            "template": "Glideslope deviation",
+            "replace": {
+                "$VDOT": "$sim/cockpit/radios/nav1_vdef_dot"
+            }
         },
         {
-            "template": "Localizer deviation"
+            "template": "Localizer deviation",
+            "replace": {
+                "$HODT": "$sim/cockpit/radios/nav1_hdef_dot"
+            }
         },
         {
             "name": "Approach speed",

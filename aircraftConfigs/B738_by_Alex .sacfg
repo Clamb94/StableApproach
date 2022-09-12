@@ -11,13 +11,13 @@
     "replace_dref": [],
     "checkHeights": [
         {
-            "template":"IMC"
+            "template": "IMC"
         },
         {
-            "template":"VMC"
+            "template": "VMC"
         },
         {
-            "template":"VISUAL"
+            "template": "VISUAL"
         }
     ],
     "requirementGroups": [
@@ -42,14 +42,20 @@
         {
             "template": "Sink rate"
         },
-	{
+        {
             "template": "Bank angle"
         },
         {
-            "template": "Glideslope deviation"
+            "template": "Glideslope deviation",
+            "replace": {
+                "$VDOT": "$sim/cockpit/radios/nav1_vdef_dot"
+            }
         },
         {
-            "template": "Localizer deviation"
+            "template": "Localizer deviation",
+            "replace": {
+                "$HODT": "$sim/cockpit/radios/nav1_hdef_dot"
+            }
         },
         {
             "name": "Approach speed",
@@ -84,10 +90,9 @@
         },
         {
             "template": "Gear",
-            "replace": 
-              {
-              "$CONDITION":"$sim/cockpit2/controls/gear_handle_down == 1 and $sim/cockpit2/annunciators/gear_unsafe == 0"
-              }          
+            "replace": {
+                "$CONDITION": "$sim/cockpit2/controls/gear_handle_down == 1 and $sim/cockpit2/annunciators/gear_unsafe == 0"
+            }
         },
         {
             "name": "Flaps",
@@ -114,7 +119,7 @@
         {
             "template": "Speedbrake",
             "replace": {
-	    		"$CONDITION": "$laminar/B738/annunciator/speedbrake_armed > 0.1 and $laminar/B738/annunciator/speedbrake_extend = 0"
+                "$CONDITION": "$laminar/B738/annunciator/speedbrake_armed > 0.1 and $laminar/B738/annunciator/speedbrake_extend = 0"
             }
         },
         {
@@ -135,20 +140,20 @@
         {
             "template": "Autoflight",
             "replace": {
-	    		"$CONDITION": "$laminar/autopilot/ap_on == 0"
+                "$CONDITION": "$laminar/autopilot/ap_on == 0"
             }
         },
         {
             "template": "Thrust",
             "replace": {
-	    		"$N1": "$laminar/B738/engine/indicators/N1_percent_1"
+                "$N1": "$laminar/B738/engine/indicators/N1_percent_1"
             }
         },
         {
             "template": "No Tailstrike",
             "replace": {
-	    		"$TAILSTRIKEPITCH": "9.3",
-	    		"$CAUTIONPITCH": "8.0"
+                "$TAILSTRIKEPITCH": "9.3",
+                "$CAUTIONPITCH": "8.0"
             }
         },
         {

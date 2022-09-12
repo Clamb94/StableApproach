@@ -1,8 +1,8 @@
 {
     "enabled": true,
     "acf": {
-        "icao": "A321",
-        "author": "Gliding Kiwi"
+        "icao": "A346",
+        "author": "GlidingKiwi"
     },
     "speed": {
         "taxi": -1

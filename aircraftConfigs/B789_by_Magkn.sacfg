@@ -2,7 +2,7 @@
     "enabled": true,
     "acf": {
         "icao": "B789",
-        "author": "Magknight Team"
+        "author": "Magknight"
     },
     "speed": {
         "taxi": 30

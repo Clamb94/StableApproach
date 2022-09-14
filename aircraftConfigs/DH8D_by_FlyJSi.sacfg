@@ -2,7 +2,7 @@
     "enabled": true,
     "acf": {
         "icao": "DH8D",
-        "author": ""
+        "author": "FlyJSim"
     },
     "speed": {
         "taxi": 30

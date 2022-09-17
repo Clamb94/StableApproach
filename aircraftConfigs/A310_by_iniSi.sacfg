@@ -2,7 +2,7 @@
     "enabled": true,
     "acf": {
         "icao": "A310",
-        "author": "iniSimulations "
+        "author": "iniSimulations"
     },
     "speed": {
         "taxi": -1

@@ -61,13 +61,13 @@
         {
             "template": "Glideslope deviation",
             "replace": {
-                "$VDOT": "$sim/cockpit/radios/nav1_vdef_dot"
+                "$VDOT": "$sim/cockpit/radios/nav2_vdef_dot"
             }
         },
         {
             "template": "Localizer deviation",
             "replace": {
-                "$HDOT": "$sim/cockpit/radios/nav1_hdef_dot"
+                "$HDOT": "$sim/cockpit/radios/nav2_hdef_dot"
             }
         },
         {

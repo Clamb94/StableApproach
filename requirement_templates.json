@@ -18,7 +18,7 @@
             "name": "VISUAL",
             "height": 500,
             "primaryCondition": "0",
-            "description": "Visual approach can only be selected manually\n\nPlugins -> StableApproach -> Check height"
+            "description": "Visual approach can only be selected manually:\nlugins -> StableApproach -> Check height"
         }
     ],
     "requirementGroups": [
@@ -46,7 +46,7 @@
                     "primaryCondition": "$analysis.touchdown_combined.threshold_dist.min > -5",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#INSTANT",
-                    "description": "Touchdown before runway threshold"
+                    "description": "Touchdown was before runway threshold"
                 },
                 {
                     "name": "Long landing",
@@ -102,7 +102,7 @@
                     "primaryCondition": "$analysis.touchdown_combined.fpm_agl.max > -900",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#TAXI",
-                    "description": "Maximum sink rate during touchdown:\n600 fpm"
+                    "description": "Maximum sink rate during touchdown: 600 fpm"
                 },
                 {
                     "name": "Hard landing (fpm)",
@@ -110,7 +110,7 @@
                     "primaryCondition": "$analysis.touchdown_combined.fpm_agl.max > -600",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#TAXI",
-                    "description": "Maximum sink rate during touchdown:\n600 fpm"
+                    "description": "Maximum sink rate during touchdown: 600 fpm"
                 }
             ]
         },
@@ -123,7 +123,7 @@
                     "primaryCondition": "$analysis.touchdown_combined.g_vertical.max < 2.6",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#TAXI",
-                    "description": "Max vertical acceleration after touchdown:\n2.1 G"
+                    "description": "Max vertical acceleration after touchdown: 2.1 G"
                 },
                 {
                     "name": "Hard landing (g)",
@@ -131,7 +131,7 @@
                     "primaryCondition": "$analysis.touchdown_combined.g_vertical.max < 2.1",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#TAXI",
-                    "description": "Max vertical acceleration after touchdown:\n2.1 G"
+                    "description": "Max vertical acceleration after touchdown: 2.1 G"
                 }
             ]
         },
@@ -145,7 +145,7 @@
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#TD_LAST",
                     "tolerance": 3000,
-                    "description": "Max sink rate during approach is normally:\n1000fpm"
+                    "description": "Max sink rate during approach is normally 1000fpm"
                 },
                 {
                     "name": "High sink rate",
@@ -154,7 +154,7 @@
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#TAXI",
                     "tolerance": 3000,
-                    "description": "Max sink rate during approach is normally:\n1000fpm"
+                    "description": "Max sink rate during approach is normally 1000fpm"
                 }
             ]
         },
@@ -169,7 +169,7 @@
                     "endConditionMarker": "#TD_LAST",
                     "secondaryCondition": "$.not_vis_app",
                     "tolerance": 3000,
-                    "description": "Max bank angle during approach should not exceed 10 degree"
+                    "description": "Max bank angle during final approach should not exceed 10 degree"
                 },
                 {
                     "name": "High bank angle",
@@ -178,7 +178,7 @@
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#TAXI",
                     "tolerance": 3000,
-                    "description": "Max bank angle during approach should not exceed 10 degree"
+                    "description": "Max bank angle during final approach should not exceed 10 degree"
                 }
             ]
         },
@@ -194,7 +194,7 @@
                     "secondaryCondition": "$analysis.app.nav.gs.type == 6 and\n$.not_vis_app",
                     "secondaryConditionMarker": "#TD-3000ms",
                     "tolerance": 2000,
-                    "description": "Maximum 1 dot glideslope deviation.\nFrom check height until 200ft above runway threshold elevation (ARTE).\nNot required for VISUAL approaches"
+                    "description": "Max 1 dot glideslope deviation until reaching 200ft AGL"
                 },
                 {
                     "name": "Glideslope deviation",
@@ -204,7 +204,7 @@
                     "endConditionMarker": "$.ft_ARTE < 200",
                     "secondaryCondition": "$analysis.app.nav.gs.type == 6 and\n$.not_vis_app",
                     "secondaryConditionMarker": "#TD-3000ms",
-                    "description": "Maximum 1 dot glideslope deviation.\nFrom check height until 200ft above runway threshold elevation (ARTE).\nNot required for VISUAL approaches"
+                    "description": "Max 1 dot glideslope deviation until reaching 200ft AGL"
                 }
             ]
         },
@@ -220,7 +220,7 @@
                     "secondaryCondition": "$analysis.app.nav.loc.type != 0 and\n$.not_vis_app",
                     "secondaryConditionMarker": "#TD-3000ms",
                     "tolerance": 2000,
-                    "description": "Maximum 1 dot localizer deviation\nfrom check height till touchdown.\nNot required for VISUAL approaches"
+                    "description": "Max 1 dot localizer deviation until reaching 200ft AGL"
                 },
                 {
                     "name": "Localizer deviation",
@@ -231,7 +231,7 @@
                     "secondaryCondition": "$analysis.app.nav.loc.type != 0 and\n$.not_vis_app",
                     "secondaryConditionMarker": "#TD-3000ms",
                     "tolerance": 2000,
-                    "description": "Maximum 1 dot localizer deviation\nfrom check height till touchdown.\nNot required for VISUAL approaches"
+                    "description": "Max 1 dot localizer deviation until reaching 200ft AGL"
                 }
             ]
         },
@@ -245,7 +245,7 @@
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "$.ft_ARTE < 100",
                     "tolerance": 3000,
-                    "description": "Speed during approach must be between:\nVAPP -5/+10 KIAS"
+                    "description": "Keep speed in this range below check height: Vapp -5/+10 KIAS"
                 },
                 {
                     "name": "Approach speed",
@@ -254,7 +254,7 @@
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "$.ft_ARTE < 100",
                     "tolerance": 3000,
-                    "description": "Speed during approach must be between:\nVapp -5/+10 KIAS"
+                    "description": "Keep speed in this range below check height: Vapp -5/+10 KIAS"
                 }
             ]
         },
@@ -268,7 +268,7 @@
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "$.ft_ARTE < 100",
                     "tolerance": 3000,
-                    "description": "Speed during approach must be between:\nVREF/VLS and VREF/VLS + 15"
+                    "description": "Keep speed in this range below check height: VREF -0/+15\nApproach speed is normally VREF+5"
                 },
                 {
                     "name": "Approach speed",
@@ -277,10 +277,41 @@
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "$.ft_ARTE < 100",
                     "tolerance": 3000,
-                    "description": "Speed during approach must be between:\nVLS and VLS + 15"
+                    "description": "Keep speed in this range below check height: VREF -0/+15\nApproach speed is normally VREF+5"
                 }
             ]
         },
+        {
+            "name": "Approach speed (Vref/FMC)",
+            "requirements": [
+                {
+                    "name": "Vref not set",
+                    "type": 2,
+                    "primaryCondition": "$VREF > 50",
+                    "beginConditionMarker": "#CH",
+                    "endConditionMarker": "#TD-3000ms",
+                    "description": "Approach VREF should be set in the CDU"
+                },
+                {
+                    "name": "Approach speed",
+                    "type": 2,
+                    "primaryCondition": "($VREF - 3) <= $KIAS and ($VREF + 20) >= $KIAS",
+                    "beginConditionMarker": "#CH",
+                    "endConditionMarker": "$.ft_ARTE < 100",
+                    "tolerance": 3000,
+                    "description": "Keep speed in this range below check height: VREF -0/+15\nApproach speed is normally VREF+5"
+                },
+                {
+                    "name": "Approach speed",
+                    "type": 1,
+                    "primaryCondition": "($VREF) <= $KIAS and ($VREF + 15) >= $KIAS",
+                    "beginConditionMarker": "#CH",
+                    "endConditionMarker": "$.ft_ARTE < 100",
+                    "tolerance": 3000,
+                    "description": "Keep speed in this range below check height: VREF -0/+15\nApproach speed is normally VREF+5"
+                }
+            ]
+        },				
         {
             "name": "Approach speed",
             "requirements": [
@@ -290,7 +321,7 @@
                     "primaryCondition": "$analysis.app.kias.min - $analysis.app.kias.max < 20",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#INSTANT",
-                    "description": "Speed should be relatively constant below check height (max. 20kn between min/max)"
+                    "description": "Keep a constant speed below check height (+- 10kn)"
                 }
             ]
         },
@@ -331,7 +362,7 @@
                     "primaryCondition": "$CONDITION",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#TAXI",
-                    "description": "Gear must be down and locked\nbelow check height"
+                    "description": "Gear must be down and locked when reaching check height"
                 }
             ]
         },
@@ -347,7 +378,7 @@
                     "secondaryCondition": "$analysis.rollout.go_around == 0",
                     "secondaryConditionMarker": "#TD-3000ms",
                     "tolerance": 500,
-                    "description": "Speedbrakes must be in the ARMED position\nbelow check height.\nNot required in case of touch-and-go"
+                    "description": "Speedbrake must be ARMED when reaching check height"
                 }
             ]
         },
@@ -360,7 +391,7 @@
                     "primaryCondition": "$CONDITION",
                     "beginConditionMarker": "#TD-3000ms",
                     "endConditionMarker": "#TD+3000ms",
-                    "description": "Information only: Autoland"
+                    "description": "This landing was an autoland"
                 }
             ]
         },
@@ -394,7 +425,7 @@
                     "primaryCondition": "$FLAPSCONDITION",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#TD_LAST",
-                    "description": "Flaps must be in landing position ($FLAPSTEXT) below check height until taxi speed"
+                    "description": "Flaps must be in landing position ($FLAPSTEXT) when reaching check height"
                 }
             ]
         }

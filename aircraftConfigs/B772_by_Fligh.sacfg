@@ -62,36 +62,12 @@
                 "$HDOT": "$sim/cockpit/radios/nav1_hdef_dot"
             }
         },
-        {
-            "name": "Approach speed",
-            "requirements": [
-                {
-                    "name": "Vref not set",
-                    "type": 2,
-                    "primaryCondition": "$T7Avionics/fms/vref > 50",
-                    "beginConditionMarker": "#CH",
-                    "endConditionMarker": "#TD-3000ms",
-                    "description": "Approach VREF should be set in the CDU"
-                },
-                {
-                    "name": "Approach speed",
-                    "type": 2,
-                    "primaryCondition": "($T7Avionics/fms/vref - 3) <= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot\nand\n($T7Avionics/fms/vref + 20) >= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot",
-                    "beginConditionMarker": "#CH",
-                    "endConditionMarker": "$.ft_ARTE < 100",
-                    "tolerance": 3000,
-                    "description": "Speed during approach must be between:\nVREF\n  and\nVREF + 15"
-                },
-                {
-                    "name": "Approach speed",
-                    "type": 1,
-                    "primaryCondition": "($T7Avionics/fms/vref) <= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot\nand\n($T7Avionics/fms/vref + 15) >= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot",
-                    "beginConditionMarker": "#CH",
-                    "endConditionMarker": "$.ft_ARTE < 100",
-                    "tolerance": 3000,
-                    "description": "Speed during approach must be between:\nVREF\n  and\nVREF + 15"
-                }
-            ]
+		{
+            "template": "Approach speed (Vref/FMC)",
+            "replace": {
+                "$VREF": "$T7Avionics/fms/vref",
+                "$KIAS": "$sim/cockpit2/gauges/indicators/airspeed_kts_pilot"
+            }
         },
         {
             "template": "Flaps",

@@ -57,36 +57,12 @@
                 "$HDOT": "$sim/cockpit/radios/nav1_hdef_dot"
             }
         },
-        {
-            "name": "Approach speed",
-            "requirements": [
-                {
-                    "name": "Vref not set",
-                    "type": 2,
-                    "primaryCondition": "$aero787/data/vref > 50",
-                    "beginConditionMarker": "#CH",
-                    "endConditionMarker": "#TD-3000ms",
-                    "description": "Approach VREF should be set in the CDU"
-                },
-                {
-                    "name": "Approach speed",
-                    "type": 2,
-                    "primaryCondition": "($aero787/data/vref - 3) <= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot\nand\n($aero787/data/vref + 20) >= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot",
-                    "beginConditionMarker": "#CH",
-                    "endConditionMarker": "$.ft_ARTE < 100",
-                    "tolerance": 3000,
-                    "description": "Speed during approach must be between:\nVREF\n  and\nVREF + 15"
-                },
-                {
-                    "name": "Approach speed",
-                    "type": 1,
-                    "primaryCondition": "($aero787/data/vref) <= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot\nand\n($aero787/data/vref + 15) >= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot",
-                    "beginConditionMarker": "#CH",
-                    "endConditionMarker": "$.ft_ARTE < 100",
-                    "tolerance": 3000,
-                    "description": "Speed during approach must be between:\nVREF\n  and\nVREF + 15"
-                }
-            ]
+		{
+            "template": "Approach speed (Vref/FMC)",
+            "replace": {
+                "$VREF": "$$aero787/data/vref",
+                "$KIAS": "$sim/cockpit2/gauges/indicators/airspeed_kts_pilot"
+            }
         },
         {
             "template": "Flaps",

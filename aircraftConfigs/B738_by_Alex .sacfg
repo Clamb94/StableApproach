@@ -72,7 +72,7 @@
         },
         {
             "name": "Flaps",
-            "replace": [
+            "requirements": [
                 {
                     "name": "Flaps not in position",
                     "type": 2,

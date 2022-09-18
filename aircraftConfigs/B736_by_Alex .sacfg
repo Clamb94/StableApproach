@@ -73,14 +73,14 @@
         },
         {
             "name": "Flaps",
-            "replace": [
+            "requirements": [
                 {
                     "name": "Flaps not in position",
                     "type": 2,
                     "primaryCondition": "$laminar/B738/flap_indicator#0 > 45 or ($laminar/B738/flap_indicator#0 > 30 and $laminar/B738/flap_indicator#0 < 36)",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#TD_LAST",
-                    "description": "Flaps must be in landing position (30/40) below check height until taxi speed"
+                    "description": "Flaps must be in landing position (30/40) when reaching check height"
                 },
                 {
                     "name": "FMC/Flap disagree",
@@ -89,7 +89,7 @@
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#TD-3000ms",
                     "tolerance": 1000,
-                    "description": "Landing flap selection in FMC (APPROACH REF page) does not match used flap position."
+                    "description": "Landing flap selection in FMC (APPROACH REF page) does not match used flap position"
                 }
             ]
         },

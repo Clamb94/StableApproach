@@ -66,7 +66,7 @@
                 {
                     "name": "Approach speed",
                     "type": 2,
-                    "primaryCondition": "75 <= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot and 100 >= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot",
+                    "primaryCondition": "73 <= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot and 100 >= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "$.ft_ARTE < 100",
                     "tolerance": 3000,
@@ -75,7 +75,7 @@
                 {
                     "name": "Approach speed",
                     "type": 1,
-                    "primaryCondition": "80 <= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot and 95 >= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot",
+                    "primaryCondition": "78 <= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot and 95 >= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "$.ft_ARTE < 100",
                     "tolerance": 3000,

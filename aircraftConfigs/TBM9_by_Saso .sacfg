@@ -66,7 +66,7 @@
                 {
                     "name": "Approach speed",
                     "type": 2,
-                    "primaryCondition": "75 <= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot 100 >= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot",
+                    "primaryCondition": "75 <= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot and 100 >= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "$.ft_ARTE < 100",
                     "tolerance": 3000,
@@ -75,7 +75,7 @@
                 {
                     "name": "Approach speed",
                     "type": 1,
-                    "primaryCondition": "80 <= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot 95 >= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot",
+                    "primaryCondition": "80 <= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot and 95 >= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "$.ft_ARTE < 100",
                     "tolerance": 3000,
@@ -92,7 +92,7 @@
         {
             "template": "Flaps",
             "replace": {
-                "$FLAPSCONDITION": "sim/cockpit2/controls/flap_handle_deploy_ratio > 0.9",
+                "$FLAPSCONDITION": "$sim/cockpit2/controls/flap_handle_deploy_ratio > 0.9",
                 "$FLAPSTEXT": "10/20/35"
             }
         },
@@ -102,7 +102,7 @@
                 {
                     "name": "Yaw Damper ON",
                     "type": 2,
-                    "primaryCondition": "tbm900/lights/ap/yd == 0",
+                    "primaryCondition": "$tbm900/lights/ap/yd == 0",
                     "beginConditionMarker": "#TD-3000ms",
                     "endConditionMarker": "#TD+3000ms",
                     "description": "Yaw damper should be OFF for landing"

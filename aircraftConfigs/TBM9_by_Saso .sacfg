@@ -93,7 +93,7 @@
             "template": "Flaps",
             "replace": {
                 "$FLAPSCONDITION": "$sim/cockpit2/controls/flap_handle_deploy_ratio > 0.9",
-                "$FLAPSTEXT": "10/20/35"
+                "$FLAPSTEXT": "LDG"
             }
         },
 		{

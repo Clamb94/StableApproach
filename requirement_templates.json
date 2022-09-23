@@ -396,6 +396,20 @@
             ]
         },
         {
+            "name": "No autoland",
+            "requirements": [
+                {
+                    "name": "Autoland not permitted",
+                    "type": 2,
+                    "primaryCondition": "$CONDITION",
+                    "beginConditionMarker": "#TD-3000ms",
+                    "endConditionMarker": "#TD+3000ms",
+                    "description": "Autoland is not permitted with this aircraft",
+                    "appMonVisCond": "$clamb/stableapproach/position/altitude_agl_ft < 200"
+                }
+            ]
+        },
+        {
             "name": "No Tailstrike",
             "requirements": [
                 {

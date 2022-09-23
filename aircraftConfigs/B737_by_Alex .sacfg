@@ -11,13 +11,13 @@
     "replace_dref": [],
     "checkHeights": [
         {
-            "template":"IMC"
+            "template": "IMC"
         },
         {
-            "template":"VMC"
+            "template": "VMC"
         },
         {
-            "template":"VISUAL"
+            "template": "VISUAL"
         }
     ],
     "requirementGroups": [
@@ -57,7 +57,7 @@
                 "$HDOT": "$sim/cockpit/radios/nav1_hdef_dot"
             }
         },
-		{
+        {
             "template": "Approach speed (Vref/FMC)",
             "replace": {
                 "$VREF": "$laminar/B738/FMS/vref",
@@ -66,37 +66,21 @@
         },
         {
             "template": "Gear",
-            "replace": 
-              {
-              "$CONDITION":"$sim/cockpit2/controls/gear_handle_down == 1 and $sim/cockpit2/annunciators/gear_unsafe == 0"
-              }          
+            "replace": {
+                "$CONDITION": "$sim/cockpit2/controls/gear_handle_down == 1 and $sim/cockpit2/annunciators/gear_unsafe == 0"
+            }
         },
         {
-            "name": "Flaps",
-            "requirements": [
-                {
-                    "name": "Flaps not in position",
-                    "type": 2,
-                    "primaryCondition": "$laminar/B738/flap_indicator#0 > 45 or ($laminar/B738/flap_indicator#0 > 30 and $laminar/B738/flap_indicator#0 < 36)",
-                    "beginConditionMarker": "#CH",
-                    "endConditionMarker": "#TD_LAST",
-                    "description": "Flaps must be in landing position (30/40) below check height until taxi speed"
-                },
-                {
-                    "name": "FMC/Flap disagree",
-                    "type": 2,
-                    "primaryCondition": "$laminar/B738/FMS/approach_flaps_set == 1",
-                    "beginConditionMarker": "#CH",
-                    "endConditionMarker": "#TD-3000ms",
-                    "tolerance": 1000,
-                    "description": "Landing flap selection in FMC (APPROACH REF page) does not match used flap position."
-                }
-            ]
+            "template": "Flaps (FMC)",
+            "replace": {
+                "$FLAPSCONDITION": "$laminar/B738/flap_indicator#0 > 45 or ($laminar/B738/flap_indicator#0 > 30 and $laminar/B738/flap_indicator#0 < 36)",
+                "$FLAPFMCCONDITION": "$laminar/B738/FMS/approach_flaps_set == 1"
+            }
         },
         {
             "template": "Speedbrake",
             "replace": {
-	    		"$CONDITION": "$laminar/B738/annunciator/speedbrake_armed > 0.1 and $laminar/B738/annunciator/speedbrake_extend = 0"
+                "$CONDITION": "$laminar/B738/annunciator/speedbrake_armed > 0.1 and $laminar/B738/annunciator/speedbrake_extend = 0"
             }
         },
         {
@@ -117,20 +101,20 @@
         {
             "template": "Autoflight",
             "replace": {
-	    		"$CONDITION": "$laminar/autopilot/ap_on == 0"
+                "$CONDITION": "$laminar/autopilot/ap_on == 0"
             }
         },
         {
             "template": "Thrust",
             "replace": {
-	    		"$N1": "$laminar/B738/engine/indicators/N1_percent_1"
+                "$N1": "$laminar/B738/engine/indicators/N1_percent_1"
             }
         },
         {
             "template": "No Tailstrike",
             "replace": {
-	    		"$TAILSTRIKEPITCH": "12.4",
-	    		"$CAUTIONPITCH": "9.0"
+                "$TAILSTRIKEPITCH": "12.4",
+                "$CAUTIONPITCH": "9.0"
             }
         },
         {

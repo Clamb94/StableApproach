@@ -57,7 +57,7 @@
                 "$HDOT": "$sim/cockpit/radios/nav1_hdef_dot"
             }
         },
-		{
+        {
             "template": "Approach speed (Vref/FMC)",
             "replace": {
                 "$VREF": "$laminar/B738/FMS/vref",
@@ -71,26 +71,11 @@
             }
         },
         {
-            "name": "Flaps",
-            "requirements": [
-                {
-                    "name": "Flaps not in position",
-                    "type": 2,
-                    "primaryCondition": "$laminar/B738/flap_indicator#0 > 45 or ($laminar/B738/flap_indicator#0 > 30 and $laminar/B738/flap_indicator#0 < 36)",
-                    "beginConditionMarker": "#CH",
-                    "endConditionMarker": "#TD_LAST",
-                    "description": "Flaps must be in landing position (30/40) below check height until taxi speed"
-                },
-                {
-                    "name": "FMC/Flap disagree",
-                    "type": 2,
-                    "primaryCondition": "$laminar/B738/FMS/approach_flaps_set == 1",
-                    "beginConditionMarker": "#CH",
-                    "endConditionMarker": "#TD-3000ms",
-                    "tolerance": 1000,
-                    "description": "Landing flap selection in FMC (APPROACH REF page) does not match used flap position."
-                }
-            ]
+            "template": "Flaps (FMC)",
+            "replace": {
+                "$FLAPSCONDITION": "$laminar/B738/flap_indicator#0 > 45 or ($laminar/B738/flap_indicator#0 > 30 and $laminar/B738/flap_indicator#0 < 36)",
+                "$FLAPFMCCONDITION": "$laminar/B738/FMS/approach_flaps_set == 1"
+            }
         },
         {
             "template": "Speedbrake",

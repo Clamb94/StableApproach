@@ -437,9 +437,51 @@
                     "name": "Flaps not in position",
                     "type": 2,
                     "primaryCondition": "$FLAPSCONDITION",
-                    "beginConditionMarker": "#CH",
-                    "endConditionMarker": "#TD_LAST",
+                    "beginConditionMarker": "#TD-3000ms",
+                    "endConditionMarker": "#TD+3000ms",
+					"tolerance": 1000,
                     "description": "Flaps must be in landing position ($FLAPSTEXT) when reaching check height"
+                },
+				{
+                    "name": "Flaps deployed too late",
+                    "type": 2,
+                    "primaryCondition": "$FLAPSCONDITION",
+                    "beginConditionMarker": "#CH",
+                    "endConditionMarker": "#TD-3000ms",
+					"tolerance": 1000,
+                    "description": "Flaps must be in landing position ($FLAPSTEXT) when reaching check height"
+                }
+            ]
+        },
+        {
+            "name": "Flaps (FMC)",
+            "requirements": [
+                {
+                    "name": "Flaps not in position",
+                    "type": 2,
+                    "primaryCondition": "$FLAPSCONDITION",
+                    "beginConditionMarker": "#TD-3000ms",
+                    "endConditionMarker": "#TD+3000ms",
+					"tolerance": 1000,
+                    "description": "Flaps must be in landing position ($FLAPSTEXT) when reaching check height"
+                },
+				{
+                    "name": "Flaps deployed too late",
+                    "type": 2,
+                    "primaryCondition": "$FLAPSCONDITION",
+                    "beginConditionMarker": "#CH",
+                    "endConditionMarker": "#TD-3000ms",
+					"tolerance": 1000,
+                    "description": "Flaps must be in landing position ($FLAPSTEXT) when reaching check height"
+                },
+				{
+                    "name": "FMC/Flap disagree",
+                    "type": 2,
+                    "primaryCondition": "$FLAPFMCCONDITION",
+                    "beginConditionMarker": "#CH",
+                    "endConditionMarker": "#TD-3000ms",
+                    "tolerance": 1000,
+                    "description": "Landing flap selection in FMC does not match used flap position"
                 }
             ]
         }

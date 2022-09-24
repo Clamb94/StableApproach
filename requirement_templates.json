@@ -220,7 +220,8 @@
                     "secondaryCondition": "$analysis.app.nav.loc.type != 0 and\n$.not_vis_app",
                     "secondaryConditionMarker": "#TD-3000ms",
                     "tolerance": 2000,
-                    "description": "Max 1 dot localizer deviation until reaching 200ft AGL"
+                    "description": "Max 1 dot localizer deviation until reaching 200ft AGL",
+                    "appMonVisCond": "$clamb/stableapproach/live/app/loc/type != 0"
                 },
                 {
                     "name": "Localizer deviation",
@@ -231,7 +232,8 @@
                     "secondaryCondition": "$analysis.app.nav.loc.type != 0 and\n$.not_vis_app",
                     "secondaryConditionMarker": "#TD-3000ms",
                     "tolerance": 2000,
-                    "description": "Max 1 dot localizer deviation until reaching 200ft AGL"
+                    "description": "Max 1 dot localizer deviation until reaching 200ft AGL",
+                    "appMonVisCond": "$clamb/stableapproach/live/app/loc/type != 0"
                 }
             ]
         },

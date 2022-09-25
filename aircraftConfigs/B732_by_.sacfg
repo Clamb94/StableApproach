@@ -86,7 +86,7 @@
         {
             "template": "Autoflight",
             "replace": {
-                "$CONDITION": "$FJS/727/autopilot/AP_Lever == 0"
+                "$CONDITION": "$FJS/732/Autopilot/APPitchEngageSwitch == 0"
             }
         },
         {

@@ -60,7 +60,7 @@
 		{
             "template": "Approach speed (Vref/FMC)",
             "replace": {
-                "$VREF": "$$aero787/data/vref",
+                "$VREF": "$aero787/data/vref",
                 "$KIAS": "$sim/cockpit2/gauges/indicators/airspeed_kts_pilot"
             }
         },

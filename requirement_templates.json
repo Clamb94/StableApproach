@@ -194,7 +194,8 @@
                     "secondaryCondition": "$analysis.app.nav.gs.type == 6 and\n$.not_vis_app",
                     "secondaryConditionMarker": "#TD-3000ms",
                     "tolerance": 2000,
-                    "description": "Max 1 dot glideslope deviation until reaching 200ft AGL"
+                    "description": "Max 1 dot glideslope deviation until reaching 200ft AGL",
+                    "appMonVisCond": "$clamb/stableapproach/position/altitude_agl_ft > 200"
                 },
                 {
                     "name": "Glideslope deviation",
@@ -204,7 +205,8 @@
                     "endConditionMarker": "$.ft_ARTE < 200",
                     "secondaryCondition": "$analysis.app.nav.gs.type == 6 and\n$.not_vis_app",
                     "secondaryConditionMarker": "#TD-3000ms",
-                    "description": "Max 1 dot glideslope deviation until reaching 200ft AGL"
+                    "description": "Max 1 dot glideslope deviation until reaching 200ft AGL",
+                    "appMonVisCond": "$clamb/stableapproach/position/altitude_agl_ft > 200"
                 }
             ]
         },
@@ -221,7 +223,7 @@
                     "secondaryConditionMarker": "#TD-3000ms",
                     "tolerance": 2000,
                     "description": "Max 1 dot localizer deviation until reaching 200ft AGL",
-                    "appMonVisCond": "$clamb/stableapproach/live/app/loc/type != 0"
+                    "appMonVisCond": "$clamb/stableapproach/live/app/loc/type != 0 and $clamb/stableapproach/position/altitude_agl_ft > 200"
                 },
                 {
                     "name": "Localizer deviation",
@@ -233,7 +235,7 @@
                     "secondaryConditionMarker": "#TD-3000ms",
                     "tolerance": 2000,
                     "description": "Max 1 dot localizer deviation until reaching 200ft AGL",
-                    "appMonVisCond": "$clamb/stableapproach/live/app/loc/type != 0"
+                    "appMonVisCond": "$clamb/stableapproach/live/app/loc/type != 0 and $clamb/stableapproach/position/altitude_agl_ft > 200"
                 }
             ]
         },
@@ -441,7 +443,7 @@
                     "primaryCondition": "$FLAPSCONDITION",
                     "beginConditionMarker": "#TD-3000ms",
                     "endConditionMarker": "#TD+3000ms",
-					"tolerance": 1000,
+                    "tolerance": 1000,
                     "description": "Flaps must be in landing position ($FLAPSTEXT) when reaching check height"
                 },
 				{
@@ -450,7 +452,7 @@
                     "primaryCondition": "$FLAPSCONDITION",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#TD-3000ms",
-					"tolerance": 1000,
+                    "tolerance": 1000,
                     "description": "Flaps must be in landing position ($FLAPSTEXT) when reaching check height"
                 }
             ]
@@ -464,7 +466,7 @@
                     "primaryCondition": "$FLAPSCONDITION",
                     "beginConditionMarker": "#TD-3000ms",
                     "endConditionMarker": "#TD+3000ms",
-					"tolerance": 1000,
+                    "tolerance": 1000,
                     "description": "Flaps must be in landing position ($FLAPSTEXT) when reaching check height"
                 },
 				{
@@ -473,7 +475,7 @@
                     "primaryCondition": "$FLAPSCONDITION",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#TD-3000ms",
-					"tolerance": 1000,
+                    "tolerance": 1000,
                     "description": "Flaps must be in landing position ($FLAPSTEXT) when reaching check height"
                 },
 				{

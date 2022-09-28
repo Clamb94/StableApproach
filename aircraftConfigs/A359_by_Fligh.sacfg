@@ -1,5 +1,5 @@
 {
-    "enabled": true,
+    "enabled": false,
     "acf": {
         "icao": "A359",
         "author": "FlightFactor and ToLiss"

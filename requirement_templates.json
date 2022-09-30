@@ -67,7 +67,7 @@
             ],
 			"description" : {
 				"type" : "general",
-				"text" : "Touchdown(s) need to be within the marked touchdown zone"
+				"text" : "Do not land outside of the marked touchdown zone"
 			}
         },
         {
@@ -376,7 +376,7 @@
             ],
 			"description" : {
 				"type" : "aircraft",
-				"text" : "Thrust setting should be above idle.\nShort changes due to turbulence are acceptable"
+				"text" : "Thrust setting should be above idle"
 			}
         },
         {
@@ -506,7 +506,7 @@
             ],
 			"description" : {
 				"type" : "aircraft",
-				"text" : "Flaps must be in landing position when reachign check height"
+				"text" : "Flaps must be in landing position when reaching check height"
 			}
         },
         {

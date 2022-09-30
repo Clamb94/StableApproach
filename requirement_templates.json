@@ -5,20 +5,20 @@
         {
             "name": "IMC",
             "height": 1000,
-            "primaryCondition": "$sim/weather/visibility_reported_m < 5000 or\n((($sim/weather/cloud_base_msl_m[0] - $analysis.touchdown_combined.elevation) < 270)\nand $sim/weather/cloud_coverage[0] >= 4)",
-            "description": "Instrument approach in IMC conditions"
+            "primaryCondition": "$sim/weather/visibility_reported_m < 4000 or\n((($sim/weather/cloud_base_msl_m[0] - $analysis.touchdown_combined.elevation) < 270)\nand $sim/weather/cloud_coverage[0] >= 4)",
+            "description": "Instrument approach in IMC conditions:\nVisibility below 5000m or cloud base below 300ft AGL"
         },
         {
             "name": "VMC",
             "height": 500,
             "primaryCondition": "1",
-            "description": "Instrument approach in VMC conditions"
+            "description": "Instrument approach in VMC conditions:\nVisibility at or above 5000m and cloud base at or above 300ft AGL"
         },
         {
             "name": "VISUAL",
             "height": 500,
             "primaryCondition": "0",
-            "description": "Visual approach can only be selected manually:\nlugins -> StableApproach -> Check height"
+            "description": "Select this manually when doing an visual approach:\nlugins -> StableApproach -> Check height"
         }
     ],
     "requirementGroups": [
@@ -64,7 +64,11 @@
                     "endConditionMarker": "#INSTANT",
                     "description": "Touchdown not within touchdown zone"
                 }
-            ]
+            ],
+			"description" : {
+				"type" : "general",
+				"text" : "Touchdown(s) need to be within the marked touchdown zone"
+			}
         },
         {
             "name": "Centerline deviation",
@@ -156,7 +160,11 @@
                     "tolerance": 3000,
                     "description": "Max sink rate during approach is normally 1000fpm"
                 }
-            ]
+            ],
+			"description" : {
+				"type" : "general",
+				"text" : "Vertical speed during approach should not exceed -1000fpm for a 3 degree glideslope.\nMay be higher for steeper ILS approaches"
+			}
         },
         {
             "name": "Bank angle",
@@ -168,7 +176,7 @@
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#TD_LAST",
                     "secondaryCondition": "$.not_vis_app",
-                    "tolerance": 3000,
+                    "tolerance": 4000,
                     "description": "Max bank angle during final approach should not exceed 10 degree"
                 },
                 {
@@ -177,7 +185,7 @@
                     "primaryCondition": "abs($sim/flightmodel/position/phi) < 10",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#TAXI",
-                    "tolerance": 3000,
+                    "tolerance": 4000,
                     "description": "Max bank angle during final approach should not exceed 10 degree"
                 }
             ]
@@ -208,7 +216,11 @@
                     "description": "Max 1 dot glideslope deviation until reaching 200ft AGL",
                     "appMonVisCond": "$clamb/stableapproach/position/altitude_agl_ft > 200"
                 }
-            ]
+            ],
+			"description" : {
+				"type" : "general",
+				"text" : "Glideslope deviation must not exceed 1 dot between check height and 200ft ARTE"
+			}
         },
         {
             "name": "Localizer deviation",
@@ -218,7 +230,7 @@
                     "type": 2,
                     "primaryCondition": "abs($HDOT) < 1.3",
                     "beginConditionMarker": "#CH",
-                    "endConditionMarker": "#TD-3000ms",
+                    "endConditionMarker": "$.ft_ARTE < 200",
                     "secondaryCondition": "$analysis.app.nav.loc.type != 0 and\n$.not_vis_app",
                     "secondaryConditionMarker": "#TD-3000ms",
                     "tolerance": 2000,
@@ -230,14 +242,18 @@
                     "type": 1,
                     "primaryCondition": "abs($HDOT) < 1",
                     "beginConditionMarker": "#CH",
-                    "endConditionMarker": "#TD-3000ms",
+                    "endConditionMarker": "$.ft_ARTE < 200",
                     "secondaryCondition": "$analysis.app.nav.loc.type != 0 and\n$.not_vis_app",
                     "secondaryConditionMarker": "#TD-3000ms",
                     "tolerance": 2000,
                     "description": "Max 1 dot localizer deviation until reaching 200ft AGL",
                     "appMonVisCond": "$clamb/stableapproach/live/app/loc/type != 0 and $clamb/stableapproach/position/altitude_agl_ft > 200"
                 }
-            ]
+            ],
+			"description" : {
+				"type" : "general",
+				"text" : "Localizer deviation must not exceed 1 dot between check height and 200ft ARTE"
+			}			
         },
         {
             "name": "Approach speed (Vapp)",
@@ -260,7 +276,11 @@
                     "tolerance": 3000,
                     "description": "Keep speed in this range below check height: Vapp -5/+10 KIAS"
                 }
-            ]
+            ],
+			"description" : {
+				"type" : "aircraft",
+				"text" : "Keep approach speed (Vapp) between Vapp-5 and Vapp+10\nFluctuations in airspeed due to turbulence are acceptable"
+			}	
         },
         {
             "name": "Approach speed (Vref)",
@@ -283,7 +303,11 @@
                     "tolerance": 3000,
                     "description": "Keep speed in this range below check height: VREF -0/+15\nApproach speed is normally VREF+5"
                 }
-            ]
+            ],
+			"description" : {
+				"type" : "aircraft",
+				"text" : "Keep approach speed between Vref-0 and Vref+15\nApproach speed is normally Vref+5.\nFluctuations in airspeed due to turbulence are acceptable"
+			}
         },
         {
             "name": "Approach speed (Vref/FMC)",
@@ -314,7 +338,11 @@
                     "tolerance": 3000,
                     "description": "Keep speed in this range below check height: VREF -0/+15\nApproach speed is normally VREF+5"
                 }
-            ]
+            ],
+			"description" : {
+				"type" : "aircraft",
+				"text" : "Set Vref in FMC.\nKeep approach speed between Vref-0 and Vref+15\nApproach speed is normally Vref+5.\nFluctuations in airspeed due to turbulence are acceptable"
+			}
         },				
         {
             "name": "Approach speed",
@@ -322,12 +350,16 @@
                 {
                     "name": "Approach speed",
                     "type": 2,
-                    "primaryCondition": "$analysis.app.kias.min - $analysis.app.kias.max < 20",
+                    "primaryCondition": "$analysis.app.kias.min - $analysis.app.kias.max < 25",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#INSTANT",
                     "description": "Keep a constant speed below check height (+- 10kn)"
                 }
-            ]
+            ],
+			"description" : {
+				"type" : "aircraft",
+				"text" : "Keep a constant approach speed below check height (+- 10kn)\nFluctuations in airspeed due to turbulence are acceptable"
+			}
         },
         {
             "name": "Thrust",
@@ -338,10 +370,14 @@
                     "primaryCondition": "$N1 > 35",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "$.ft_ARTE < 100",
-                    "tolerance": 5000,
+                    "tolerance": 8000,
                     "description": "Appropriate thrust settings is required.\nRecommended: 40-80% N1 below check height until flare begins"
                 }
-            ]
+            ],
+			"description" : {
+				"type" : "aircraft",
+				"text" : "Thrust setting should be above idle.\nShort changes due to turbulence are acceptable"
+			}
         },
         {
             "name": "Wind limits",
@@ -368,7 +404,11 @@
                     "endConditionMarker": "#TAXI",
                     "description": "Gear must be down and locked when reaching check height"
                 }
-            ]
+            ],
+			"description" : {
+				"type" : "general",
+				"text" : "Gear must be down and locked when reaching check height"
+			}
         },
         {
             "name": "Speedbrake",
@@ -384,7 +424,11 @@
                     "tolerance": 500,
                     "description": "Speedbrake must be ARMED when reaching check height"
                 }
-            ]
+            ],
+			"description" : {
+				"type" : "aircraft",
+				"text" : "Speedbrake must be in ARMED when reaching check height"
+			}
         },
         {
             "name": "Autoflight",
@@ -432,7 +476,11 @@
                     "endConditionMarker": "#INSTANT",
                     "description": "Pitch attitude during touchdown and rollout should be below $CAUTIONPITCH degree.\nDanger of tailstrike!\nMake sure your speed at touchdown is not (much) below VREF"
                 }
-            ]
+            ],
+			"description" : {
+				"type" : "aircraft",
+				"text" : "To avoid a tailstrike, touchdown pitch attitude should not exceed $CAUTIONPITCH degree"
+			}
         },
         {
             "name": "Flaps",
@@ -455,7 +503,11 @@
                     "tolerance": 1000,
                     "description": "Flaps must be in landing position ($FLAPSTEXT) when reaching check height"
                 }
-            ]
+            ],
+			"description" : {
+				"type" : "aircraft",
+				"text" : "Flaps must be in landing position when reachign check height"
+			}
         },
         {
             "name": "Flaps (FMC)",
@@ -487,7 +539,11 @@
                     "tolerance": 1000,
                     "description": "Landing flap selection in FMC does not match used flap position"
                 }
-            ]
+            ],
+			"description" : {
+				"type" : "aircraft",
+				"text" : "Flaps must be in landing position (as set in FMC) when reachign check height"
+			}
         }
     ]
 }

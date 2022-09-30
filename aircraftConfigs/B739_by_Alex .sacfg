@@ -9,6 +9,9 @@
     },
     "autoUpdate": true,
     "replace_dref": [],
+	"description" : {
+		"text" : "This profile only works with the Zibo/LevelUp 737NG.\nThe 'default' 737-800 by Laminar will NOT work properly."
+	},	
     "checkHeights": [
         {
             "template": "IMC"

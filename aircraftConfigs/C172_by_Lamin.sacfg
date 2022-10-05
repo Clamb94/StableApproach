@@ -1,5 +1,5 @@
 {
-    "enabled": false,
+    "enabled": true,
     "acf": {
         "icao": "C172",
         "author": "Laminar Research - dmax3d.com"

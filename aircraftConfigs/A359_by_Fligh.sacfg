@@ -1,5 +1,5 @@
 {
-    "enabled": false,
+    "enabled": true,
     "acf": {
         "icao": "A359",
         "author": "FlightFactor and ToLiss"
@@ -11,15 +11,15 @@
     "replace_dref": [
         {
             "old": "sim/cockpit/radios/nav1_freq_hz",
-            "new": "airbus_qpac/pfdoutputs/general/ils_frequency"
+            "new": "toliss_airbus/pfdoutputs/general/ils_frequency"
         },
         {
             "old": "sim/cockpit/radios/nav1_hdef_dot",
-            "new": "AirbusFBW/LOCvalCapt"
+            "new": "AirbusFBW/ILS1LocRaw"
         },
         {
             "old": "sim/cockpit/radios/nav1_vdef_dot",
-            "new": "AirbusFBW/GSvalCapt"
+            "new": "AirbusFBW/ILS1GSRaw"
         }
     ],
     "checkHeights": [
@@ -61,13 +61,13 @@
         {
             "template": "Glideslope deviation",
             "replace": {
-                "$VDOT": "$AirbusFBW/GSvalCapt"
+                "$VDOT": "$AirbusFBW/ILS1GSRaw"
             }
         },
         {
             "template": "Localizer deviation",
             "replace": {
-                "$HDOT": "$AirbusFBW/LOCvalCapt"
+                "$HDOT": "$AirbusFBW/ILS1LocRaw"
             }
         },
         {

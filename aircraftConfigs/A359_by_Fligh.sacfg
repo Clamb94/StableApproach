@@ -71,9 +71,9 @@
             }
         },
         {
-            "template": "Approach speed (Vapp)",
+            "template": "Approach speed (Vref)",
             "replace": {
-                "$VAPP": "$1-sim/fms/perf/vapp",
+                "$VREF": "$AirbusFBW/VLS",
                 "$KIAS": "$sim/cockpit2/gauges/indicators/airspeed_kts_pilot"
             }
         },
@@ -87,7 +87,7 @@
         {
             "template": "Gear",
             "replace": {
-                "$CONDITION": "$model/controls/gearc == 1 and $model/controls/gearl == 1 and $model/controls/gearr == 1"
+                "$CONDITION": "$sim/cockpit/switches/gear_handle_status == 1"
             }
         },
         {

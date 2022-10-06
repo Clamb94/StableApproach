@@ -219,7 +219,7 @@
             ],
 			"description" : {
 				"type" : "general",
-				"text" : "Glideslope deviation must not exceed 1 dot between check height and 200ft ARTE"
+				"text" : "Glideslope deviation must not exceed 1 dot between check height and 200ft above runway"
 			}
         },
         {
@@ -252,7 +252,7 @@
             ],
 			"description" : {
 				"type" : "general",
-				"text" : "Localizer deviation must not exceed 1 dot between check height and 200ft ARTE"
+				"text" : "Localizer deviation must not exceed 1 dot between check height and 200ft above runway"
 			}			
         },
         {

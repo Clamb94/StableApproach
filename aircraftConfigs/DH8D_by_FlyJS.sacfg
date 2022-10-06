@@ -100,7 +100,11 @@
                     "tolerance": 1000,
                     "description": "Fuel pumps must be ON"
                 }
-            ]
+            ],
+			"description" : {
+				"type" : "aircraft",
+				"text" : "Fuel pumps must be ON before reaching check height"
+			}
         },
         {
             "requirements": [
@@ -113,7 +117,11 @@
                     "tolerance": 1000,
                     "description": "PROP lever muss be full forward"
                 }
-            ]
+            ],
+			"description" : {
+				"type" : "aircraft",
+				"text" : "Prop lever must be full forward before reaching check height"
+			}
         }
     ]
 }

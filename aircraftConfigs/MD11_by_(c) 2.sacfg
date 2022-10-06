@@ -9,6 +9,9 @@
     },
     "autoUpdate": true,
     "replace_dref": [],
+		"description" : {
+		"text" : "Confirm Vapp in the CDU before starting the approach.\nThe approach speed should then be written in big letters in the CDU"
+	},
     "checkHeights": [
         {
             "template": "IMC"
@@ -86,7 +89,11 @@
                     "tolerance": 3000,
                     "description": "Speed during approach must be between:\nVapp -5 and Vapp +10"
                 }
-            ]
+            ],
+			"description" : {
+				"type" : "aircraft",
+				"text" : "Set/confirm Vapp in FMC.\nKeep approach speed between Vref-0 and Vref+15\nApproach speed is normally Vref+5.\nFluctuations in airspeed due to turbulence are acceptable"
+			}
         },
         {
             "template": "Flaps",
@@ -135,7 +142,11 @@
                     "tolerance": 1000,
                     "description": "Ignition OVRD should be enabled below check height"
                 }
-            ]
+            ],
+			"description" : {
+				"type" : "aircraft",
+				"text" : "Ignition must be in OVRD before reaching check height"
+			}
         }
     ]
 }

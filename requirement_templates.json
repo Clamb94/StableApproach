@@ -163,7 +163,7 @@
             ],
 			"description" : {
 				"type" : "general",
-				"text" : "Vertical speed during approach should not exceed -1000fpm for a 3 degree glideslope.\nMay be higher for steeper ILS approaches"
+				"text" : "Vertical speed during approach should not exceed -1000fpm on a 3 degree glideslope.\nMay be higher for steeper ILS approaches"
 			}
         },
         {
@@ -407,7 +407,7 @@
             ],
 			"description" : {
 				"type" : "general",
-				"text" : "Gear must be down and locked when reaching check height"
+				"text" : "Gear must be down and locked no later than the check height"
 			}
         },
         {
@@ -427,7 +427,7 @@
             ],
 			"description" : {
 				"type" : "aircraft",
-				"text" : "Speedbrake must be in ARMED when reaching check height"
+				"text" : "Speedbrake must be ARMED no later than the check height"
 			}
         },
         {
@@ -455,7 +455,11 @@
                     "description": "Autoland is not permitted with this aircraft",
                     "appMonVisCond": "$clamb/stableapproach/position/altitude_agl_ft < 200"
                 }
-            ]
+            ],
+			"description" : {
+				"type" : "aircraft",
+				"text" : "The autopilot must be disengaged before touchdown"
+			}
         },
         {
             "name": "No Tailstrike",
@@ -506,7 +510,7 @@
             ],
 			"description" : {
 				"type" : "aircraft",
-				"text" : "Flaps must be in landing position when reaching check height"
+				"text" : "Flaps must be in landing position ($FLAPSTEXT) no later than the check height"
 			}
         },
         {
@@ -542,7 +546,24 @@
             ],
 			"description" : {
 				"type" : "aircraft",
-				"text" : "Flaps must be in landing position (as set in FMC) when reachign check height"
+				"text" : "Flaps must be in landing position ($FLAPSTEXT, as set in FMC) no later than the check height"
+			}
+        },
+		{
+            "name": "Flaps (constant)",
+            "requirements": [
+                {
+                    "name": "Flaps moved below check height",
+                    "type": 1,
+                    "primaryCondition": "$sim/cockpit2/controls/flap_handle_deploy_ratio == $-sim/cockpit2/controls/flap_handle_deploy_ratio",
+                    "beginConditionMarker": "#CH",
+                    "endConditionMarker": "#TAXI",
+                    "description": "Flaps must not be moved below check height until reaching taxi speed"
+                }
+            ],
+			"description" : {
+				"type" : "aircraft",
+				"text" : "Do not move flaps below check height"
 			}
         }
     ]

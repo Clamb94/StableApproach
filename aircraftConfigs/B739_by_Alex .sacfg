@@ -100,7 +100,11 @@
                     "tolerance": 500,
                     "description": "Engine start switches must be in position\nCONT below check height"
                 }
-            ]
+            ],
+			"description" : {
+				"type" : "aircraft",
+				"text" : "ENGINE START switches must be in CONT or AUTO (as equipped)"
+			}
         },
         {
             "template": "Autoflight",

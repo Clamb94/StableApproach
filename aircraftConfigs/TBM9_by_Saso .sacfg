@@ -81,7 +81,11 @@
                     "tolerance": 3000,
                     "description": "Final approach speed: 85kias"
                 }
-            ]
+            ],
+			"description" : {
+				"type" : "aircraft",
+				"text" : "Target approach speed: 85 kias.\nFluctuations in airspeed due to turbulence are acceptable"
+			}
         },
         {
             "template": "Gear",
@@ -108,9 +112,13 @@
                     "description": "Yaw damper should be OFF for landing",
                     "appMonVisCond": "$clamb/stableapproach/position/altitude_agl_ft < 150"
                 }
-            ]
+            ],
+			"description" : {
+				"type" : "aircraft",
+				"text" : "Yaw damper must be OFF for landing"
+			}
         },
-	{
+		{
             "template": "No autoland",
             "replace": {
                 "$CONDITION": "$tbm900/lights/ap/ap == 0"

@@ -124,7 +124,11 @@
                     "tolerance": 1000,
                     "description": "Reversers must be ARMED\nbelow check height.\nNot required in case of touch-and-go"
                 }
-            ]
+            ],
+			"description" : {
+				"type" : "aircraft",
+				"text" : "Reverser must be ARMED before reaching check height"
+			}
         },
         {
             "name": "Anti-skid",
@@ -140,7 +144,11 @@
                     "tolerance": 1000,
                     "description": "Anti-skid must be ARMED\nbelow check height.\nNot required in case of touch-and-go"
                 }
-            ]
+            ],
+			"description" : {
+				"type" : "aircraft",
+				"text" : "Anti-skid must be ARMED before reaching check height"
+			}
         },
         {
             "name": "Ignition on",
@@ -155,7 +163,11 @@
                     "tolerance": 1000,
                     "description": "Ignition must be ON below check height"
                 }
-            ]
+            ],
+			"description" : {
+				"type" : "aircraft",
+				"text" : "Ignition must be ON before reaching check height"
+			}
         }
     ]
 }

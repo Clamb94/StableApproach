@@ -117,7 +117,11 @@
                     "tolerance": 3000,
                     "description": "This only applies if VREF has NOT been set in the CDU:\nSpeed during approach must be between:\nVapp-5\n  and\nVapp + 10"
                 }
-            ]
+            ],
+			"description" : {
+				"type" : "aircraft",
+				"text" : "Set Vref in FMC.\nKeep approach speed between Vref-0 and Vref+15\nApproach speed is normally Vref+5.\nFluctuations in airspeed due to turbulence are acceptable"
+			}
         },
         {
             "template": "Flaps",

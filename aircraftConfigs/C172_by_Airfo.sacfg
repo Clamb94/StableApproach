@@ -67,30 +67,13 @@
             "template": "Approach speed"
         },
         {
-            "name": "Flaps",
-            "requirements": [
-                {
-                    "name": "Flaps moved below check height",
-                    "type": 1,
-                    "primaryCondition": "$sim/cockpit2/controls/flap_handle_deploy_ratio == $-sim/cockpit2/controls/flap_handle_deploy_ratio",
-                    "beginConditionMarker": "#CH",
-                    "endConditionMarker": "#TAXI",
-                    "description": "Flaps must not be moved below check height until reaching taxi speed"
-                }
-            ]
+            "template": "Flaps (constant)"
         },
         {
-            "name": "Autoflight",
-            "requirements": [
-                {
-                    "name": "Autoland not allowed",
-                    "type": 2,
-                    "primaryCondition": "$sim/cockpit/autopilot/autopilot_mode < 2",
-                    "beginConditionMarker": "#TD-3000ms",
-                    "endConditionMarker": "#TD+3000ms",
-                    "description": "Autoland is not allowed with this aircraft"
-                }
-            ]
+            "template": "No autoland",
+            "replace": {
+                "$CONDITION": "$sim/cockpit/autopilot/autopilot_mode < 2"
+            }
         },
         {
             "template": "Wind limits"

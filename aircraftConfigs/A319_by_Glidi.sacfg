@@ -80,7 +80,7 @@
         {
             "template": "Flaps",
             "replace": {
-                "$FLAPSCONDITION": "$AirbusFBW/FlapRequestPos == 3 or $AirbusFBW/FlapRequestPos == 4",
+                "$FLAPSCONDITION": "($AirbusFBW/FlapLeverRatio >= 0.70 and $AirbusFBW/FlapLeverRatio <= 0.80) or $AirbusFBW/FlapLeverRatio >= 0.95",
                 "$FLAPSTEXT": "3 or FULL"
             }
         },

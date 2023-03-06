@@ -2,7 +2,7 @@
     "enabled": true,
     "acf": {
         "icao": "MD11",
-        "author": "(c) 2013-2022 Juan Alcon, Ivan Arroyo, Alfredo Torrado"
+        "author": "(c) 2013-2023 Juan Alcon, Ivan Arroyo, Alfredo Torrado"
     },
     "speed": {
         "taxi": -1

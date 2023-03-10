@@ -82,10 +82,35 @@
             }
         },
         {
-            "template": "Speedbrake",
-            "replace": {
-                "$CONDITION": "$laminar/B738/annunciator/speedbrake_armed > 0.1 and $laminar/B738/annunciator/speedbrake_extend = 0"
-            }
+            "name": "Speedbrake",
+            "requirements": [
+                {
+                    "name": "Speedbrake extended",
+                    "type": 1,
+                    "primaryCondition": "$laminar/B738/annunciator/speedbrake_extend < 0.1",
+                    "beginConditionMarker": "#CH",
+                    "endConditionMarker": "#TD-3000ms",
+                    "secondaryCondition": "$analysis.rollout.go_around == 0",
+                    "secondaryConditionMarker": "#TD-3000ms",
+                    "tolerance": 500,
+                    "description": "Speedbrake must be ARMED when reaching check height"
+                },			
+                {
+                    "name": "Speedbrake not armed",
+                    "type": 2,
+                    "primaryCondition": "$laminar/B738/annunciator/speedbrake_armed > 0.1",
+                    "beginConditionMarker": "#CH",
+                    "endConditionMarker": "#TD-3000ms",
+                    "secondaryCondition": "$analysis.rollout.go_around == 0",
+                    "secondaryConditionMarker": "#TD-3000ms",
+                    "tolerance": 500,
+                    "description": "Speedbrake must be ARMED when reaching check height"
+                }
+            ],
+			"description" : {
+				"type" : "aircraft",
+				"text" : "Speedbrake must be ARMED no later than the check height"
+			}
         },
         {
             "requirements": [

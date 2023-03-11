@@ -98,7 +98,7 @@
                 {
                     "name": "Speedbrake not armed",
                     "type": 2,
-                    "primaryCondition": "$laminar/B738/annunciator/speedbrake_armed > 0.1",
+                    "primaryCondition": "$sim/cockpit2/controls/speedbrake_ratio < -0.1",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#TD-3000ms",
                     "secondaryCondition": "$analysis.rollout.go_around == 0",

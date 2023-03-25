@@ -152,6 +152,19 @@
         },
         {
             "template": "Wind limits"
-        }
+        },
+        {
+            "name": "TCH",
+            "requirements": [
+                {
+                    "name": "Treshold crossing height",
+                    "type": 1,
+                    "primaryCondition": "$analysis.app.threshold.crossing_height > 20 and $analysis.app.threshold.crossing_height < 100",
+                    "beginConditionMarker": "#CH",
+                    "endConditionMarker": "#INSTANT",
+                    "description": "Treshold should be crossed at ~50ft"
+                }
+            ]
+        }		
     ]
 }

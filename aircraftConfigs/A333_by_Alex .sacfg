@@ -60,7 +60,7 @@
         {
             "template": "Approach speed (Vref)",
             "replace": {
-                "$VREF": "$sim/cockpit2/gauges/actuators/airspeed_bugs#7",
+                "$VREF": "$sim/cockpit2/gauges/actuators/airspeed_bugs#3",
                 "$KIAS": "$sim/cockpit2/gauges/indicators/airspeed_kts_pilot"
             }
         },

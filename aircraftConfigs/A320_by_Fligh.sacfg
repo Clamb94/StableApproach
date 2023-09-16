@@ -63,7 +63,7 @@
         {
             "template": "Flaps",
             "replace": {
-                "$FLAPSCONDITION": "$sim/cockpit2/controls/flap_handle_deploy_ratio > 0.95 or ($sim/cockpit2/controls/flap_handle_deploy_ratio >= 0.7 and $sim/cockpit2/controls/flap_handle_deploy_ratio <= 0.8)",
+                "$FLAPSCONDITION": "$model/controls/flaps_lever > 0.95 or ($model/controls/flaps_lever >= 0.7 and $model/controls/flaps_lever <= 0.8)",
                 "$FLAPSTEXT": "3 or FULL"
             }
         },

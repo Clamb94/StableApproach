@@ -247,7 +247,7 @@
                 {
                     "name": "Gear not down",
                     "type": 2,
-                    "primaryCondition": "$B742/controls/gear_lever_pos == 1\nand\n$B742/front_lamps/LG_gear_down_lit == 1\n",
+                    "primaryCondition": "$B742/controls/gear_lever_pos == 1\nand\n$B742/front_lamps/LG_gear_down_lit > 0.3",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#TAXI",
                     "description": "Gear must be down and locked\nbelow check height"

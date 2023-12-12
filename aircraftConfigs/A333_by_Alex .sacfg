@@ -1,19 +1,14 @@
 {
     "enabled": true,
     "acf": {
-        "icao": "B772",
-        "author": "FlightFactor "
+        "icao": "A333",
+        "author": "Alex Unruh, Rodrigo Fernandez, Massimo Durando, Jim Gregory"
     },
     "speed": {
         "taxi": -1
     },
     "autoUpdate": true,
-    "replace_dref": [
-        {
-            "old": "sim/cockpit/radios/nav1_freq_hz",
-            "new": "T7Avionics/radios/ils1_freq"
-        }
-    ],
+    "replace_dref": [],
     "checkHeights": [
         {
             "template": "IMC"
@@ -62,24 +57,24 @@
                 "$HDOT": "$sim/cockpit/radios/nav1_hdef_dot"
             }
         },
-		{
-            "template": "Approach speed (Vref/FMC)",
+        {
+            "template": "Approach speed (Vref)",
             "replace": {
-                "$VREF": "$T7Avionics/fms/vref",
+                "$VREF": "$sim/cockpit2/gauges/actuators/airspeed_bugs#3",
                 "$KIAS": "$sim/cockpit2/gauges/indicators/airspeed_kts_pilot"
             }
         },
         {
             "template": "Flaps",
             "replace": {
-                "$FLAPSCONDITION": "$sim/cockpit2/controls/flap_handle_deploy_ratio >= 0.95 or ($sim/cockpit2/controls/flap_handle_deploy_ratio >= 0.78 and $sim/cockpit2/controls/flap_handle_deploy_ratio <= 0.9)",
-                "$FLAPSTEXT": "25/30"
+                "$FLAPSCONDITION": "$sim/cockpit2/controls/flap_system_deploy_ratio == 0.75 or $sim/cockpit2/controls/flap_system_deploy_ratio == 1",
+                "$FLAPSTEXT": "3 or FULL"
             }
         },
         {
             "template": "Gear",
             "replace": {
-                "$CONDITION": "$sim/cockpit2/controls/gear_handle_down == 1 and $sim/cockpit2/annunciators/gear_unsafe == 0"
+                "$CONDITION": "$sim/cockpit2/controls/gear_handle_down == 1"
             }
         },
         {
@@ -91,14 +86,7 @@
         {
             "template": "Autoflight",
             "replace": {
-                "$CONDITION": "$sim/cockpit2/autopilot/servos_on == 0"
-            }
-        },
-        {
-            "template": "No Tailstrike",
-            "replace": {
-                "$TAILSTRIKEPITCH": "10.2",
-                "$CAUTIONPITCH": "7.5"
+                "$CONDITION": "$laminar/A333/annun/autopilot/ap1_mode == 0 and $laminar/A333/annun/autopilot/ap2_mode == 0"
             }
         },
         {

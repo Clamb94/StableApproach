@@ -1,7 +1,7 @@
 {
     "enabled": true,
     "acf": {
-        "icao": "B762",
+        "icao": "B764",
         "author": "FlightFactor and StepToSky"
     },
     "speed": {
@@ -151,8 +151,8 @@
         {
             "template": "No Tailstrike",
             "replace": {
-                "$TAILSTRIKEPITCH": "11.0",
-                "$CAUTIONPITCH": "7.5"
+                "$TAILSTRIKEPITCH": "7.9",
+                "$CAUTIONPITCH": "7.4"
             }
         },
         {

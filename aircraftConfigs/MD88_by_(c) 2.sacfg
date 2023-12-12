@@ -2,7 +2,7 @@
     "enabled": true,
     "acf": {
         "icao": "MD88",
-        "author": "(c) 2013-2017 Juan Alcon, Ivan Arroyo, Pedro Muñoz, Alfredo Torrado"
+        "author": "(c) 2013-2023 Juan Alcon, Ivan Arroyo, Pedro Muñoz, Alfredo Torrado"
     },
     "speed": {
         "taxi": -1

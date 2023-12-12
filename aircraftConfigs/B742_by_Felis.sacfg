@@ -74,7 +74,7 @@
         {
             "template": "Gear",
             "replace": {
-                "$CONDITION": "$B742/controls/gear_lever_pos == 1 and $B742/front_lamps/LG_gear_down_lit == 1"
+                "$CONDITION": "$B742/controls/gear_lever_pos == 1 and $B742/front_lamps/LG_gear_down_lit > 0.3"
             }
         },
         {

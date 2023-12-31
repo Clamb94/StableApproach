@@ -1,0 +1,365 @@
+{
+    "enabled": true,
+    "acf": {
+        "icao": "B748",
+        "author": "Supercritical Simulations Group"
+    },
+    "speed": {
+        "taxi": 30
+    },
+    "autoUpdate": true,
+    "replace_dref": [],
+    "checkHeights": [
+        {
+            "name": "IMC",
+            "height": 1000,
+            "primaryCondition": "$sim/weather/visibility_reported_m < 5000 or\n((($sim/weather/cloud_base_msl_m[0] - $analysis.touchdown_combined.elevation) < 270)\nand $sim/weather/cloud_coverage[0] >= 4)",
+            "description": "Instrument approach in IMC conditions"
+        },
+        {
+            "name": "VMC",
+            "height": 500,
+            "primaryCondition": "1",
+            "description": "Instrument approach in VMC conditions"
+        },
+        {
+            "name": "VISUAL",
+            "height": 500,
+            "primaryCondition": "0",
+            "description": "Visual approach can only be selected manually\n\nPlugins -> StableApproach -> Check height"
+        }
+    ],
+    "requirementGroups": [
+        {
+            "name": "Stopping distance",
+            "requirements": [
+                {
+                    "name": "Runway overshoot",
+                    "type": 2,
+                    "primaryCondition": "$analysis.rollout.rwy_remaining > 0",
+                    "beginConditionMarker": "#TD_FIRST",
+                    "endConditionMarker": "$clamb/stableapproach/position/groundspeed_kn < 60",
+                    "secondaryCondition": "$analysis.rollout.go_around == 0",
+                    "secondaryConditionMarker": "#TD-3000ms",
+                    "description": "Taxi speed when reaching end of runway\n"
+                }
+            ]
+        },
+        {
+            "name": "Touchdown zone",
+            "requirements": [
+                {
+                    "name": "Early touchdown",
+                    "type": 2,
+                    "primaryCondition": "$analysis.touchdown_combined.threshold_dist.min > -5",
+                    "beginConditionMarker": "#CH",
+                    "endConditionMarker": "#INSTANT",
+                    "description": "Touchdown before runway threshold"
+                },
+                {
+                    "name": "Long landing",
+                    "type": 2,
+                    "primaryCondition": "$analysis.touchdown_combined.threshold_dist.max < ($analysis.rwy.length.tdz * 1.15)",
+                    "beginConditionMarker": "#CH",
+                    "endConditionMarker": "#INSTANT",
+                    "description": "Late touchdown"
+                },
+                {
+                    "name": "Long landing",
+                    "type": 1,
+                    "primaryCondition": "$analysis.touchdown_combined.threshold_dist.max < $analysis.rwy.length.tdz",
+                    "beginConditionMarker": "#CH",
+                    "endConditionMarker": "#INSTANT",
+                    "description": "Touchdown not within touchdown zone"
+                }
+            ]
+        },
+        {
+            "requirements": [
+                {
+                    "name": "Centerline deviation",
+                    "type": 2,
+                    "primaryCondition": "abs($clamb/stableapproach/live/runway/cte) < (($analysis.rwy.width / 2) - 1)",
+                    "beginConditionMarker": "#TD_FIRST",
+                    "endConditionMarker": "$clamb/stableapproach/position/groundspeed_kn < 60 or $clamb/stableapproach/position/altitude_agl_ft > 25",
+                    "tolerance": 1000,
+                    "description": "Stay on centerline until reaching 60kn groundspeed"
+                }
+            ]
+        },
+        {
+            "name": "Single touchdown",
+            "requirements": [
+                {
+                    "name": "Bounced landing",
+                    "type": 1,
+                    "primaryCondition": "$analysis.touchdown_combined.touchdown_count == 1",
+                    "beginConditionMarker": "#CH",
+                    "endConditionMarker": "#INSTANT",
+                    "description": "After touchdown the aircraft should not get airborne again"
+                }
+            ]
+        },
+        {
+            "name": "Touchdown rate (fpm)",
+            "requirements": [
+                {
+                    "name": "Severe hard landing (fpm)",
+                    "type": 2,
+                    "primaryCondition": "$analysis.touchdown_combined.fpm_agl.max > -900",
+                    "beginConditionMarker": "#CH",
+                    "endConditionMarker": "#TAXI",
+                    "description": "Maximum sinkrate during touchdown:\n600 fpm"
+                },
+                {
+                    "name": "Hard landing (fpm)",
+                    "type": 2,
+                    "primaryCondition": "$analysis.touchdown_combined.fpm_agl.max > -600",
+                    "beginConditionMarker": "#CH",
+                    "endConditionMarker": "#TAXI",
+                    "description": "Maximum sinkrate during touchdown:\n600 fpm"
+                }
+            ]
+        },
+        {
+            "name": "Touchdown g-force",
+            "requirements": [
+                {
+                    "name": "Severe hard landing (g)",
+                    "type": 2,
+                    "primaryCondition": "$analysis.touchdown_combined.g_vertical.max < 2.6",
+                    "beginConditionMarker": "#CH",
+                    "endConditionMarker": "#TAXI",
+                    "description": "Max vertical acceleration after touchdown:\n2.1 G"
+                },
+                {
+                    "name": "Hard landing (g)",
+                    "type": 1,
+                    "primaryCondition": "$analysis.touchdown_combined.g_vertical.max < 2.1",
+                    "beginConditionMarker": "#CH",
+                    "endConditionMarker": "#TAXI",
+                    "description": "Max vertical acceleration after touchdown:\n2.1 G"
+                }
+            ]
+        },
+        {
+            "name": "Sinkrate",
+            "requirements": [
+                {
+                    "name": "High sinkrate",
+                    "type": 2,
+                    "primaryCondition": "if ($clamb/stableapproach/live/app/gs/type != 6)\n$sim/flightmodel/position/vh_ind_fpm > -1300;\nelse\n$sim/flightmodel/position/vh_ind_fpm >\nclamp(3,$clamb/stableapproach/live/app/gs/angle ,8) / 3 * -1300",
+                    "beginConditionMarker": "#CH",
+                    "endConditionMarker": "#TD_LAST",
+                    "tolerance": 3000,
+                    "description": "Max sinkrate during approach is normally:\n1000fpm"
+                },
+                {
+                    "name": "High sinkrate",
+                    "type": 1,
+                    "primaryCondition": "if ($clamb/stableapproach/live/app/gs/type != 6)\n$sim/flightmodel/position/vh_ind_fpm > -1100;\nelse\n$sim/flightmodel/position/vh_ind_fpm >\nclamp(3,$clamb/stableapproach/live/app/gs/angle ,8) / 3 * -1100",
+                    "beginConditionMarker": "#CH",
+                    "endConditionMarker": "#TAXI",
+                    "tolerance": 3000,
+                    "description": "Max sinkrate during approach is normally:\n1000fpm"
+                }
+            ]
+        },
+        {
+            "name": "Approach speed",
+            "requirements": [
+                {
+                    "name": "Vref not set",
+                    "type": 2,
+                    "primaryCondition": "$SSG/B748/FMC/land_speed > 50",
+                    "beginConditionMarker": "#CH",
+                    "endConditionMarker": "#TD-3000ms",
+                    "description": "Approach VREF should be set in the CDU"
+                },
+                {
+                    "name": "Approach speed",
+                    "type": 2,
+                    "primaryCondition": "($SSG/B748/FMC/land_speed - 3) <= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot\nand\n($SSG/B748/FMC/land_speed + 20) >= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot",
+                    "beginConditionMarker": "#CH",
+                    "endConditionMarker": "$.ft_ARTE < 100",
+                    "tolerance": 3000,
+                    "description": "Speed during approach must be between:\nVREF\n  and\nVREF + 15"
+                },
+                {
+                    "name": "Approach speed",
+                    "type": 1,
+                    "primaryCondition": "($SSG/B748/FMC/land_speed) <= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot\nand\n($SSG/B748/FMC/land_speed + 15) >= $sim/cockpit2/gauges/indicators/airspeed_kts_pilot",
+                    "beginConditionMarker": "#CH",
+                    "endConditionMarker": "$.ft_ARTE < 100",
+                    "tolerance": 3000,
+                    "description": "Speed during approach must be between:\nVREF\n  and\nVREF + 15"
+                }
+            ]
+        },
+        {
+            "name": "Glideslope deviation",
+            "requirements": [
+                {
+                    "name": "Glideslope deviation",
+                    "type": 2,
+                    "primaryCondition": "abs ($sim/cockpit/radios/nav1_vdef_dot) < 1.3",
+                    "beginConditionMarker": "#CH",
+                    "endConditionMarker": "$.ft_ARTE < 200",
+                    "secondaryCondition": "$analysis.app.nav.gs.type == 6 and\n$.not_vis_app",
+                    "secondaryConditionMarker": "#TD-3000ms",
+                    "tolerance": 2000,
+                    "description": "Maximum 1 dot glideslope deviation.\nFrom check height until 200ft above runway threshold elevation (ARTE).\nNot required for VISUAL approaches"
+                },
+                {
+                    "name": "Glideslope deviation",
+                    "type": 1,
+                    "primaryCondition": "abs($sim/cockpit/radios/nav1_vdef_dot) < 1",
+                    "beginConditionMarker": "#CH",
+                    "endConditionMarker": "$.ft_ARTE < 200",
+                    "secondaryCondition": "$analysis.app.nav.gs.type == 6 and\n$.not_vis_app",
+                    "secondaryConditionMarker": "#TD-3000ms",
+                    "description": "Maximum 1 dot glideslope deviation.\nFrom check height until 200ft above runway threshold elevation (ARTE).\nNot required for VISUAL approaches"
+                }
+            ]
+        },
+        {
+            "name": "Localizer deviation",
+            "requirements": [
+                {
+                    "name": "Localizer deviation",
+                    "type": 2,
+                    "primaryCondition": "abs($sim/cockpit/radios/nav1_hdef_dot) < 1.3",
+                    "beginConditionMarker": "#CH",
+                    "endConditionMarker": "#TD-3000ms",
+                    "secondaryCondition": "$analysis.app.nav.loc.type != 0 and\n$.not_vis_app",
+                    "secondaryConditionMarker": "#TD-3000ms",
+                    "tolerance": 2000,
+                    "description": "Maximum 1 dot localizer deviation\nfrom check height till touchdown.\nNot required for VISUAL approaches"
+                },
+                {
+                    "name": "Localizer deviation",
+                    "type": 1,
+                    "primaryCondition": "abs($sim/cockpit/radios/nav1_hdef_dot) < 1",
+                    "beginConditionMarker": "#CH",
+                    "endConditionMarker": "#TD-3000ms",
+                    "secondaryCondition": "$analysis.app.nav.loc.type != 0 and\n$.not_vis_app",
+                    "secondaryConditionMarker": "#TD-3000ms",
+                    "tolerance": 2000,
+                    "description": "Maximum 1 dot localizer deviation\nfrom check height till touchdown.\nNot required for VISUAL approaches"
+                }
+            ]
+        },
+        {
+            "name": "Gear",
+            "requirements": [
+                {
+                    "name": "Gear not down",
+                    "type": 2,
+                    "primaryCondition": "$sim/cockpit2/controls/gear_handle_down == 1\nand\n$sim/cockpit2/annunciators/gear_unsafe == 0\n",
+                    "beginConditionMarker": "#CH",
+                    "endConditionMarker": "#TAXI",
+                    "description": "Gear must be down and locked\nbelow check height"
+                }
+            ]
+        },
+        {
+            "name": "Flaps",
+            "requirements": [
+                {
+                    "name": "Flaps not in position",
+                    "type": 2,
+                    "primaryCondition": "$sim/cockpit2/controls/flap_handle_deploy_ratio >= 0.95 or ($sim/cockpit2/controls/flap_handle_deploy_ratio >= 0.78 and $sim/cockpit2/controls/flap_handle_deploy_ratio <= 0.9)",
+                    "beginConditionMarker": "#CH",
+                    "endConditionMarker": "#TD_LAST",
+                    "description": "Flaps must be in landing position (25/30) below check height until taxi speed"
+                }
+            ]
+        },
+        {
+            "name": "Speedbrake",
+            "requirements": [
+                {
+                    "name": "Speedbrake not armed",
+                    "type": 2,
+                    "primaryCondition": "$SSG/CTRL/spdbrk_arm_sw < 1",
+                    "beginConditionMarker": "#CH",
+                    "endConditionMarker": "#TD-3000ms",
+                    "secondaryCondition": "$analysis.rollout.go_around == 0",
+                    "secondaryConditionMarker": "#TD-3000ms",
+                    "tolerance": 500,
+                    "description": "Speedbrakes must be in the ARMED position\nbelow check height.\nNot required in case of touch-and-go"
+                }
+            ]
+        },
+        {
+            "name": "Autoflight",
+            "requirements": [
+                {
+                    "name": "Autoland",
+                    "type": 0,
+                    "primaryCondition": "$sim/cockpit/autopilot/autopilot_mode < 2",
+                    "beginConditionMarker": "#TD-3000ms",
+                    "endConditionMarker": "#TD+3000ms",
+                    "description": "Information only: Autoland"
+                },
+                {
+                    "name": "Autopilot engaged",
+                    "type": 0,
+                    "primaryCondition": "$sim/cockpit/autopilot/autopilot_mode < 2",
+                    "beginConditionMarker": "#CH",
+                    "endConditionMarker": "#TD-3000ms",
+                    "tolerance": 1000
+                }
+            ]
+        },
+        {
+            "name": "Thrust",
+            "requirements": [
+                {
+                    "name": "High/Low thrust",
+                    "type": 1,
+                    "primaryCondition": "$sim/cockpit2/engine/indicators/N1_percent#0 > 40 and\n$sim/cockpit2/engine/indicators/N1_percent#0 < 80",
+                    "beginConditionMarker": "#CH",
+                    "endConditionMarker": "$.ft_ARTE < 100",
+                    "tolerance": 5000,
+                    "description": "\"Appropriate\" thrust settings is required.\nRecommended: 40-80% N1 below check height until flare begins"
+                }
+            ]
+        },
+        {
+            "name": "No Tailstrike",
+            "requirements": [
+                {
+                    "name": "Tailstrike",
+                    "type": 2,
+                    "primaryCondition": "$analysis.touchdown_combined.pitch.max < 11\nand\n$analysis.rollout.pitch.max < 11",
+                    "beginConditionMarker": "#CH",
+                    "endConditionMarker": "#INSTANT",
+                    "description": "Very high pitch attitude!\nTailstrike most likely occured.\nMake sure your speed at touchdown is not (much) below VREF"
+                },
+                {
+                    "name": "Touchdown high pitch attitude",
+                    "type": 1,
+                    "primaryCondition": "$analysis.touchdown_combined.pitch.max < 9\nand\n$analysis.rollout.pitch.max < 9",
+                    "beginConditionMarker": "#CH",
+                    "endConditionMarker": "#INSTANT",
+                    "description": "Pitch attitude during touchdown and rollout should be below 9.0 degree.\nDanger of tailstrike!\nMake sure your speed at touchdown is not (much) below VREF"
+                }
+            ]
+        },
+        {
+            "name": "Wind limits",
+            "requirements": [
+                {
+                    "name": "Strong tailwind",
+                    "type": 1,
+                    "primaryCondition": "$clamb/stableapproach/live/runway/hwc_kn > -10",
+                    "beginConditionMarker": "$.ft_ARTE < 50",
+                    "endConditionMarker": "#TD_LAST",
+                    "tolerance": 1000,
+                    "description": "Tailwind on runway was above 10kn.\nThe opposite runway might be more suitable."
+                }
+            ]
+        }
+    ]
+}

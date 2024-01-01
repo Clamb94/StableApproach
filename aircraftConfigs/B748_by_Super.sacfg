@@ -2,7 +2,7 @@
     "enabled": true,
     "acf": {
         "icao": "B748",
-        "author": "Supercritical Simulations Group"
+        "author": "Supercritical Simulations Group "
     },
     "speed": {
         "taxi": 30
@@ -281,7 +281,7 @@
                 {
                     "name": "Speedbrake not armed",
                     "type": 2,
-                    "primaryCondition": "$SSG/CTRL/spdbrk_arm_sw < 1",
+                    "primaryCondition": "$SSG/CTRL/spdbrk_arm_sw > 0.95",
                     "beginConditionMarker": "#CH",
                     "endConditionMarker": "#TD-3000ms",
                     "secondaryCondition": "$analysis.rollout.go_around == 0",

@@ -57,6 +57,13 @@
                 "$HDOT": "$sim/cockpit/radios/nav1_hdef_dot"
             }
         },
+		{
+            "template": "Approach speed (Vref/FMC)",
+            "replace": {
+                "$VREF": "$SSG/B748/FMC/land_speed",
+                "$KIAS": "$sim/cockpit2/gauges/indicators/airspeed_kts_pilot"
+            }
+        },
         {
             "template": "Flaps",
             "replace": {
@@ -67,13 +74,13 @@
         {
             "template": "Gear",
             "replace": {
-                "$CONDITION": "$sim/cockpit/switches/gear_handle_status == 1"
+                "$CONDITION": "$sim/cockpit2/controls/gear_handle_down == 1 and $sim/cockpit2/annunciators/gear_unsafe == 0"
             }
         },
         {
             "template": "Speedbrake",
             "replace": {
-                "$CONDITION": "$sim/cockpit2/controls/speedbrake_ratio < -0.1"
+                "$CONDITION": "$SSG/CTRL/spdbrk_arm_sw > 0.9"
             }
         },
         {

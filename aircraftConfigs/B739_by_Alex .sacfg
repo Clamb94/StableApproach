@@ -76,7 +76,7 @@
         {
             "template": "Flaps (FMC)",
             "replace": {
-                "$FLAPSCONDITION": "$laminar/B738/flap_indicator#0 > 45 or ($laminar/B738/flap_indicator#0 > 30 and $laminar/B738/flap_indicator#0 < 36)",
+                "$FLAPSCONDITION": "if($sim/version/xplanee_internal_version < 119999,$laminar/B738/flap_indicator#0 > 45 or inrange(30,$laminar/B738/flap_indicator#0,36),$laminar/B738/flap_indicator#0 > 38 or inrange(28,$laminar/B738/flap_indicator#0,32))",
                 "$FLAPFMCCONDITION": "$laminar/B738/FMS/approach_flaps_set == 1",
 				"$FLAPSTEXT": "30/40"
             }

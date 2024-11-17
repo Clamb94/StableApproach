@@ -2,7 +2,7 @@
     "enabled": true,
     "acf": {
         "icao": "A333",
-        "author": "Alex Unruh, Rodrigo Fernandez, Massimo Durando, Jim Gregory"
+        "author": "Alex Unruh, Rodrigo Fernandez, Massimo Durando, Jim Gregory, Marco Auer"
     },
     "speed": {
         "taxi": -1
